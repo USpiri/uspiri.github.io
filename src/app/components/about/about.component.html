@@ -3,14 +3,13 @@
         <div class="image_container m-4 d-none d-lg-inline">
             <img src="/../assets/img/perfil.jpg" alt="Foto de perfil de Uriel Spiridione" class="profile_img">
         </div>
-
-        
         <div class="about_info_container p-4 p-lg-0">
             <div class="about_title_container d-flex flex-row align-items-center">
                 <h1 class="about_title">About</h1>
-                <i class="fa-solid fa-pen-to-square edit_button ico_about mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                <i class="fa-solid fa-pen-to-square edit_button ico_about mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#aboutModal"></i>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal fade" id="aboutModal" tabindex="-1" >
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -32,14 +31,14 @@
                                     <input type="text" class="form-control" id="InputAddress" placeholder="Address" value="">
                                 </div>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control" id="InputAge" placeholder="Age" value="">
+                                    <input type="number" class="form-control" id="InputAge" placeholder="Age" value="" >
                                 </div>
                             </div>
                             <div class="mb-2">
-                                <input type="text" class="form-control" id="InputDNI" placeholder="DNI" value="">
+                                <input type="number" class="form-control" id="InputDNI" placeholder="DNI" value="">
                             </div>
                             <div class="mb-2">
-                                <input type="text" class="form-control" id="InputPhone" placeholder="Phone" value="">
+                                <input type="number" class="form-control" id="InputPhone" placeholder="Phone" value="">
                             </div>
                             <div class="mb-3">
                                 <input type="email" class="form-control" id="InputEmail" placeholder="Email" value="">
@@ -47,7 +46,7 @@
                             <h6 class="text-dark">Birth Date</h6>
                             <div class="row g-2 mb-3">
                                 <div class="col-sm">
-                                    <input type="text" class="form-control" id="InputBirthDay" placeholder="Day" value="">
+                                    <input type="number" class="form-control" id="InputBirthDay" placeholder="Day" value="">
                                 </div>
                                 <div class="col-sm">
                                     <select class="form-select">
