@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SwiperModule } from "swiper/angular";
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,6 +17,9 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GreetingComponent } from './components/header/greeting/greeting.component';
+import { ExperienceModalComponent } from './components/experience/experience-modal/experience-modal.component';
+import { EducationModalComponent } from './components/education/education-modal/education-modal.component';
+import { SkillsModalComponent } from './components/skills/skills-modal/skills-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +33,21 @@ import { GreetingComponent } from './components/header/greeting/greeting.compone
     ProjectsComponent,
     SkillsComponent,
     NavbarComponent,
-    GreetingComponent
+    GreetingComponent,
+    ExperienceModalComponent,
+    EducationModalComponent,
+    SkillsModalComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    SwiperModule
+    SwiperModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
