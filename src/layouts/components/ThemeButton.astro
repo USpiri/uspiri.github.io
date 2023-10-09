@@ -1,0 +1,41 @@
+---
+import MoonIcon from "@components/icons/MoonIcon.astro";
+import SunIcon from "@components/icons/SunIcon.astro";
+---
+
+<button
+  id="toggle-dark-mode"
+  class="p-1 flex items-center rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all active:bg-neutral-300 dark:active:bg-neutral-600 active:scale-90"
+>
+  <SunIcon />
+  <MoonIcon class="hide-icon" />
+</button>
+<script>
+  // Script Dark Mode
+  const elementHtml = document.getElementById("layout");
+  const svgMoon = document.getElementById("moon-icon");
+  const svgSun = document.getElementById("sun-icon");
+
+  const dark = localStorage.getItem("theme");
+  if (dark && dark == "false") {
+    elementHtml?.classList.toggle("dark");
+    svgMoon?.classList.toggle("hide-icon");
+    svgSun?.classList.toggle("hide-icon");
+  }
+
+  document.getElementById("toggle-dark-mode")?.addEventListener("click", () => {
+    elementHtml?.classList.toggle("dark");
+    svgMoon?.classList.toggle("hide-icon");
+    svgSun?.classList.toggle("hide-icon");
+    localStorage.setItem(
+      "theme",
+      elementHtml?.classList.contains("dark") ? "true" : "false"
+    );
+  });
+</script>
+
+<style is:global>
+  .hide-icon {
+    display: none;
+  }
+</style>

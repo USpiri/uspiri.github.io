@@ -1,5 +1,6 @@
 ---
 import BaseHead from "./components/BaseHead.astro";
+import Navbar from "./components/Navbar.astro";
 
 interface Props {
   title: string;
@@ -10,10 +11,12 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-neutral-800">
+<html id="layout" lang="en" class="dark">
   <head>
     <BaseHead title={title} description={description} />
-  </head><body>
+  </head>
+  <body class="bg-zinc-100 dark:bg-neutral-800">
+    <Navbar />
     <slot />
   </body>
 </html>
