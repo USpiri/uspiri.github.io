@@ -1,15 +1,13 @@
 ---
+import Button from "@components/Button.astro";
 import MoonIcon from "@components/icons/MoonIcon.astro";
 import SunIcon from "@components/icons/SunIcon.astro";
 ---
 
-<button
-  id="toggle-dark-mode"
-  class="p-1 flex items-center rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all hover:scale-105 active:bg-neutral-300 dark:active:bg-neutral-600 active:scale-90"
->
+<Button id="toggle-dark-mode">
   <SunIcon />
   <MoonIcon class="hide-icon" />
-</button>
+</Button>
 <script>
   // Script Dark Mode
   const elementHtml = document.getElementById("layout");
