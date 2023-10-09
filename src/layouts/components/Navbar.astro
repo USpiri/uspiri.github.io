@@ -1,4 +1,5 @@
 ---
+import SearchButton from "./SearchButton.astro";
 import ThemeButton from "./ThemeButton.astro";
 ---
 
@@ -8,7 +9,8 @@ import ThemeButton from "./ThemeButton.astro";
   <span class="font-semibold text-neutral-900 dark:text-white text-xl"
     >🖥️ Mini Blog</span
   >
-  <div>
+  <div class="flex items-start gap-3">
+    <SearchButton />
     <ThemeButton />
   </div>
 </nav>
