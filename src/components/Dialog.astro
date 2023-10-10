@@ -8,12 +8,28 @@ const { class: className, id } = Astro.props;
 
 <dialog
   id={id}
-  class=`bg-neutral-100 dark:bg-neutral-800 backdrop:bg-neutral-500 dark:backdrop:bg-neutral-900 backdrop:opacity-80 transition-all rounded-lg p-1 w-screen md:w-fit md:max-w-sm h-screen md:h-fit ${className}`
+  class={`bg-neutral-100 dark:bg-neutral-800 backdrop:bg-neutral-500 dark:backdrop:bg-neutral-900 backdrop:opacity-80 rounded-lg p-1 w-screen md:w-fit md:max-w-sm h-screen md:h-fit ${className}`}
 >
   <div class="flex flex-col justify-between h-full">
     <slot />
   </div>
 </dialog>
+
+<style is:global>
+  dialog[open] {
+    animation: open 0.15s;
+  }
+  @keyframes open {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
 
 <script>
   // Get "open-dialog" buttons
