@@ -7,14 +7,22 @@ import SearchIcon from "@components/icons/SearchIcon.astro";
 <Button open-dialog dialog-id="search">
   <SearchIcon class="fill-neutral-400 h-7" />
 </Button>
+<div class="text-neutral-800 dark:text-neutral-200">text</div>
 <Dialog id="search">
-  <div class="px-2 pt-3 dark:text-white">
-    <h1 class="text-2xl">Bienvenidos UNO</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim et, atque
-      ipsum quia tenetur, eum natus voluptatem quisquam, at fugit mollitia.
-      Harum fugiat officiis fugit in dolore assumenda ipsum reiciendis?
-    </p>
+  <div class="px-2 pt-3 text-neutral-500 dark:text-neutral-200">
+    <div>
+      <label
+        for="first_name"
+        class="block mb-2 text-sm font-medium text-neutral-500">Search</label
+      >
+      <input
+        type="text"
+        id="first_name"
+        class="bg-transparent border-2 border-neutral-400 dark:border-neutral-500 text-sm rounded-lg block w-full p-2.5 placeholder-neutral-500 font-semibold"
+        placeholder="John"
+        required
+      />
+    </div>
   </div>
   <div class="p-1 flex gap-2 flex-row-reverse">
     <Button dialog-close class="p-2" custom-id="1234">Cancel</Button>
