@@ -1,0 +1,67 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+const { class: className, id } = Astro.props;
+---
+
+<dialog
+  id={id}
+  class=`bg-neutral-100 dark:bg-neutral-800 backdrop:bg-neutral-500 dark:backdrop:bg-neutral-900 backdrop:opacity-80 transition-all rounded-lg p-1 w-screen md:w-fit md:max-w-sm h-screen md:h-fit ${className}`
+>
+  <div class="flex flex-col justify-between h-full">
+    <slot />
+  </div>
+</dialog>
+
+<script>
+  // Get "open-dialog" buttons
+  const buttons = document.querySelectorAll("[open-dialog]");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Get "dialog-id" value
+      const dialogId = button.getAttribute("dialog-id");
+      if (!dialogId) {
+        console.error(
+          "open-dialog Buttons must have a valid dialog-id attribute"
+        );
+        return;
+      }
+
+      // Get "dialog-id" dialog element
+      const dialog = document.querySelector(
+        `#${dialogId}`
+      ) as HTMLDialogElement;
+      if (!dialog || !(dialog instanceof HTMLDialogElement)) {
+        console.error(`There is no <dialog> with id: "${dialogId}"`);
+        return;
+      }
+
+      // Close off canvas
+      dialog.addEventListener("click", (event) => {
+        var rect = dialog.getBoundingClientRect();
+        var isInDialog =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (!isInDialog) {
+          dialog.close();
+        }
+      });
+      dialog.addEventListener("cancel", () => {
+        dialog.close();
+      });
+
+      // Open dialog
+      dialog.showModal();
+
+      // Set close event to all "dialog-close" buttons
+      const closeButtons = dialog.querySelectorAll("[dialog-close]");
+      closeButtons.forEach((close) =>
+        close?.addEventListener("click", () => dialog.close())
+      );
+    });
+  });
+</script>
