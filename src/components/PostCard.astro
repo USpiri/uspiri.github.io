@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import image from "../../public/bg-matias.png";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+---
+
+<a
+  href={post.slug}
+  class="pt-3 pb-4 px-4 flex gap-3 rounded-lg hover:scale-[102%] transition-all hover:bg-neutral-300 dark:hover:bg-neutral-950 dark:hover:bg-opacity-40 hover:bg-opacity-30 h-fit"
+>
+  {
+    post.data.image && (
+      <Image
+        src={image}
+        alt="Post image"
+        width="132"
+        height="132"
+        class="self-start rounded-lg"
+      />
+    )
+  }
+  <div>
+    <div>
+      <span
+        class="text-neutral-400 dark:text-neutral-600 dark:font-bold font-semibold text-sm"
+        >10 Oct. 2023</span
+      >
+      <h3 class="text-2xl font-semibold line-clamp-1 mb-1">
+        {post.data.title}
+      </h3>
+    </div>
+    <p class="text-neutral-500 font-medium line-clamp-2">
+      {post.data.description}
+    </p>
+    <div class="flex flex-row justify-between items-center">
+      {
+        post.data.tags.map((tag) => (
+          <div class="font-semibold text-neutral-600 dark:text-neutral-300">
+            #{tag}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</a>
