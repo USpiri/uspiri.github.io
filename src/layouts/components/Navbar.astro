@@ -1,4 +1,5 @@
 ---
+import Link from "@components/Link.astro";
 import SearchButton from "./SearchButton.astro";
 import ThemeButton from "./ThemeButton.astro";
 ---
@@ -12,6 +13,7 @@ import ThemeButton from "./ThemeButton.astro";
     >
   </a>
   <div class="flex items-start gap-3">
+    <Link href="/blog" class="h-9">Blogs</Link>
     <SearchButton />
     <ThemeButton />
   </div>
