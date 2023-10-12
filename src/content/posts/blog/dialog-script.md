@@ -1,19 +1,19 @@
 ---
 title: "Un script para mejorar el uso de diálogos en HTML"
 pubDate: 2023-10-11
-description: "Probando la api de dialogs y creando un script para abrir múltiples dialogs"
+description: "Desarrollo de un pequeño script que simplifica la creación y gestión de dialogs."
 tags: ["typescript"]
 ---
 
 # Un script para mejorar el uso de diálogos en HTML
 
-Las ventanas emergentes, comúnmente conocidas como "dialogs", son parte del desarrollo habitual de interfaces desde hace años. Una ventana de diálogo es un tipo especial de cuadro emergente en una página web. Estos _dialogs_ siempre fueron dificiles de crear o implican la instalación de librerías Javascript que conllevan mayor complejidad y autmentan el tamaño general de la aplicación en desarrollo.
+Las ventanas emergentes, comúnmente conocidas como "dialogs", son parte del desarrollo habitual de interfaces desde hace años. Una ventana de diálogo es un tipo especial de cuadro emergente en una página web. Estos _dialogs_ siempre fueron difíciles de crear o implican la instalación de librerías Javascript que conllevan mayor complejidad y aumentan el tamaño general de la aplicación en desarrollo.
 
 Aquí es donde entra en juego el elemento HTML nativo de los navegadores llamado `<dialog>`, que permite crear estos diálogos sin necesidad de JavaScript o con un mínimo de código. Veamos brevemente cómo se usan.
 
 ## La etiqueta `<dialog>`
 
-Un element `<dialog>` básico se vería de la siguiente forma, en dónde el contenido puede ser diverso:
+Un elemento `<dialog>` básico se vería de la siguiente forma, en dónde el contenido puede ser diverso:
 
 ```html
 <dialog open>
@@ -21,9 +21,9 @@ Un element `<dialog>` básico se vería de la siguiente forma, en dónde el cont
 </dialog>
 ```
 
-Por defecto estos elementos se mantienen ocultos a menos que se les agregue el atributo `open` al dialog, como se ve en el HTML de arriba.
+Por defecto, estos elementos se mantienen ocultos a menos que se les agregue el atributo `open` al dialog, como se ve en el HTML de arriba.
 
-Sin embargo, `open` no es lo recomendado, ya que limita la funcionalidad de estos diálogos. En su lugar, se pueden emlear los métodos `show()` ó `showModal()` con Javascript. Ambos métodos muestran el elemento, pero difieren en que uno permite interactuar con el fondo (`show`) y el otro no (`showModal`).
+Sin embargo, `open` no es lo recomendado, ya que limita la funcionalidad de estos diálogos. En su lugar, se pueden emplear los métodos `show()` ó `showModal()` con Javascript. Ambos métodos muestran el elemento, pero difieren en que uno permite interactuar con el fondo (`show`) y el otro no (`showModal`).
 
 ```typescript
 // Obtenemos el elemento "<dialog>" del documento
@@ -34,13 +34,13 @@ dialog.show();
 dialog.showModal();
 ```
 
-Es en esta última funcionalidad es en la que profundizaré. ¿Cómo podemos hacer si tenemos más de un dialog?, ¿Cómo diferenciamos un dialog con otro?. Iré paso a paso respondiendo estas preguntas y resolviendo posibles problemas que nos vayamos encontrando en el proceso hasta dar con un pequeño `<script>` que nos permita abrir y cerrar distintos modales de forma sencilla.
+Es en esta última funcionalidad es en la que profundizaré. ¿Cómo podemos hacer si tenemos más de un dialog?, ¿Cómo diferenciamos un dialog con otro? Iré paso a paso respondiendo estas preguntas y resolviendo posibles problemas que nos vayamos encontrando en el proceso hasta dar con un pequeño `<script>` que nos permita abrir y cerrar distintos modales de forma sencilla.
 
 ## Abriendo un dialog con muchos botones
 
 Podemos empezar haciendo que un botón (u otro elemento) se encargue de abrir el dialog y ejecute el método que vimos anteriormente. De forma similar a la que buscamos un dialog podríamos buscar un `<button>`, pero no queremos que cualquier botón pueda abrir un diálogo. En su lugar, buscamos elementos que cumplan una condición específica.
 
-La condición sera la presencia del "nuevo atributo" que crearemos, este agregará la funcionalidad que deseamos al elemento que lo posea, este atributo será `open-dialog`.
+La condición será la presencia del "nuevo atributo" que crearemos, este agregará la funcionalidad que deseamos al elemento que lo posea, este atributo será `open-dialog`.
 
 ```typescript
 // Buscamos todos los elementos que tendan el atributo "open-dialog"
@@ -56,7 +56,7 @@ buttons.forEach((button) => {
 });
 ```
 
-Ahora cualquier elemento que tengan el atributo `open-dialog` abrirá nuestra ventana... Pero ¿Qué pasaría en un caso como este?
+Ahora cualquier elemento que tengan el atributo `open-dialog` abrirá nuestra ventana... Pero, ¿Qué pasaría en un caso como este?
 
 ```html
 <button open-dialog>Abrir ventana</button>
@@ -72,7 +72,7 @@ Ahora cualquier elemento que tengan el atributo `open-dialog` abrirá nuestra ve
 
 ## No podemos abrir más de una ventana
 
-De hecho, `querySelector("dialog")` nos devuelve el **primer objeto que se encuentre** en el documento, por lo que sólo se abrirá la ventana "UNO". Necesitamos una forma de diferenciar cada dialog y abrirlos por separado. ¿Y si les agregamos un `id`?
+De hecho, `querySelector("dialog")` nos devuelve el **primer objeto que se encuentre** en el documento, por lo que solo se abrirá la ventana "UNO". Necesitamos una forma de diferenciar cada dialog y abrirlos por separado. ¿Y si les agregamos un `id`?
 
 ```html
 <dialog id="ventanaUNO">
@@ -80,7 +80,7 @@ De hecho, `querySelector("dialog")` nos devuelve el **primer objeto que se encue
 </dialog>
 ```
 
-Dandole a cada diálogo un id único, podemos diferenciarlos fácilmente. Pero esto no es suficiente. Necesitamos una forma de que el botón sepa qué diálogo debe abrir. Una solución posible es asignar un atributo adicional que llamaremos `dialog-id` con el valor del "id" de nuestro dialog objetivo. Es decir, estaremos buscando un botón con el atributo `open-dialog` y el atributo `dialog-id="valor"` para determinar qué dialog debe abrirse.
+Dándole a cada diálogo un id único, podemos diferenciarlos fácilmente. Pero esto no es suficiente. Necesitamos una forma de que el botón sepa qué diálogo debe abrir. Una solución posible es asignar un atributo adicional que llamaremos `dialog-id` con el valor del "id" de nuestro dialog objetivo. Es decir, estaremos buscando un botón con el atributo `open-dialog` y el atributo `dialog-id="valor"` para determinar qué dialog debe abrirse.
 
 ```html
 <!-- "dialog-id" coincide con el "id" del dialog anterior -->
@@ -106,7 +106,7 @@ buttons.forEach((button) => {
 
 Notarás que he movido la búsqueda del dialog dentro del botón, ya que necesitamos el atributo `dialog-id` del botón para buscar el diálogo adecuado.
 
-Como resultado, el botón con `open-dialog` y `dialog-id="ventanaUNO"` nos arirá el diálogo que tiene `id="ventanaUNO"`. Para abrir otro, simplemente podemos cambiar el dialog-id del botón o crea varios botones que abran el mismo diálogo.
+Como resultado, el botón con `open-dialog` y `dialog-id="ventanaUNO"` nos abrirá el diálogo que tiene `id="ventanaUNO"`. Para abrir otro, simplemente podemos cambiar el dialog-id del botón o crea varios botones que abran el mismo diálogo.
 
 Nuestro `<script>` está casi listo, pero aún debemos ver tres problemas importantes:
 
@@ -116,7 +116,7 @@ Nuestro `<script>` está casi listo, pero aún debemos ver tres problemas import
 
 ## Manejo de errores
 
-Si el botón no tiene un atributo dialog-id, el método getAttribute("dialog-id") devolverá un valor nulo. Por lo tanto, podemos validar su existencia y en caso de que no exista terminar con la ejecución. Opcionalmente podemos agregar un mensaje de error.
+Si el botón no tiene un atributo dialog-id, o este es inválido, el método getAttribute("dialog-id") devolverá un valor nulo. Por lo tanto, podemos validar su existencia y en caso de que no exista terminar con la ejecución. Opcionalmente, podemos agregar un mensaje de error.
 
 ```typescript
 const dialogId = button.getAttribute("dialog-id");
@@ -130,7 +130,7 @@ if (!dialogId) {
 }
 ```
 
-Una vez que tenemos dialogId, podemos buscar el diálogo sin problemas. Pero, si este no existe, tedremos un error. Para evitarlo, de forma similar a la que validamos la existencia de `dialog-id`, podemos validar la búsqueda del dialog.
+Una vez que tenemos dialogId, podemos buscar el diálogo sin problemas. Pero, si este no existe, tendremos un error. Para evitarlo, de forma similar a la que validamos la existencia de `dialog-id`, podemos validar la búsqueda del dialog.
 
 ```typescript
 const dialog = document.querySelector(`#${dialogId}`) as HTMLDialogElement;
@@ -148,7 +148,7 @@ Dado que `querySelector()` puede devolver cualquier tipo de elemento, es importa
 
 Por último, podemos cerrar la ventana presionando la tecla `ESC`. **Pero** podemos hacer algo más amigable y crear un botón que se encargue de esta acción.
 
-Este botón generalmente se ubicará dentro del dialog, ya que suele ser difícil acceder a elementos fuera de este. Y al igual que antes, no queremos que cualquier botón cierre el modal, asi que buscaremos un botón con el atributo `close-dialog` (esto es similar a la implementación de Angular Material en sus diálogos).
+Este botón generalmente se ubicará dentro del dialog, ya que suele ser difícil acceder a elementos fuera de este. Y al igual que antes, no queremos que cualquier botón cierre el modal, así que buscaremos un botón con el atributo `close-dialog` (esto es similar a la implementación de Angular Material en sus diálogos).
 
 ```typescript
 // El "querySelectorAll()"" dentro del dialog no dará todos los elementos que tengan el atributo "dialog-close"
@@ -181,8 +181,8 @@ Veamos cómo se utilizan nuestras ventanas de diálogo:
 
 ## Conclusión
 
-Con este pequeño script, hemos logrado "mejorar" la funcionalidad de algunos elementos HTML existentes al crear los atributos open-dialog, dialog-id y close-dialog, permitiendonos controlar qué elementos abren ventanas de dialogo de manera efectiva. Además pudimos encargarnos de algunos errores que pueden surgir durante la implementación del script.
+Con este pequeño script, hemos logrado "mejorar" la funcionalidad de algunos elementos HTML existentes al crear los atributos open-dialog, dialog-id y close-dialog, permitiéndonos controlar qué elementos abren ventanas de dialogo de manera efectiva. Además, pudimos encargarnos de algunos errores que pueden surgir durante la implementación del script.
 
-Esto nos permitió simplificar la creación y gestión de ventanas emergentes (dialogs) eliminando la necesidad de librerías Javascript que pueden resultar pesadas en algunas ocaciones.
+Esto nos permitió simplificar la creación y gestión de ventanas emergentes (dialogs) eliminando la necesidad de librerías Javascript que pueden resultar pesadas en algunas ocasiones.
 
 El script se puede modificar según las necesidades, por ejemplo, haciendo que al hacer click _fuera del marco del dialog_ este se cierre.
