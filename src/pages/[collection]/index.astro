@@ -4,7 +4,8 @@ import PostCard from "@components/PostCard.astro";
 import PostDivider from "@components/PostDivider.astro";
 import Layout from "@layouts/Layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { capitalize } from '@utils/utils'
+import { capitalize } from "@utils/utils";
+import Subtitle from "@components/Subtitle.astro";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -27,16 +28,19 @@ interface Props {
 }
 
 const { posts } = Astro.props;
-const {collection} = Astro.params;
-const title = capitalize(collection??"Posts")
+const { collection } = Astro.params;
+const title = capitalize(collection ?? "Posts");
 ---
 
-<Layout title={`${title}s | Uriel Spiridione`} description=`Lista de ${collection}`>
+<Layout
+  title={`${title}s | Uriel Spiridione`}
+  description=`Lista de ${collection}`
+>
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
     <div class="max-w-2xl w-full my-20">
-      <h2 class="text-4xl ms-8 font-semibold">{title}s</h2>
+      <Subtitle>{title}s</Subtitle>
       <div class="mt-8 px-2 md:px-0">
         {
           posts.map((post, i) => (
