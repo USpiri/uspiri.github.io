@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from "astro";
+import PostCard from "@components/PostCard.astro";
+import PostDivider from "@components/PostDivider.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("posts");
+  const catSet = [...new Set(posts.map((post) => post.slug.split("/")[0]))];
+  return catSet.map((collection) => {
+    const filteredPosts = posts.filter((post: any) =>
+      post.slug.startsWith(collection)
+    );
+    return {
+      params: {
+        collection,
+      },
+      props: { posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<Layout title="Welcome to Astro." description="Astro Web">
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <div class="max-w-2xl w-full my-20">
+      <h2 class="text-4xl ms-8 font-semibold">Más recientes</h2>
+      <div class="mt-8 px-2 md:px-0">
+        {
+          posts.map((post, i) => (
+            <>
+              {i !== 0 && <PostDivider />}
+              <PostCard post={post} />
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
