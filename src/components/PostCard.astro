@@ -13,6 +13,7 @@ const { post } = Astro.props;
 <a
   href={`/${post.slug}`}
   class="pt-3 pb-4 px-4 flex gap-3 rounded-lg hover:scale-[102%] transition-all hover:bg-neutral-300 dark:hover:bg-neutral-950 dark:hover:bg-opacity-40 hover:bg-opacity-30 h-fit"
+  transition:name={`post-${post.slug}`}
 >
   {
     post.data.image && (

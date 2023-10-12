@@ -9,12 +9,17 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  transition:persist
+>
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
     <article
       class="max-w-3xl w-full my-20 prose prose-code: prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 pr"
+      transition:name={`post-${post.slug}`}
     >
       <slot />
     </article>
