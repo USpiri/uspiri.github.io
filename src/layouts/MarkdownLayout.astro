@@ -23,6 +23,8 @@ const { post } = Astro.props;
 </Layout>
 <style is:global lang="scss">
   code {
-    @apply dark:bg-neutral-900 bg-neutral-300 rounded-md px-1;
+    &:not(pre code) {
+      @apply dark:bg-neutral-900 bg-neutral-300 rounded-md px-1;
+    }
   }
 </style>
