@@ -11,7 +11,7 @@ const { post } = Astro.props;
 ---
 
 <a
-  href={post.slug}
+  href={`/${post.slug}`}
   class="pt-3 pb-4 px-4 flex gap-3 rounded-lg hover:scale-[102%] transition-all hover:bg-neutral-300 dark:hover:bg-neutral-950 dark:hover:bg-opacity-40 hover:bg-opacity-30 h-fit"
 >
   {
@@ -40,7 +40,7 @@ const { post } = Astro.props;
     </p>
     <div class="flex flex-row justify-between items-center">
       {
-        post.data.tags.map((tag) => (
+        post.data.tags.map((tag: string) => (
           <div class="font-semibold text-neutral-600 dark:text-neutral-300">
             #{tag}
           </div>
