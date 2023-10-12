@@ -4,7 +4,7 @@ import MoonIcon from "@components/icons/MoonIcon.astro";
 import SunIcon from "@components/icons/SunIcon.astro";
 ---
 
-<Button id="toggle-dark-mode">
+<Button id="toggle-dark-mode" transition:persist>
   <SunIcon />
   <MoonIcon class="hide-icon" />
 </Button>
@@ -30,6 +30,14 @@ import SunIcon from "@components/icons/SunIcon.astro";
       elementHtml?.classList.contains("dark") ? "true" : "false"
     );
   });
+
+  const setDarkMode = () => {
+    if (dark && dark == "false") {
+      elementHtml?.classList.toggle("dark");
+    }
+  };
+
+  document.addEventListener("astro:after-swap", setDarkMode);
 </script>
 
 <style is:global lang="scss">

@@ -14,6 +14,7 @@ const { post } = Astro.props;
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
     <article
+      transition:name={`post-${post.slug}`}
       class="max-w-3xl w-full my-20 prose prose-code: prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 pr"
     >
       <slot />
