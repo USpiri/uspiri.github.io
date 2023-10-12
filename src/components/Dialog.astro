@@ -15,7 +15,7 @@ const { class: className, id } = Astro.props;
   </div>
 </dialog>
 
-<style is:global>
+<style is:global lang="scss">
   dialog[open] {
     animation: open 0.15s;
   }
@@ -45,9 +45,7 @@ const { class: className, id } = Astro.props;
     }
 
     // Get "dialog-id" dialog element
-    const dialog = document.querySelector(
-      `#${dialogId}`
-    ) as HTMLDialogElement;
+    const dialog = document.querySelector(`#${dialogId}`) as HTMLDialogElement;
     if (!dialog || !(dialog instanceof HTMLDialogElement)) {
       console.error(`There is no <dialog> with id: "${dialogId}"`);
       return;
