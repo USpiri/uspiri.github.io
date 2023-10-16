@@ -1,24 +1,25 @@
 ---
-title: "Un script para mejorar el uso de diálogos en HTML"
+title: "File tree component (MDX file)"
 pubDate: 2023-10-11
-description: "Desarrollo de un pequeño script que simplifica la creación y gestión de dialogs."
-tags: ["typescript"]
+description: "Tree File component"
+tags: ["markdown"]
 ---
 
 import TreeFile from "@components/TreeFile.astro";
 
-# Hola
+# Tree File component
+
+This component is only avaliable for `.mdx` content files. Be careful to not save with auto formatting.
 
 <TreeFile>
 - public/ commentario
   - robots.txt
 - src/
   - components/
-    - Header.astro
+    - **TreeFile.astro**
     - Button.jsx
     - ...
-  - components/
-    - Header.astro
-    - Button.jsx
+  - pages/
     - ...
+    - index.astro
 </TreeFile>

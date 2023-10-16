@@ -2,7 +2,7 @@
 title: "Full markdown"
 pubDate: 2023-10-11
 description: "Full featured MArkdown for test"
-tags: ["blog"]
+tags: ["markdown"]
 ---
 
 # Headers
