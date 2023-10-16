@@ -11,34 +11,29 @@ import SunIcon from "@components/icons/SunIcon.astro";
 
 <script>
   // Script Dark Mode
-  const elementHtml = document.getElementById("layout");
-  const svgMoon = document.getElementById("moon-icon");
-  const svgSun = document.getElementById("sun-icon");
-
-  const dark = localStorage.getItem("theme");
-  if (dark && dark == "false") {
-    elementHtml?.classList.toggle("dark");
-    svgMoon?.classList.toggle("hide-icon");
-    svgSun?.classList.toggle("hide-icon");
-  }
-
-  document.getElementById("toggle-dark-mode")?.addEventListener("click", () => {
-    elementHtml?.classList.toggle("dark");
-    svgMoon?.classList.toggle("hide-icon");
-    svgSun?.classList.toggle("hide-icon");
-    localStorage.setItem(
-      "theme",
-      elementHtml?.classList.contains("dark") ? "true" : "false"
-    );
-  });
-
   const setDarkMode = () => {
     const elementHtml = document.getElementById("layout");
     const dark = localStorage.getItem("theme");
+    const svgMoon = document.getElementById("moon-icon");
+    const svgSun = document.getElementById("sun-icon");
     if (dark && dark == "false") {
       elementHtml?.classList.toggle("dark");
+      svgMoon?.classList.toggle("hide-icon");
+      svgSun?.classList.toggle("hide-icon");
     }
+    document
+      .getElementById("toggle-dark-mode")
+      ?.addEventListener("click", () => {
+        elementHtml?.classList.toggle("dark");
+        svgMoon?.classList.toggle("hide-icon");
+        svgSun?.classList.toggle("hide-icon");
+        localStorage.setItem(
+          "theme",
+          elementHtml?.classList.contains("dark") ? "true" : "false"
+        );
+      });
   };
+  setDarkMode();
 
   document.addEventListener("astro:after-swap", setDarkMode);
 </script>
