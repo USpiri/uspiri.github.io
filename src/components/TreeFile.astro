@@ -1,0 +1,133 @@
+---
+import { fileTreeProcessor } from "./internal/rehype-file-tree";
+
+const content = await Astro.slots.render("default");
+if (!/^\s*<ul>/.test(content)) {
+  throw new Error(
+    `<FileTree> component expects its content to be an unordered list but found HTML starting with “${content.slice(
+      0,
+      20
+    )}...”`
+  );
+}
+
+const processedContent = await fileTreeProcessor.process({
+  value: content,
+  data: { directoryLabel: "fileTree.directoryLabel" },
+});
+---
+
+<docs-file-tree set:html={processedContent} class="not-prose" />
+
+<style is:global lang="scss">
+  docs-file-tree {
+    --x-space: 1.75em;
+    --y-pad: 0.2em;
+    display: block;
+    overflow-x: auto;
+    @apply rounded-lg dark:bg-neutral-900 bg-neutral-50 py-5 px-2;
+  }
+
+  docs-file-tree .directory > details,
+  docs-file-tree .directory > details:hover,
+  docs-file-tree .directory > details[open] {
+    border: 0;
+    padding: 0;
+    padding-inline-start: 1em;
+    background: transparent;
+    
+  }
+
+  docs-file-tree .directory > details > summary,
+  docs-file-tree .directory > details[open] > summary {
+    border: 0;
+    // padding: var(--y-pad) 0.3em;
+    font-weight: normal;
+    color: var(--theme-text);
+    max-width: 100%;
+    display: flex;
+    @apply cursor-pointer;
+  }
+
+  docs-file-tree .directory > details > summary::marker,
+  docs-file-tree .directory > details > summary::-webkit-details-marker {
+    color: currentColor;
+  }
+
+  docs-file-tree .directory > details > summary:hover .tree-icon,
+  docs-file-tree .directory > details > summary:hover {
+    @apply dark:text-cyan-400 text-cyan-600;
+  }
+
+  docs-file-tree ul:is(ul),
+  docs-file-tree .directory > details ul:is(ul) {
+    margin: 0;
+    margin-inline-start: calc(1em - 1px);
+    border-inline-start: 2px solid var(--theme-divider);
+    padding: 0;
+    list-style: none;
+    @apply border-l-2 border-dotted border-neutral-500 border-opacity-50;
+  }
+
+  docs-file-tree > ul:is(ul) {
+    margin: 0;
+    border: 0;
+  }
+
+  docs-file-tree li:is(li) {
+    margin: 0;
+    // padding: var(--y-pad) 0;
+  }
+
+  docs-file-tree .file {
+    padding-inline-start: 1em;
+    color: var(--theme-text);
+    // @apply border-l-2 border-dotted border-neutral-500 border-opacity-50;
+  }
+
+  docs-file-tree .tree-entry {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: calc(100% - 1.25em);
+  }
+
+  @media (min-width: 30em) {
+    docs-file-tree .tree-entry {
+      flex-wrap: nowrap;
+    }
+  }
+
+  docs-file-tree .tree-entry > :first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  docs-file-tree .empty {
+    color: var(--theme-text-lighter);
+    padding-inline-start: 1.5em;
+  }
+
+  docs-file-tree .comment {
+    padding-inline-start: 2em;
+    @apply dark:text-neutral-500 text-neutral-400 font-normal dark:font-medium;
+  }
+
+  docs-file-tree .highlight {
+    display: inline-block;
+    padding-inline-end: 0.5em;
+    background-color: var(--theme-bg-accent);
+    outline: 1px solid var(--theme-shade-subtle);
+    @apply border text-cyan-500 border-neutral-500 rounded-md;
+  }
+
+  .tree-icon {
+    fill: currentColor;
+    vertical-align: middle;
+    margin: -0.75em 0.2em;
+    width: 1.5em;
+    height: 1.5em;
+  }
+</style>
