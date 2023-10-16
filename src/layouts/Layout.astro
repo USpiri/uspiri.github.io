@@ -15,10 +15,10 @@ const { title, description } = Astro.props;
 <html id="layout" lang="en" class="dark">
   <head>
     <BaseHead title={title} description={description} />
+    <ViewTransitions />
   </head>
   <body class="bg-zinc-100 dark:bg-neutral-900">
     <Navbar />
-    <ViewTransitions />
     <slot />
   </body>
 </html>
