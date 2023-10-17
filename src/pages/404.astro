@@ -1,0 +1,29 @@
+---
+import Subtitle from "@components/Subtitle.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Not found - Blog" description="Página no encontrada">
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <div class="max-w-2xl w-full my-20">
+      <Subtitle>404</Subtitle>
+      <div class="px-3">
+        <h3 class="text-xl md:text-2xl font-semibold mt-8">
+          ¡Parece que has encontrado la puerta hacia la nada!
+        </h3>
+        <p class="text-base md:text-lg mb-3 text-neutral-500">
+          ¡Lo siento por eso! Por favor, visita nuestra página de inicio para
+          llegar a donde necesitas ir
+        </p>
+        <a
+          class="p-2 text-center block select-none w-full rounded-lg bg-neutral-50 border dark:border-none dark:bg-neutral-800 hover:bg-neutral-200 font-semibold text-neutral-900 dark:text-white dark:hover:bg-neutral-700 transition-all hover:scale-[103%] active:bg-neutral-300 dark:active:bg-neutral-600 active:scale-90"
+          href="/"
+        >
+          <span class="text-center">Llevame a la página de inicio</span>
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>
