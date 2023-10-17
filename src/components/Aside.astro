@@ -1,0 +1,93 @@
+---
+import CautionIcon from "./icons/CautionIcon.astro";
+import DangerIcon from "./icons/DangerIcon.astro";
+import NoteIcon from "./icons/NoteIcon.astro";
+import SuccessIcon from "./icons/SuccessIcon.astro";
+import TipIcon from "./icons/TipIcon.astro";
+
+interface Props {
+  type?: "note" | "tip" | "caution" | "danger" | "success";
+  title: string;
+}
+
+const { type = "note", title } = Astro.props;
+---
+
+<aside class={`${type} card rounded-lg overflow-hidden mt-5 mb-2`}>
+  <div class={`border-l-4 ${type} bord p-2`}>
+    <p
+      class={`${type} content not-prose title flex items-center gap-2 font-semibold`}
+      aria-hidden="true"
+    >
+      <span class="icon">
+        {type === "note" && <NoteIcon class="h-5 w-5" />}
+        {type === "tip" && <TipIcon class="h-5 w-5" />}
+        {type === "caution" && <CautionIcon class="h-5 w-5" />}
+        {type === "danger" && <DangerIcon class="h-5 w-5" />}
+        {type === "success" && <SuccessIcon class="h-5 w-5" />}
+      </span>
+      {title}
+    </p>
+    <section class="mt-2 px-2 prose-headings:my-1 prose-p:my-1">
+      <slot />
+    </section>
+  </div>
+</aside>
+
+<style lang="scss">
+  .note {
+    &.card {
+      @apply bg-blue-500 bg-opacity-10;
+    }
+    .content {
+      @apply fill-blue-400 text-blue-400;
+    }
+    .bord {
+      @apply border-blue-500;
+    }
+  }
+  .tip {
+    &.card {
+      @apply bg-sky-500 bg-opacity-10;
+    }
+    .content {
+      @apply fill-sky-400 text-sky-400;
+    }
+    .bord {
+      @apply border-sky-500;
+    }
+  }
+  .caution {
+    &.card {
+      @apply bg-amber-500 bg-opacity-10;
+    }
+    .content {
+      @apply fill-amber-400 text-amber-400;
+    }
+    .bord {
+      @apply border-amber-500;
+    }
+  }
+  .danger {
+    &.card {
+      @apply bg-red-500 bg-opacity-10;
+    }
+    .content {
+      @apply fill-red-400 text-red-400;
+    }
+    .bord {
+      @apply border-red-500;
+    }
+  }
+  .success {
+    &.card {
+      @apply bg-emerald-500 bg-opacity-10;
+    }
+    .content {
+      @apply fill-emerald-400 text-emerald-400;
+    }
+    .bord {
+      @apply border-emerald-500;
+    }
+  }
+</style>

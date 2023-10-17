@@ -1,25 +1,102 @@
 ---
-title: "File tree component (MDX file)"
-pubDate: 2023-10-11
-description: "Tree File component"
+title: "Componentes avanzados (archivos .mdx)"
+pubDate: 2023-10-16
+description: "Componentes personalizados para archivos markdown"
 tags: ["markdown"]
 ---
 
 import FileTree from "@components/FileTree.astro";
+import Aside from "@components/Aside.astro";
 
-# Tree File component
+# Componentes personalizados
 
-This component is only avaliable for `.mdx` content files. Be careful to not save with auto formatting.
+Estos componentes están disponibles exclusivamente para archivos con la extensión `.mdx`.
 
+## Componente File Tree
+
+El componente File Tree (`<FileTree>`) permite representar una lista de archivos. Los íconos se asignan
+automáticamente en función de la extensión del archivo. También es posible añadir comentarios
+simplemente dejando un espacio al lado del nombre del archivo y resaltarlos, como se haría
+normalmente en archivos Markdown utilizando `**[contenido]**`. Además, es posible representar un
+archivo vacío con el texto `...`.
+
+Dentro de FileTree se escribe una lista de contenido en formato Markdown que luego será renderizada.
+
+```mdx
 <FileTree>
-- public/ commentario
+
+- public/ Comentarios
   - robots.txt
 - src/
   - components/
-    - **TreeFile.astro**
-    - Button.jsx
+    - **TreeFile.astro** Fichero resaltado
+    - Button.astro
     - ...
   - pages/
     - ...
-    - index.astro
+    - index.ts
+
 </FileTree>
+```
+
+<FileTree>
+
+- public/ Comentarios
+  - robots.txt
+- src/
+  - components/
+    - **TreeFile.astro** Fichero resaltado
+    - Button.astro
+    - ...
+  - pages/
+    - ...
+    - index.ts
+
+</FileTree>
+
+## Componente Aside
+
+El componente Aside (`<Aside>`) es similar a los componentes utilizados en otras aplicaciones (callbacks),
+proporciona información adicional al margen del contenido principal. Por defecto, los elementos `<Aside>`
+son de tipo `note`, pero también pueden ser de tipo `tip`, `caution`, `danger` y `success`.
+
+Es importante completar el campo `title` con un título para el contenido, este es requerido y se utiliza
+para el título del contenedor.
+
+El contenido del `<Aside>` puede ser texto markdown.
+
+```mdx
+<Aside type="note" title="Note:">
+  Esto es una nota
+</Aside>
+```
+
+<Aside type="note" title="Note:">
+
+Esto es una nota
+
+</Aside>
+
+<Aside type="tip" title="Tip:">
+
+Esto es un tip
+
+</Aside>
+
+<Aside type="caution" title="Precaución:">
+
+Esto es una nota de precaución
+
+</Aside>
+
+<Aside type="danger" title="Peligro:">
+
+Esto es una nota de peligro
+
+</Aside>
+
+<Aside type="success" title="Exito!">
+
+Esto es una nota de exito. Este `<Aside>` contiene en su interior **markdown**
+
+</Aside>
