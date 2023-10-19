@@ -1,14 +1,14 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
   class?: string;
-  id?: string;
 }
-const { class: className, id } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
 <button
   class={`p-1 flex items-center rounded-lg hover:bg-neutral-200 font-semibold text-neutral-900 dark:text-white dark:hover:bg-neutral-700 transition-all hover:scale-105 active:bg-neutral-300 dark:active:bg-neutral-600 active:scale-90 ${className}`}
-  id={id}
   {...Astro.props}
 >
   <slot />
