@@ -1,9 +1,64 @@
 <label class="block mb-2 text-sm font-medium text-neutral-500">Search</label>
 <div id="searchDev"></div>
-
-<script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
+{
+  import.meta.env.PROD && (
+    <script src="/pagefind/pagefind-ui.js" type="text/javascript" />
+  )
+}
+{
+  import.meta.env.DEV && (
+    <>
+      <input
+        class="pagefind-ui__search-input svelte-1d60ae3"
+        type="text"
+        placeholder="Buscar"
+        autocapitalize="none"
+        enterkeyhint="search"
+        style="padding-right: 2px;"
+        value="mark"
+      />
+      <div class="pagefind-ui__results-area">
+        <p class="pagefind-ui__message">2 resultados encontrados para mark</p>
+        <ol class="pagefind-ui__results">
+          <li class="pagefind-ui__result">
+            <div class="pagefind-ui__result-inner">
+              <p class="pagefind-ui__result-title">
+                <a class="pagefind-ui__result-link" href="/blog/full-markdown/">
+                  Headers
+                </a>
+              </p>
+              <p class="pagefind-ui__result-excerpt">
+                item. this is an incomplete item. Ignoring <mark>Markdown</mark>
+                formatting. You can tell GitHub to ignore (or escape)
+                <mark>Markdown</mark> formatting by using \ before the
+                <mark>Markdown</mark> character. Let's rename
+                \*our-new-project\* to
+              </p>
+            </div>
+          </li>
+          <li class="pagefind-ui__result">
+            <div class="pagefind-ui__result-inner">
+              <p class="pagefind-ui__result-title">
+                <a class="pagefind-ui__result-link" href="/blog/file-tree/">
+                  Componentes personalizados
+                </a>
+              </p>
+              <p class="pagefind-ui__result-excerpt">
+                normalmente en archivos <mark>Markdown</mark> utilizando
+                **[contenido]**. Además, es posible representar un archivo vacío
+                con el texto .... Dentro de FileTree se escribe una lista de
+                contenido en formato <mark>Markdown</mark> que
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </>
+  )
+}
 <script>
   document.addEventListener("astro:page-load", () => {
+    if (import.meta.env.DEV) return;
     const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
     onIdle(async () => {
       // @ts-ignore
