@@ -1,0 +1,18 @@
+---
+import LinkButton from "./LinkButton.astro";
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<nav class="flex gap-2">
+  {
+    tags.map((tag) => (
+      <LinkButton href={`/tags/${tag}`} class="p-0">
+        #{tag}
+      </LinkButton>
+    ))
+  }
+</nav>
