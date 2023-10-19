@@ -29,7 +29,7 @@ const { post } = Astro.props;
         <hr class="mb-5 mt-3 dark:border-neutral-500 border-neutral-400" />
       </header>
       <article
-        class="rounded-lg dark:bg-neutral-800 p-5 pt-2 first:prose-p:mt-3"
+        class="rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-2 first:prose-p:mt-3"
       >
         <slot />
       </article>
@@ -39,7 +39,7 @@ const { post } = Astro.props;
 <style is:global lang="scss">
   code {
     &:not(pre code) {
-      @apply dark:bg-neutral-900 bg-neutral-200 rounded-md px-1;
+      @apply dark:bg-neutral-900 bg-neutral-200/75 rounded-md px-1;
     }
   }
   [data-line] {
