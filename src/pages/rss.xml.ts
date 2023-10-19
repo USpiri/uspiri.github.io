@@ -11,6 +11,7 @@ export async function GET(context: { site: any }) {
     description: "Personal blog and repository",
     site: context.site,
     items: posts,
+    stylesheet: "/rss/styles.xsl",
     customData: `<language>es-ar</language>`,
   });
 }
