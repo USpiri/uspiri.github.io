@@ -1,19 +1,21 @@
 ---
-import Link from "@components/Link.astro";
 import SearchButton from "./SearchButton.astro";
 import ThemeButton from "./ThemeButton.astro";
+import LinkButton from "@components/LinkButton.astro";
 ---
 
 <nav
-  class="h-16 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full flex items-center px-8 justify-between"
+  class="h-16 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full flex items-center px-8 justify-between text-neutral-900 dark:text-neutral-200"
 >
   <a href="/">
-    <span class="font-semibold text-neutral-900 dark:text-white text-xl"
-      >🖥️ Mini Blog</span
-    >
+    <span class="font-semibold text-xl">🖥️ Mini Blog</span>
   </a>
   <div class="flex items-start gap-3">
-    <Link href="/blog" class="h-9">Blogs</Link>
+    <nav>
+      <LinkButton href="/blog" class="h-9 flex items-center px-2">
+        Blog
+      </LinkButton>
+    </nav>
     <SearchButton />
     <ThemeButton />
   </div>
