@@ -17,7 +17,11 @@ const processedContent = await fileTreeProcessor.process({
 });
 ---
 
-<docs-file-tree set:html={processedContent} class="not-prose select-none" />
+<docs-file-tree
+  set:html={processedContent}
+  class="not-prose select-none"
+  data-pagefind-ignore
+/>
 
 <style is:global lang="scss">
   docs-file-tree {
