@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
+import MarkdownHeader from "./components/MarkdownHeader.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -13,13 +14,26 @@ const { post } = Astro.props;
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
-    <article
+    <section
       data-pagefind-body
-      class="max-w-3xl w-full my-20 prose prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 pr"
+      class="max-w-3xl w-full my-10 md:my-20 prose prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 pr"
       transition:name={`post-${post.slug}`}
     >
-      <slot />
-    </article>
+      <header class="not-prose px-3">
+        <MarkdownHeader
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.pubDate}
+          tags={post.data.tags}
+        />
+        <hr class="mb-5 mt-3 dark:border-neutral-500 border-neutral-400" />
+      </header>
+      <article
+        class="rounded-lg dark:bg-neutral-800 p-5 pt-2 first:prose-p:mt-0"
+      >
+        <slot />
+      </article>
+    </section>
   </main>
 </Layout>
 <style is:global lang="scss">
