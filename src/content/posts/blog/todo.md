@@ -5,16 +5,20 @@ description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
 ---
 
-# Tareas pendientes
+> **✅ Completadas. 🟦En progreso. ⬜ Pendientes**
 
 - ✅ Search component
-- 🟦 Que el título de cada coincida con el de la metadata
+- ✅ Que el título de cada coincida con el de la metadata
+- ✅ Share links
+- ✅ Tags y fecha en posts
+- ✅ Quitar pagefind de TreeFile
 - ⬜ Layout para "full code" con botón de copiar
 - ⬜ Filtrar posteos por fecha
 - ⬜ Filtrar posteos por "publicados"
-- ⬜ Página de tags
+- 🟦 Página de tags
 - ⬜ Categorías
 - ⬜ Documentos
 - ⬜ Proyectos
-- ⬜ Mejorar la semántica
+- ✅ Mejorar la semántica
 - ⬜ i18n
+- 🟦 Revisar responsive (MarkdowLayout especialmente)
