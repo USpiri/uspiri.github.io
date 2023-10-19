@@ -62,15 +62,16 @@ bloque de código, se configura mediante meta datos en el encabezado del bloque 
 
 Agrega un rango numérico dentro de `{}`.
 
-```md
-\`\`\`javascript {1-2,5}
+```txt
+'''javascript {1-2,5}
 const baseValue = prompt("Enter the base of a triangle: ");
 const heightValue = prompt("Enter the height of a triangle: ");
-// calculate the area
-const areaValue = (baseValue \* heightValue) / 2;
 
-console.log(\`The area of the triangle is ${areaValue}\`);
-\`\`\`
+// calculate the area
+const areaValue = (baseValue * heightValue) / 2;
+
+console.log(`The area of the triangle is ${areaValue}`);
+'''
 ```
 
 ```javascript {1-2,5}
@@ -87,15 +88,16 @@ console.log(`The area of the triangle is ${areaValue}`);
 
 Una serie de carácteres, como un regex literal.
 
-```md
-\`\`\`javascript /baseValue/ /heightValue/
+```txt
+'''javascript /baseValue/ /heightValue/
 const baseValue = prompt("Enter the base of a triangle: ");
 const heightValue = prompt("Enter the height of a triangle: ");
-// calculate the area
-const areaValue = (baseValue \* heightValue) / 2;
 
-console.log(\`The area of the triangle is ${areaValue}\`);
-\`\`\`
+// calculate the area
+const areaValue = (baseValue * heightValue) / 2;
+
+console.log(`The area of the triangle is ${areaValue}`);
+'''
 ```
 
 ```javascript /baseValue/ /heightValue/
