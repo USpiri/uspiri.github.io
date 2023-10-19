@@ -17,3 +17,4 @@ tags: ["todo"]
 - ⬜ Documentos
 - ⬜ Proyectos
 - ⬜ Mejorar la semántica
+- ⬜ i18n
