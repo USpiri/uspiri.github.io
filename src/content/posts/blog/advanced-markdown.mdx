@@ -1,5 +1,5 @@
 ---
-title: "Componentes avanzados (archivos .mdx)"
+title: "Componentes markdown avanzados"
 pubDate: 2023-10-16
 description: "Componentes personalizados para archivos markdown"
 tags: ["markdown"]
@@ -8,7 +8,8 @@ tags: ["markdown"]
 import FileTree from "@components/FileTree.astro";
 import Aside from "@components/Aside.astro";
 
-Estos componentes están disponibles exclusivamente para archivos con la extensión `.mdx`.
+Componentes que exitenden las funcionalidades por defecto de los archivos markdown, modificándo los que
+existen por defecto o agregando nuevos.
 
 ## Componente File Tree
 
@@ -51,6 +52,61 @@ Dentro de FileTree se escribe una lista de contenido en formato Markdown que lue
     - index.ts
 
 </FileTree>
+
+## Syntax Higlight
+
+La funcionalidad de resaltar partes del código permite explicar mejor o desglozar partes un
+bloque de código, se configura mediante meta datos en el encabezado del bloque de código.
+
+### Lineas
+
+Agrega un rango numérico dentro de `{}`.
+
+```md
+\`\`\`javascript {1-2,5}
+const baseValue = prompt("Enter the base of a triangle: ");
+const heightValue = prompt("Enter the height of a triangle: ");
+// calculate the area
+const areaValue = (baseValue \* heightValue) / 2;
+
+console.log(\`The area of the triangle is ${areaValue}\`);
+\`\`\`
+```
+
+```javascript {1-2,5}
+const baseValue = prompt("Enter the base of a triangle: ");
+const heightValue = prompt("Enter the height of a triangle: ");
+
+// calculate the area
+const areaValue = (baseValue * heightValue) / 2;
+
+console.log(`The area of the triangle is ${areaValue}`);
+```
+
+### Palabras
+
+Una serie de carácteres, como un regex literal.
+
+```md
+\`\`\`javascript /baseValue/ /heightValue/
+const baseValue = prompt("Enter the base of a triangle: ");
+const heightValue = prompt("Enter the height of a triangle: ");
+// calculate the area
+const areaValue = (baseValue \* heightValue) / 2;
+
+console.log(\`The area of the triangle is ${areaValue}\`);
+\`\`\`
+```
+
+```javascript /baseValue/ /heightValue/
+const baseValue = prompt("Enter the base of a triangle: ");
+const heightValue = prompt("Enter the height of a triangle: ");
+
+// calculate the area
+const areaValue = (baseValue * heightValue) / 2;
+
+console.log(`The area of the triangle is ${areaValue}`);
+```
 
 ## Componente Aside
 

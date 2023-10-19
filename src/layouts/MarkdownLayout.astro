@@ -16,7 +16,7 @@ const { post } = Astro.props;
   >
     <section
       data-pagefind-body
-      class="max-w-3xl w-full my-10 md:my-20 prose prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 pr"
+      class="max-w-3xl w-full my-10 md:my-20 prose prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0"
       transition:name={`post-${post.slug}`}
     >
       <header class="not-prose px-3">
@@ -39,7 +39,27 @@ const { post } = Astro.props;
 <style is:global lang="scss">
   code {
     &:not(pre code) {
-      @apply dark:bg-neutral-900 bg-neutral-300 rounded-md px-1;
+      @apply dark:bg-neutral-900 bg-neutral-200 rounded-md px-1;
     }
+  }
+  [data-line] {
+    @apply px-4 whitespace-break-spaces;
+  }
+  [data-highlighted-line] {
+    background: rgba(200, 200, 255, 0.1);
+    @apply border-l-blue-400 border-l-4;
+  }
+
+  [data-highlighted-chars] {
+    @apply bg-zinc-600/50 rounded;
+    box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  }
+
+  [data-chars-id] {
+    @apply shadow-none p-1 border-b-2;
+  }
+
+  [data-chars-id] span {
+    @apply text-inherit;
   }
 </style>

@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import rehypePrettyCode from 'rehype-pretty-code';
 
 import mdx from "@astrojs/mdx";
 
@@ -10,10 +11,14 @@ export default defineConfig({
   base: '/',
   integrations: [tailwind(), sitemap(), mdx()],
   markdown: {
-    shikiConfig: {
-      theme: 'material-theme-darker',
-      langs: [],
-      wrap: true
-    }
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [rehypePrettyCode,
+        {
+          theme: 'material-theme-darker',
+          keepBackground: false,
+        }
+      ],
+    ]
   }
 });

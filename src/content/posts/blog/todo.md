@@ -20,5 +20,6 @@ tags: ["todo"]
 - ⬜ Documentos
 - ⬜ Proyectos
 - ✅ Mejorar la semántica
+- ✅ Soporte para resaltar código
 - ⬜ i18n
 - 🟦 Revisar responsive (MarkdowLayout especialmente)
