@@ -3,9 +3,10 @@ title: "Tareas pendientes"
 pubDate: 2023-10-17
 description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
+draft: false
 ---
 
-> **✅ Completadas. 🟦En progreso. ⬜ Pendientes**
+> **✅ Completadas. 🟦 En progreso. ⬜ Pendientes**
 
 - ✅ Search component
 - ✅ Que el título de cada coincida con el de la metadata
@@ -14,8 +15,8 @@ tags: ["todo"]
 - ✅ Quitar pagefind de TreeFile
 - ✅ Tabs
 - ⬜ Layout para "full code" con botón de copiar
-- ⬜ Filtrar posteos por fecha
-- ⬜ Filtrar posteos por "publicados"
+- ✅ Filtrar posteos por fecha
+- ✅ Filtrar posteos por "publicados"
 - 🟦 Página de tags
 - ⬜ Organizar por Categorías
 - ⬜ Layout para proyectos
@@ -25,4 +26,4 @@ tags: ["todo"]
 - ✅ Revisar responsive (MarkdowLayout especialmente)
 - ⬜ Agregar "related posts"
 - ⬜ Agregar "Previus y next post" o componentes para redirigir a otros artículos
-- Mostrar solo 5 posts en "Más recientes"
+- ✅ Mostrar solo 5 posts en "Más recientes"

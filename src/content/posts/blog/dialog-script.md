@@ -3,6 +3,7 @@ title: "Un script para mejorar el uso de diálogos en HTML"
 pubDate: 2023-10-11
 description: "Desarrollo de un pequeño script que simplifica la creación y gestión de dialogs."
 tags: ["typescript"]
+draft: false
 ---
 
 Las ventanas emergentes, comúnmente conocidas como "dialogs", son parte del desarrollo habitual de interfaces desde hace años. Una ventana de diálogo es un tipo especial de cuadro emergente en una página web. Estos _dialogs_ siempre fueron difíciles de crear o implican la instalación de librerías Javascript que conllevan mayor complejidad y aumentan el tamaño general de la aplicación en desarrollo.
