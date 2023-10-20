@@ -12,6 +12,7 @@ tags: ["todo"]
 - ✅ Share links
 - ✅ Tags y fecha en posts
 - ✅ Quitar pagefind de TreeFile
+- ✅ Tabs
 - ⬜ Layout para "full code" con botón de copiar
 - ⬜ Filtrar posteos por fecha
 - ⬜ Filtrar posteos por "publicados"
