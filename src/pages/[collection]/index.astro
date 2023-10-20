@@ -6,9 +6,10 @@ import Layout from "@layouts/Layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { capitalize } from "@utils/utils";
 import Subtitle from "@components/Subtitle.astro";
+import { sortPosts } from "@utils/sort";
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection("posts");
+  const posts = sortPosts(await getCollection("posts"));
   const catSet = [...new Set(posts.map((post) => post.slug.split("/")[0]))];
   return catSet.map((collection) => {
     const filteredPosts = posts.filter((post: any) =>

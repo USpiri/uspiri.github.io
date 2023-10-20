@@ -4,10 +4,12 @@ import PostCard from "@components/PostCard.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import PostDivider from "@components/PostDivider.astro";
 import Subtitle from "@components/Subtitle.astro";
+import { sortPosts } from "@utils/sort";
 interface Props {
   posts: CollectionEntry<"posts">[];
 }
-const posts = await getCollection("posts");
+
+const posts = sortPosts(await getCollection("posts"), { limit: 5 });
 ---
 
 <Layout
