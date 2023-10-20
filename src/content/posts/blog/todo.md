@@ -17,10 +17,12 @@ tags: ["todo"]
 - ⬜ Filtrar posteos por fecha
 - ⬜ Filtrar posteos por "publicados"
 - 🟦 Página de tags
-- ⬜ Categorías
-- ⬜ Documentos
-- ⬜ Proyectos
+- ⬜ Organizar por Categorías
+- ⬜ Layout para proyectos
 - ✅ Mejorar la semántica
 - ✅ Soporte para resaltar código
-- ⬜ i18n
-- 🟦 Revisar responsive (MarkdowLayout especialmente)
+- ⬜ Soporte para i18n
+- ✅ Revisar responsive (MarkdowLayout especialmente)
+- ⬜ Agregar "related posts"
+- ⬜ Agregar "Previus y next post" o componentes para redirigir a otros artículos
+- Mostrar solo 5 posts en "Más recientes"
