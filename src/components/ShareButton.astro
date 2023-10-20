@@ -19,7 +19,7 @@ const { iconClass } = Astro.props;
     share?.addEventListener("click", () => {
       if (navigator.share) {
         navigator.share({
-          title: document.title,
+          title: `🖥️ ${document.title}`,
           url: window.location.href,
         });
       } else {
