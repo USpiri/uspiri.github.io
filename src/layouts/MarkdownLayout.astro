@@ -16,7 +16,7 @@ const { post } = Astro.props;
   >
     <section
       data-pagefind-body
-      class="max-w-3xl w-full my-10 md:my-20 prose prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0"
+      class="max-w-3xl w-full my-10 md:my-20 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0"
       transition:name={`post-${post.slug}`}
     >
       <header class="not-prose px-3">
@@ -65,4 +65,15 @@ const { post } = Astro.props;
   [data-chars-id] span {
     @apply text-inherit;
   }
+
+  .copy-icon {
+    @apply h-full;
+  }
+  .copy-button {
+    @apply border h-7 hover:scale-105 hover:bg-neutral-800 focus:bg-cyan-500/50 focus:fill-neutral-300 hover:fill-neutral-300 fill-neutral-500 transition-all duration-100 p-1 border-neutral-600 rounded-md absolute top-2 end-2;
+  }
 </style>
+<script>
+  import { setCopyButton } from "@utils/copy";
+  document.addEventListener("astro:page-load", setCopyButton);
+</script>
