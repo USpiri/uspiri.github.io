@@ -27,3 +27,5 @@ draft: false
 - ⬜ Agregar "related posts"
 - ⬜ Agregar "Previus y next post" o componentes para redirigir a otros artículos
 - ✅ Mostrar solo 5 posts en "Más recientes"
+- ✅ Copiar bloque de código
+- ⬜ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
