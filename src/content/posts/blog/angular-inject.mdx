@@ -1,0 +1,127 @@
+---
+title: "Angular | ¿Qué es inject()?"
+pubDate: 2023-04-22
+description: "Introducción a la función inject() de Angular y algunos casos de uso"
+tags: ["angular"]
+draft: false
+---
+
+import Aside from "@components/Aside.astro";
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+
+A partir de la versión 14 de Angular, se puso a disposición una función llamada "inject()". Esta toma un InjectionToken como parámetro y devuelve el valor de ese InjectionToken. Básicamente, es otra forma de obtener una dependencia que no sea usar la inyección del constructor. Aquí hay un ejemplo.
+
+```typescript
+export class MyComponent {
+  constructor(private http: HttpService) {}
+}
+
+export class MyComponentInjectable {
+  private http = inject(HttpService);
+}
+```
+
+## Utilidad de inyect()
+
+Se utiliza para inyectar dependencias dentro de la "constructor phase", es decir bajo el scope del constructor o en la inicialización de variables. Esto nos permite, por ejemplo, escribir funciones que pueden ser reutilizadas por distintos componentes usando la inyección de dependencias. Imaginemos que necesitamos obtener los datos de un parámetro de la ruta para luego obtener los datos de un User.
+
+```typescript
+export class MyComponent {
+  constructor(private http: HttpClient, private route: ActivedRoute) {
+    this.user$ = route.params.pipe(
+      map((params: Params) => params["id"]),
+      filter((id) => !!id),
+      mergeMap((userId: string) => http.get(`api/users/${userId}`))
+    );
+  }
+}
+```
+
+Este código podrá parecerles familiar a más de uno ya que es una función clásica, pues lo que hace es:
+
+1.  Obtiene el ID de usuario de los parámetros de la ruta.
+2.  Filtra el ID de usuario para asegurarse de que sea válido.
+3.  Hace una solicitud HTTP al servidor para obtener los datos del usuario correspondiente al ID de usuario.
+4.  Almacena los datos del usuario en una variable observable llamada `user$`.
+
+### Problemas
+
+- Depende de HttpClient para realizar el llamado a la API y de ActivatedRoute.
+- Tiene una lógica agregada al componente que solo debería estar encargado de mostrar los datos obtenidos.
+
+## Constructor phase
+
+Como dijimos recién "constructor phase" hace referencia al scope del constructor o la inicialización de variables. En particular, las llamadas a `inject()` no se permiten después de que se creó la instancia de clase. Es decir que no podremos, por ejemplo, utilizar `inject()` dentro de una función setter `@Input()` o cualquier otro ciclo de vida.
+
+```typescript
+// En este caso Angular dará error.
+export class MyComponent {
+  @Input() set title(title: string) {
+    // No está dentro de la fase de construcción
+    inject(ChangeDetectorRef).detectChanges();
+  }
+}
+```
+
+<Aside title="Info">
+  **Nota:** `inyect()` puede ser utilizada en pipes y directivas.
+</Aside>
+
+## Versión con Inject()
+
+Se puede separar la lógica, por ejemplo, en dos archivos diferentes para simplificar y mejorar la lectura de nuestro componente:
+
+<Tabs>
+  
+<TabItem label="fetch-user.ts">
+
+```ts
+export const fetchUser = (): Observable<User> => {
+  const http = inject(HttpService);
+  return inject(ActivatedRoute).params.pipe(
+    map((params: Params) => params["id"]),
+    filter((id) => !!id),
+    mergeMap((userId: string) => http.get(`api/users/${userId}`))
+  );
+};
+```
+
+</TabItem>
+
+<TabItem label="my-component.component.ts">
+
+```ts
+export class MyComponent {
+  protected user$ = fetchUser();
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+En este código el componente ignora cómo se obtienen esos datos, todo lo que sabe es que tiene una propiedad llamada user$ que guarda un `Observable<User>` y **no necesita de una inyección de dependencias** mediante el constructor. Esto permite separar la lógica de la interfaz.
+
+### Traer datos con un botón
+
+Para ejemplificar la reutilización de código supongamos que tenemos otro componente en donde queremos obtener los datos de User al presionar sobre un botón. Para este caso, la misma función `fetchUser()` nos será de utilidad.
+
+```typescript
+export class MyComponent2 {
+	protected user$: Obervable<User>;
+	private _fetchUserFn() = fetchUser();
+
+	constructor() {
+		this.user$ = this._fetchUserFn();
+	}
+
+	refreshUser(): void {
+		this.user$ = this._fetchUserFn();
+	}
+}
+```
+
+## Conclusión
+
+En mi opinión, `inject()` es una función útil que nos permite separar la lógica de obtención de datos de la interfaz, entre ortas cosas. Esto facilita la reutilización de código y mejora la legibilidad del mismo, al mismo tiempo que reduce la complejidad de los componentes.

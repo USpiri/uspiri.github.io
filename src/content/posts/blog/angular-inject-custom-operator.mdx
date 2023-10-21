@@ -1,0 +1,59 @@
+---
+title: "Angular | RxJS con inject()"
+pubDate: 2023-04-22
+description: "Ejemplificación de un operador personalizado de RxJS utilizando inject()"
+tags: ["angular"]
+draft: false
+---
+
+De forma similar a la que se muestra en [Herencia con Inject()](./angular-inject-inheritance), es posible mejorar operadores RxJS personalizados que utilicen la inyección de dependencias, es decir, operadores que requieran de algún servicio. Aquí un ejemplo:
+
+## Sin inject()
+
+```typescript
+// toFormData() depende del servicio UtilitiesService
+function toFormData(utilitiesService: UtilitiesService) {
+  return (source: Observable<any>) => {
+    return source.pipe(
+      map((value) => {
+        return utilitiesService.toFormData(value);
+      })
+    );
+  };
+}
+
+// SomeComponent
+export class SomeComponent {
+  // Debemos inyectar el serivicio del cuál depende toFormData
+  constructor(private utilitiesService: UtilitiesService) {}
+
+  private formData$ = this.http
+    .get("https://example.com")
+    .pipe(toFormData(this.utilitiesService));
+}
+```
+
+El problema se encuentra en que deberíamos inyectar y pasar un servicio cada que tengamos que usar el operador. El inconveniente se vuelve más problemático cuando también es necesario agregar otros argumentos.
+
+## Con inject()
+
+```typescript
+function toFormData() {
+  // El operador se encarga de obtener su dependencia
+  const utilitiesService = inject(UtilitiesService);
+  return (source: Observable<any>) => {
+    return source.pipe(
+      map((value) => {
+        return utilitiesService.toFormData(value);
+      })
+    );
+  };
+}
+
+// SomeComponent
+export class SomeComponent {
+  private formData$ = this.http.get("https://example.com").pipe(toFormData());
+}
+```
+
+De esta forma nos queda un componente mucho más limpio y sin necesidad de tener que importar el servicio que solo es requerido por el operador RxJS.
