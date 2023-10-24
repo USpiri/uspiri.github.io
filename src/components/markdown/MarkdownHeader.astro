@@ -6,23 +6,30 @@ import ShareLinks from "@components/ShareLinks.astro";
 interface Props {
   title: string;
   description: string;
-  tags: string[];
-  date: Date;
+  tags?: string[];
+  date?: Date;
+  hideLinks?: boolean;
 }
-const { title, description, tags, date } = Astro.props;
+const { title, description, tags, date, hideLinks = false } = Astro.props;
 ---
 
-<div
-  class="flex gap-2 mb-2 dark:text-neutral-400 text-neutral-400 text-sm items-center font-semibold"
->
-  <FormattedDate date={date} />
-  <span>|</span>
-  <PostTags tags={tags} />
-</div>
+{
+  (tags || date) && (
+    <div class="flex gap-2 mb-2 dark:text-neutral-400 text-neutral-400 text-sm items-center font-semibold">
+      {date && <FormattedDate date={date} />}
+      {date && tags && <span>|</span>}
+      {tags && <PostTags tags={tags} />}
+    </div>
+  )
+}
 <h1 class="text-4xl font-bold mb-3">{title}</h1>
 <p class="mb-3 text-base font-semibold dark:text-neutral-400 text-neutral-500">
   {description}
 </p>
-<aside class="flex gap-2 justify-end" data-pagefind-ignore>
-  <ShareLinks />
-</aside>
+{
+  !hideLinks && (
+    <aside class="flex gap-2 justify-end" data-pagefind-ignore>
+      <ShareLinks />
+    </aside>
+  )
+}

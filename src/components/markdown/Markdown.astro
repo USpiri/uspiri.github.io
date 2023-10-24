@@ -4,13 +4,22 @@ import MarkdownHeader from "./MarkdownHeader.astro";
 interface Props {
   title: string;
   description: string;
-  date: Date;
-  tags: string[];
+  date?: Date;
+  tags?: string[];
   slug: string;
-  header?: boolean;
+  hideHeader?: boolean;
+  hideLinks?: boolean;
 }
 
-const { title, description, date, tags, slug, header = true } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  tags,
+  slug,
+  hideHeader = false,
+  hideLinks = false,
+} = Astro.props;
 ---
 
 <section
@@ -20,13 +29,14 @@ const { title, description, date, tags, slug, header = true } = Astro.props;
 >
   <header class="px-3">
     {
-      header && (
+      !hideHeader && (
         <>
           <MarkdownHeader
             title={title}
             description={description}
             date={date}
             tags={tags}
+            hideLinks={hideLinks}
           />
           <hr class="mb-5 mt-3 dark:border-neutral-500 border-neutral-400" />
         </>
