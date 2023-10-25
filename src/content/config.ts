@@ -10,11 +10,11 @@ const mainShema = z.object({
       alt: z.string(),
     })
     .optional(),
-  pubDate: z.date().optional(),
 });
 
 export const blogSchema = mainShema.extend({
   tags: z.array(z.string()),
+  pubDate: z.date(),
 });
 
 export const docSchema = mainShema;
