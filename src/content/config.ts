@@ -10,16 +10,14 @@ const mainShema = z.object({
       alt: z.string(),
     })
     .optional(),
-  pubDate: z.date(),
+  pubDate: z.date().optional(),
 });
 
 export const blogSchema = mainShema.extend({
   tags: z.array(z.string()),
 });
 
-export const docSchema = mainShema.extend({
-  type: z.literal("deploy"),
-});
+export const docSchema = mainShema;
 
 const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later
