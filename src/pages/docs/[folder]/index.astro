@@ -1,0 +1,25 @@
+---
+import { getFolders } from "@utils/utils";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const docs = await getCollection("docs");
+  const folders = getFolders(docs);
+  return folders.map((folder) => {
+    const filteredDocs = docs.filter((doc) => doc.slug.startsWith(folder));
+    return {
+      params: {
+        folder,
+      },
+      props: { docs: filteredDocs },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { folder } = Astro.params;
+---
+
+<main class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col">
+  {folder}
+</main>
