@@ -1,0 +1,61 @@
+---
+title: "Pipes y Observables"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+
+Los pipes y los observables son características fundamentales en Angular que ayudan a transformar y gestionar datos de manera efectiva.
+
+## Pipes
+
+Una pipe es una herramienta que nos permite modificar o transformar la información presentada en la plantilla HTML sin modificar el origen de los datos.
+
+Si bien su fin es solo estético, su implementación se basa en la reusabilidad y la simplificación de la arquitectura de un proyecto separando, posiblemente, procesos matemáticos o semánticos.
+
+```html
+<!-- Esta pipe transforma el texto a uppercase -->
+<p>{{ someString | uppercase }}</p>
+```
+
+### Async Pipe
+
+Angular nos provee de una pipe especial llamada _Async Pipe_ que nos permite utilizar los observables directamente en el template HTML. Lo más destacado de esta pipe es que gestiona automáticamente la suscripción y la desuscripción de los observables, evitando fugas de memoria innecesarias.
+
+<Tabs>
+
+<TabItem label="some.component.ts">
+
+```ts
+this.text = observable.pipe(map((value) => value.item));
+```
+
+</TabItem>
+
+<TabItem label="some.component.html">
+
+```html
+<p>{{ someString | async }}</p>
+```
+
+</TabItem>
+
+</Tabs>
+
+## Observables
+
+Una buena recomendación es que (Por más que Angular por defecto se desuscriba de las peticiones HTTP automáticamente), si se sabe que el observable va a traer información una única vez, usar `.pipe(first())` despues de suscribirnos al componente. De esta forma una vez obtenidos los datos el sistema se desuscribe solo.
+
+En caso de necesitar una constante actualización de los datos utilizaremos el ngOnDestroy para desuscribirse del observable.
+
+```ts
+private subs: Subscription | undefined;
+
+ngOnDestroy(){
+  if (this.subs){
+    this.subs.unsuscribe():
+  }
+}
+```

@@ -1,0 +1,124 @@
+---
+title: "Estructura del proyecto"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+import FileTree from "@components/FileTree.astro";
+import Aside from "@components/Aside.astro";
+
+La estructura de un proyecto es uno de los aspectos más importantes a la hora de desarrollar, permitiendo facilitar el desarrollo, el mantenimiento y la colaboración en equipo. Mantener un estándar en la nomenclatura también nos permite lograr este objetivo y facilita la búsqueda de componentes.
+
+## Nomenclatura
+
+Las palabras del nombre descriptivo dentro de un archivo deben estar separadas por guiones y puntos para separar el nombre descriptivo del tipo de archivo
+
+```c
+<descriptive-name>.<type>.ts
+
+// Ejemplo
+feature-name.component.ts
+
+// Evitar
+featureName.compnt.ts
+```
+
+Los tipos de archivos que usualmente podemos encontrar dentro de un proyecto Angular son `.service`, `.component`, `.pipe`, `.module`, `.directive`, `.interface`.
+
+Adicionalmente se pueden crear "tipos" propios, es importantes que estos no sean nombres abreviados (Como `.srvc`) para evitar confusiones, en su lugar deben ser descriptivos e inequívocos.
+
+## Estructura del proyecto
+
+Definir la estructura es un factor importante a considerar a la hora de empezar un proyecto. Esta deberá adaptarse fácilmente a los nuevos cambios que surjan durante el desarrollo.
+
+### /src
+
+Carpeta raíz del proyecto.
+
+<FileTree>
+
+- app/
+- assets/
+- environments/
+- styles/
+- index.html
+- styles.css
+- main.ts
+
+</FileTree>
+
+- **/styles**: Carpeta para almacenar los estilos de Angular Material junto con determinadas customizaciónes.
+- **/environments**: Esta carpeta contiene archivos de configuración para diferentes entornos, actualmente esta carpeta no se genera por defecto pero el CLI nos provee de un comando para crearla junto con su configuración en `angular.json`
+
+> ```c
+> ng g environments
+> ```
+
+### /app
+
+Esta carpeta contiene todos los componentes, servicios y módulos específicos de la aplicación.
+
+<FileTree>
+
+- components/ Componentes del layout
+  - layout-component/
+    - layout.component.ts
+- models/
+  - user.interface.ts
+- modules/
+  - module/
+    - ...
+  - ...
+- shared/
+  - components/ Componentes compartidos, distintos del layout
+  - services/
+  - pipes/
+  - directives/
+  - guards/
+  - interceptors/
+  - material/
+  - ...
+- app-routing.module.ts
+- app.component.css
+- app.component.html
+- app.component.ts
+- app.module.ts
+
+</FileTree>
+
+- **/component**: Esta carpeta contiene componentes específicos del layout de la aplicación, como barras de navegación, footers, etc.
+- **/models**: Carpeta generalmente utilizada para interfaces.
+- **/modules**: Cada módulo se organiza en carpetas diferentes, estos a su vez agrupan otros componente, servicios, etc.
+- **/shared**: Esta carpeta contiene componentes, servicios y otros recursos compartidos que se pueden reutilizar en toda la aplicación. Los componentes compartidos ubicados en esta carpeta son elementos de la interfaz de usuario que se utilizan en múltiples partes de la aplicación pero no pertenecen al layout. Por ejemplo, un componente Title.
+
+<Aside title="Nota">
+
+- En algunos proyectos la carpeta "/shared" suele llamarse "core", lo mismo sucede con "/modules" que puede llamarse "features" o "pages".
+
+- También es posible encontrar a "/models" dentro de "/shared"
+
+</Aside>
+
+### /module
+
+Similar a `/app`, la carpeta de cada módulo tendrá una estructura similar
+
+<FileTree>
+
+- components/
+  - some-component/
+    - some.component.ts
+- shared/
+  - services/
+- module-routing.module.ts
+- module.component.css
+- module.component.html
+- module.component.ts
+- module.module.ts
+
+</FileTree>
+
+Cada módulo en `/app/modules` contendrá una sub-estructura similar a la que contiene el módulo principal (`/app`)
+
+- **/component**: Carpeta para componentes pertenecientes al módulo.
+- **/shared/services**: Carpeta para los recursos compartidos por los diferentes componentes del módulo, como pipes, directives, animations y servicios.

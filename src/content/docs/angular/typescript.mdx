@@ -1,0 +1,153 @@
+---
+title: "Typescript"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+import Aside from "@components/Aside.astro";
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+import FileTree from "@components/FileTree.astro";
+
+El uso de TypeScript en Angular aporta la seguridad del tipo estático y muchas otras características que pueden mejorar la calidad y la mantenibilidad del código. Asi que, por último, agregaré buenas prácticas generales relacionadas con TypeScript en el contexto de Angular.
+
+## Evitar el uso de "any"
+
+TypeScript está diseñado para agregar tipado estático a JavaScript y reducir errores durante la fase de desarrollo. Utilizar `any` anula los beneficios del tipado estático. De esta forma, es recomendable evitar el uso de `any` siempre que sea posible.
+
+<Tabs>
+
+<TabItem label="Sin any">
+
+```ts
+const a: number = 1;
+const b: number = "dos";
+const c: number = a + b;
+
+// Esto nos devolverá un error de compilación avisando que 'dos' no es asignable a una variable de tipo number
+console.log("Valor de Z: " + x);
+```
+
+</TabItem>
+
+<TabItem label="Con any">
+
+Usar el tipado nos ayudará a evitar errores de este tipo
+
+```ts
+const a = 1;
+const b = "dos";
+const c = a + b;
+
+// Resultado no deseado = Valor de Z: 1dos
+console.log("Valor de Z: " + x);
+```
+
+</TabItem>
+
+</Tabs>
+
+### Utilizar Interfaces
+
+Las interfaces en TypeScript permiten definir la forma de un objeto y asegurar que las propiedades requeridas estén presentes.
+
+```ts
+export interface SomeInterface {
+  text: string;
+  duration?: number;
+  color?: string;
+}
+```
+
+También es posible la utilización de `namespaces` para evitar confundir nuestra interface con otras clases distribuidas dentro de la aplicación
+
+```ts
+export namespace SomeNamespace {
+  interface LogOptions {
+    verbose?: boolean;
+  }
+
+  interface SomeInterface {
+    text: string;
+    duration?: number;
+    color?: string;
+  }
+}
+```
+
+## Barrels
+
+Los "barrels" son archivos que reexportan múltiples módulos o clases desde un solo archivo. Esto puede simplificar la importación de múltiples elementos desde un mismo directorio y mejorar la organización y legibilidad. Podemos crear archivos `index.ts` en las carpetas para exportar todo lo que se necesite de esta.
+
+### Ejemplo:
+
+Supongamos que tenemos la siguiente estructura de carpetas:
+
+<FileTree>
+
+- componets/
+  - first-component
+  - second-component
+  - third-component
+
+</FileTree>
+
+En dònde cada componete se ve de esta forma:
+
+```ts
+export class FirstComponent {}
+```
+
+Sin Barrels necesitaríamos 3 imports ditintos para cada componente importadp:
+
+```ts
+import { FirstComponent } from "../../first-component.component.ts";
+import { SecondComponent } from "../../second-component.model.ts";
+import { ThirdComponent } from "../../third-component.service.ts";
+```
+
+Agregando un barrel dentro de la capeta `/components`
+
+```ts
+// re exporta todos las clases dentro de la carpeta "componets"
+export * from "./first-component/first-component.component";
+export * from "./second-component/second-component.component";
+export * from "./third-component/third-component.component";
+```
+
+Ahora solo tendríamos que importar lo que necesitemos desde este barrel en un solo import.
+
+```ts
+import { FirstComponent, SecondComponent, ThirdComponent } from "../components";
+// el archivo index está implicito
+```
+
+<Aside title="Nota:">
+  Esta
+  [extensión](https://marketplace.visualstudio.com/items?itemName=mikehanson.auto-barrel)
+  resulta muy útil para la implementacion de Barrels
+</Aside>
+
+## Safe strings
+
+La declaración de "Safe string" puede ser muy beneficiosa en determinados casos. Estas variables (de tipo string) tienen la particularidad que siempre tienen solo un conjunto de valores posibles y nosotros podemos declarar una lista de ellos. Entonces la variable solo aceptará estos posibles valores y de esta forma evitar bugs o asignar valores no deseados.
+
+```ts
+// Declaración con Safe String
+let vehicleType: "four wheeler" | "two wheeler";
+
+this.vehicleType = "four wheeler";
+this.vehicleType = "two wheeler";
+
+this.vehicleType = "car";
+// Esta linea nos va a retornar el siguiente error
+// Type '"car"' is not assignable to type '"four wheeler" | "two wheeler"'
+```
+
+## Safe navigation operator
+
+Cuando deseamos mostrar datos dentro de un template y el objeto puede ser nulo, el Safe Navigation Operator (`?.`) permite acceder a las propiedades de manera segura, evitando errores.
+
+```html
+<span>{{ text?.value }}</span>
+```

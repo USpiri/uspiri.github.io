@@ -1,0 +1,102 @@
+---
+title: "Configuración de angular"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+La configuración adecuada de un proyecto Angular es esencial para garantizar un entorno de desarrollo eficiente y una aplicación bien optimizada. En esta sección, exploraremos las recomendaciones clave para configurar los archivos `tsconfig.json` y `angular.json`, que son fundamentales para la configuración de un proyecto Angular.
+
+## Path alias (tsconfig.json)
+
+El archivo tsconfig.json es la configuración de TypeScript para tu proyecto Angular. Agregar path aliases en el archivo tsconfig.json nos va a facilitar la importación de módulos y mejorar la organización de nuestro proyecto.
+
+```json
+"paths": {
+  "@shared/*": [
+    "src/app/shared/*"
+  ],
+  "@assets/*": [
+    "src/assets/*"
+  ],
+  "@environments/*": [
+    "src/environments/*"
+  ],
+  "@modules/*": [
+    "src/app/modules/*"
+  ],
+  "@models": [
+    "src/app/models/*"
+  ],
+}
+```
+
+### Ejemplo
+
+Una vez configurado los alias, podemos importar recursos utilizando rutas relativas a estos alias, lo que mejora la legibilidad del código.
+
+```ts
+// Sin alias
+import { environment } from "../../../environments/environment";
+
+// Con alias
+import { environment } from "@environments/environment";
+```
+
+## Angular.json
+
+El archivo `angular.json` es la configuración principal de Angular CLI del proyecto.
+
+### 1. Separación de entornos
+
+Definir configuraciones distintas para diferentes entornos (como desarrollo, producción, pruebas, etc.) facilita la gestión de variables de entorno y configuraciones específicas para cada caso.
+
+```json
+"configurations": {
+  "development": {
+    // Configuraciónes para el entorno de desarrollo
+  },
+  "production": {
+    "fileReplacements": [
+      {
+        "replace": "src/environments/environment.ts",
+        "with": "src/environments/environment.prod.ts"
+      }
+    ],
+  }
+}
+```
+
+El campo `fileReplacements` permite que en producción se utilice el archivo `environment.prod.ts` mientras que en desarrollo se usará `environment.ts`.
+
+### 2. Budgets
+
+Los "budgets" nos permite establecer restricciones en el tamaño de los activos generados en Angular como scripts, estilos y archivos de imágenes, etc. Estos límites se utilizan para garantizar que algúnos archivos se vuelvan demasiado grandes y afecten negativamente el funcionamiento del proyecto.
+
+#### Ejemplo
+
+```json
+"configurations": {
+  "development": {
+    "budgets": [
+      {
+        "type": "initial",
+        "maximumWarning": "2mb",
+        "maximumError": "5mb"
+      },
+      {
+        "type": "anyComponentStyle",
+        "maximumWarning": "2kb",
+        "maximumError": "4kb"
+      }
+    ],
+  },
+}
+```
+
+- `"type" : "initial"` controla el tamaño inicial del bundle principal de la aplicación en megabytes (MB). Si el bundle supera los 2 MB, se mostrará una advertencia, y si supera los 5 MB, se generará un error.
+- `"type" : "anyComponentStyle"` controla el tamaño de los estilos (CSS) asociados con cualquier componente en kilobytes (KB).
+- Otros tipos de budgets pueden ser:
+  - `allScript`: para el tamaño de todos los scripts.
+  - `all`: para el tamaño total de la aplicación.
+  - `anyScript`: para algún script específico
+  - `any`: para cualquier archivo

@@ -1,0 +1,80 @@
+---
+title: "Loader"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+
+Es común que nuestra aplicación tenga cargas de datos asíncronas, solicitudes HTTP, o procesos que requieren tiempo en completarse. En estos casos es fundamental proporcionar una retroalimentación visual al usuario para mantener la experiencia de usuario fluida. Para estos casos el uso de un loader se vuelve una práctica necesaria.
+
+## Loader Service
+
+Para gestionar el estado del "loader", vamos a crear un servicio dedicado.
+
+```ts
+import { Injectable } from "@angular/core";
+
+export interface LoaderState {
+  show: boolean;
+}
+
+@Injectable({
+  providedIn: "root",
+})
+export class LoaderService {
+  loaderState = new Subject<any>();
+
+  displayLoader(value: boolean) {
+    this.spinnerStatusState.next(<LoaderState>{ show: value });
+  }
+}
+```
+
+## Loader
+
+Implementaremos este servicio en el componente raíz (AppComponent) como ejemplo. Sin embargo, es posible usarlo de manera similar en otros componentes. Se asume que ya existe un componente personalizado `<app-spinner>` creado.
+
+```html
+<ng-container>
+  <span *ngIf="show"><app-spinner></app-spinner></span>
+  <app-navbar>
+    <router-outlet></router-outlet>
+  </app-navbar>
+</ng-container>
+```
+
+Importamos el servicio LoaderService y usaremos una variable `show` para controlar si el "loader" debe mostrarse. Luego nos suscribimos al estado del "loader" para actualizar la variable show.
+
+```ts
+import { Component, OnInit } from "@angular/core";
+import { LoaderService } from "./services/load.service";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+})
+export class AppComponent implements OnInit {
+  show = false;
+
+  constructor(private loader: LoadService) {}
+
+  ngOnInit() {
+    this.loader.spinnerStatusState.subscribe((state) => {
+      this.show = state.show;
+    });
+  }
+}
+```
+
+De esta forma ya estaremos subscriptos al estado del loader y podremos mostrar, por ejemplo, un spinner cuando el estado del loader lo indique.
+
+Para activar el "loader" cuando realizamos una función asíncrona, simplemente utilizamos el método displayLoader del servicio de la siguiente manera:
+
+> ```ts
+> this.loadService.displaySpinner(true);
+> ```
+
+Con este servicio "loader" mantendremos una experiencia de usuario fluida, proporcionando retroalimentación visual en momentos en que la carga de datos o procesos asíncronos estén en curso.

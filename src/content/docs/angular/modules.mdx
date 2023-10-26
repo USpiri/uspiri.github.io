@@ -1,0 +1,57 @@
+---
+title: "Módulos"
+description: "Guia de buenas prácticas en Angular"
+draft: false
+---
+
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+
+Los módulos en Angular son una parte fundamental de la arquitectura de una aplicación. Ayudan a organizar y estructurar el código de manera efectiva, promoviendo la reutilización y el mantenimiento. Esta idea viene del "Principio de responsabilidad única".
+
+En el contexto de Angular, esto significa que un módulo debe tener un propósito claro y bien definido, y debe agrupar componentes, servicios y otros recursos relacionados con esa funcionalidad específica.
+
+## Recomendaciones
+
+1. Cada módulo debe representar una parte claramente definida de la funcionalidad de la aplicación.
+2. Evitar "Módulos monolíticos" que contengan demasiados componentes y servicios, en su lugar podemos crear módulos más pequeños y específicos.
+3. Crear módulos compartidos (Shared Modules): promueven la reutilización de código en caso de que este necesite ser utilizado en diferentes lugares de la aplicación.
+4. Utilizar Lazy Loading para cargar módulos cuando sea necesario, esto mejora el rendimiento de la aplicación.
+
+## Lazy Loading (Carga perezosa)
+
+Lazy Loading es una técnica permite cargar módulos de manera diferida, es decir, solo cuando el usuario navega a una parte de la aplicación que requiere de ese módulo. Mejorando los tiempos de carga, permitiendo tener una mejor estructura basada en módulos, ahorrando banda de ancha para el cliente y, dependiendo el caso, mejorando la seguridad.
+
+<Tabs>
+
+<TabItem label="Lazy loading">
+
+```ts
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./modules').then( m => m.HomeModule ) },
+  { path: '**', redirectTo: 'home' }
+];
+
+@NgModule({...})
+export class AppRoutingModule { }
+```
+
+</TabItem>
+
+<TabItem label="Sin lazy loading">
+
+```ts
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeModule },
+  { path: '**', redirectTo: 'home' }
+];
+
+@NgModule({...})
+export class AppRoutingModule { }
+```
+
+</TabItem>
+
+</Tabs>
