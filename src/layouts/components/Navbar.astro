@@ -11,7 +11,10 @@ import LinkButton from "@components/LinkButton.astro";
     <span class="font-semibold text-xl">🖥️ Mini Blog</span>
   </a>
   <div class="flex items-start gap-3">
-    <nav>
+    <nav class="flex gap-3">
+      <LinkButton href="/docs" class="h-9 flex items-center px-2">
+        Docs
+      </LinkButton>
       <LinkButton href="/blog" class="h-9 flex items-center px-2">
         Blog
       </LinkButton>
