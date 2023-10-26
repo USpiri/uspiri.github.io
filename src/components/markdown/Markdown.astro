@@ -44,8 +44,49 @@ const {
     }
   </header>
   <article
-    class="min-w-full rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-2 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 first:prose-p:mt-3"
+    class="min-w-full relative rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-2 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 first:prose-p:mt-3"
   >
     <slot />
   </article>
 </section>
+<style is:global lang="scss">
+  code {
+    &:not(pre code) {
+      @apply dark:bg-neutral-900 bg-neutral-200/75 rounded-md px-1;
+    }
+  }
+  p:has(img) {
+    @apply flex items-center justify-center flex-col;
+  }
+  [data-line] {
+    @apply px-4 whitespace-break-spaces;
+  }
+  [data-highlighted-line] {
+    background: rgba(200, 200, 255, 0.1);
+    @apply border-l-blue-400 border-l-4;
+  }
+
+  [data-highlighted-chars] {
+    @apply bg-zinc-600/50 rounded;
+    box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  }
+
+  [data-chars-id] {
+    @apply shadow-none p-1 border-b-2;
+  }
+
+  [data-chars-id] span {
+    @apply text-inherit;
+  }
+
+  .copy-icon {
+    @apply h-full;
+  }
+  .copy-button {
+    @apply border h-7 hover:scale-105 hover:bg-neutral-800 focus:bg-cyan-500/50 focus:fill-neutral-300 hover:fill-neutral-300 fill-neutral-500 transition-all duration-100 p-1 border-neutral-600 rounded-md absolute top-2 end-2;
+  }
+</style>
+<script>
+  import { setCopyButton } from "@utils/copy";
+  document.addEventListener("astro:page-load", setCopyButton);
+</script>
