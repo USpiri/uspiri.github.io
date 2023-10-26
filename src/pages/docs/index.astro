@@ -1,5 +1,5 @@
 ---
-import NavigatioCard from "@components/NavigatioCard.astro";
+import NavigationCard from "@components/NavigationCard.astro";
 import Subtitle from "@components/Subtitle.astro";
 import Layout from "@layouts/Layout.astro";
 import { capitalize, getFolders } from "@utils/utils";
@@ -18,7 +18,10 @@ const folders = getFolders(docs);
       <div class="flex flex-wrap gap-3 px-5 mt-8">
         {
           folders.map((folder) => (
-            <NavigatioCard href={`docs/${folder}`} label={capitalize(folder)} />
+            <NavigationCard
+              href={`docs/${folder}`}
+              label={capitalize(folder)}
+            />
           ))
         }
       </div>
