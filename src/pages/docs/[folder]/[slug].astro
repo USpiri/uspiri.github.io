@@ -9,7 +9,7 @@ export const getStaticPaths = (async () => {
   return docs.map((doc) => {
     return {
       params: {
-        folder: `/${doc.slug.split("/")[0]}`,
+        folder: `${doc.slug.split("/")[0]}`,
         slug: `${doc.slug.split("/")[1]}`,
       },
       props: { doc },
