@@ -46,7 +46,10 @@ const { Content } = await docs[0].render();
           <ul class="mt-8 px-2 xl:px-0 flex gap-3 flex-col">
             {docs.map((doc) => (
               <li>
-                <NavigationCard href={`${doc.slug}`} label={doc.data.title} />
+                <NavigationCard
+                  href={`/docs/${doc.slug}`}
+                  label={doc.data.title}
+                />
               </li>
             ))}
           </ul>
