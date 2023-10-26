@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "./Layout.astro";
+import { capitalize, getFolder, getFolders } from "@utils/utils";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const docs = await getCollection("docs");
+const folders = getFolders(docs);
+const filteredFolders = folders.map((folder) => {
+  const content = docs.filter((doc) => getFolder(doc.slug) === folder);
+  return {
+    title: folder,
+    content: content,
+    type:
+      content.length === 1 && content[0].slug.split("/").length === 1
+        ? "single"
+        : "folder",
+  };
+});
+console.log(filteredFolders);
+
+const currentPage = Astro.url.pathname;
+---
+
+<Layout title={title} description={description}>
+  <div class="flex w-full">
+    <aside
+      class="w-80 h-[calc(100vh-4rem)] shadow-md dark:shadow-md dark:shadow-neutral-700 hidden sm:block"
+    >
+      <ul class="px-8">
+        {
+          filteredFolders.map((folder) => (
+            <li class="mt-8">
+              <a href={`/docs/${folder.title}`}>
+                <h5
+                  class={`${
+                    currentPage.endsWith(folder.title) &&
+                    currentPage.split("/").length === 3
+                      ? "text-neutral-900 dark:text-neutral-100 font-bold"
+                      : "text-neutral-900 dark:text-neutral-400 font-semibold"
+                  } mb-3 hover:font-bold`}
+                >
+                  {capitalize(folder.title)}
+                </h5>
+              </a>
+              {folder.type !== "single" && (
+                <ul class="space-y-2 border-l border-neutral-100 dark:border-neutral-800">
+                  {folder.content.map((file) => (
+                    <li>
+                      <a
+                        class={`block border-l pl-4 -ml-px ${
+                          currentPage === `/docs/${file.slug}`
+                            ? "border-neutral-400 dark:border-neutral-500 text-neutral-900 dark:text-neutral-400 font-medium"
+                            : "border-transparent text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-400 hover:font-medium"
+                        }`}
+                        href={`/docs/${file.slug}`}
+                      >
+                        {file.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+    <section class="flex-1 h-[calc(100vh-4rem)] overflow-y-auto">
+      <slot />
+    </section>
+  </div>
+</Layout>
