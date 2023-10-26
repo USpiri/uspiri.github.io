@@ -32,8 +32,9 @@ draft: false
 - ⬜ Layout para documentación
 - ⬜ Hacer responsive la documentación
 - ⬜ Agregar Table of Content (ToC)
-- ⬜ Agregar navegación a la documentación
+- ✅ Agregar navegación a la documentación
 - ⬜ Poder ordernar la documentación
 - ⬜ Agregar paginación el la página de blogs
 - ⬜ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
+- ⬜ Mover Aside de la documentación a un componente separado
