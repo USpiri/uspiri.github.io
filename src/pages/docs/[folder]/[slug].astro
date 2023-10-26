@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths } from "astro";
+import DocsLayout from "@layouts/DocsLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import Markdown from "@components/markdown/Markdown.astro";
+
+export const getStaticPaths = (async () => {
+  const docs = await getCollection("docs");
+  return docs.map((doc) => {
+    return {
+      params: {
+        folder: `/${doc.slug.split("/")[0]}`,
+        slug: `${doc.slug.split("/")[1]}`,
+      },
+      props: { doc },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  doc: CollectionEntry<"docs">;
+}
+
+const { doc } = Astro.props;
+const { Content } = await doc.render();
+---
+
+<DocsLayout title="" description="">
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <Markdown
+      title={doc.data.title}
+      description={doc.data.description}
+      slug={doc.slug}
+    >
+      <Content />
+    </Markdown>
+  </main>
+</DocsLayout>
