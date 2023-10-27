@@ -7,7 +7,13 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const docs = await getCollection("docs");
+  const docs = (await getCollection("docs")).sort((a, b) => {
+    const ordenA = a.data.order || Number.POSITIVE_INFINITY;
+    const ordenB = b.data.order || Number.POSITIVE_INFINITY;
+    return ordenA - ordenB;
+  });
+  console.log(docs);
+
   const folders = getFolders(docs);
   return folders.map((folder) => {
     const filteredDocs = docs.filter((doc) => doc.slug.startsWith(folder));
@@ -25,6 +31,7 @@ interface Props {
 }
 
 const { docs } = Astro.props;
+
 const { folder } = Astro.params;
 const title = capitalize(folder ?? "Posts");
 const isSingle = docs.length === 1 && docs[0].slug.split("/").length === 1;

@@ -7,6 +7,12 @@ interface Props {
 
 const { files } = Astro.props;
 const currentPage = Astro.url.pathname;
+
+files.sort((a, b) => {
+  const ordenA = a.data.order || Number.POSITIVE_INFINITY;
+  const ordenB = b.data.order || Number.POSITIVE_INFINITY;
+  return ordenA - ordenB;
+});
 ---
 
 <ul class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800">
