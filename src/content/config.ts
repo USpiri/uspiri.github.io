@@ -17,7 +17,9 @@ export const blogSchema = mainShema.extend({
   pubDate: z.date(),
 });
 
-export const docSchema = mainShema;
+export const docSchema = mainShema.extend({
+  order: z.number().optional(),
+});
 
 const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later
