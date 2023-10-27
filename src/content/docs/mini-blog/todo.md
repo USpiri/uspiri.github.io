@@ -24,17 +24,17 @@ draft: false
 - ✅ Soporte para resaltar código
 - ⬜ Soporte para i18n
 - ✅ Revisar responsive (MarkdowLayout especialmente)
-- ⬜ Agregar "related posts"
-- ⬜ Agregar "Previus y next post" o componentes para redirigir a otros artículos
+- ⬜ Agregar "related posts" a los posteos del blog
+- 🟦 Agregar "Previus y next post" o componentes para redirigir a otros artículos de la documentación
 - ✅ Mostrar solo 5 posts en "Más recientes"
 - ✅ Copiar bloque de código
 - ⬜ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
-- ⬜ Layout para documentación
 - ⬜ Hacer responsive la documentación
 - ⬜ Agregar Table of Content (ToC)
 - ✅ Agregar navegación a la documentación
-- ⬜ Poder ordernar la documentación
+- ✅ Poder ordernar la documentación
 - ⬜ Agregar paginación el la página de blogs
 - ⬜ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
 - ✅ Mover Aside de la documentación a un componente separado
+- ⬜ Analizar la creación de "Today i learned" como "Mini notas" [TIL - Peter Mekhaeil](https://petermekhaeil.com/today-i-learned/)
