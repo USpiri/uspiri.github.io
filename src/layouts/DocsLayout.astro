@@ -1,7 +1,5 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "./Layout.astro";
-import { capitalize, getFolder, getFolders } from "@utils/utils";
 import DocsSideBar from "./components/docs/DocsSideBar.astro";
 
 interface Props {
@@ -10,20 +8,6 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const docs = await getCollection("docs");
-const folders = getFolders(docs);
-const filteredFolders = folders.map((folder) => {
-  const content = docs.filter((doc) => getFolder(doc.slug) === folder);
-  return {
-    title: folder,
-    content: content,
-    type:
-      content.length === 1 && content[0].slug.split("/").length === 1
-        ? "single"
-        : "folder",
-  };
-});
-const currentPage = Astro.url.pathname;
 ---
 
 <Layout title={title} description={description}>
