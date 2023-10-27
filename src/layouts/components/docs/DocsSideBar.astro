@@ -1,7 +1,7 @@
 ---
 import { getFolders, getFolder } from "@utils/utils";
 import { type CollectionEntry, getCollection } from "astro:content";
-import DocsFolders from "./DocsFolders.astro";
+import DocsFolder from "./DocsFolder.astro";
 
 export interface DocFolder {
   title: string;
@@ -28,7 +28,7 @@ const folders: DocFolder[] = foldersArray.map((folder) => {
   {
     folders.map((folder) => (
       <li class="mt-8">
-        <DocsFolders folder={folder} />
+        <DocsFolder folder={folder} />
       </li>
     ))
   }
