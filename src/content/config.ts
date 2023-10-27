@@ -19,6 +19,8 @@ export const blogSchema = mainShema.extend({
 
 export const docSchema = mainShema.extend({
   order: z.number().optional(),
+  prev: z.string().optional(),
+  next: z.string().optional(),
 });
 
 const blogCollection = defineCollection({
