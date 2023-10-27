@@ -37,4 +37,4 @@ draft: false
 - ⬜ Agregar paginación el la página de blogs
 - ⬜ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
-- ⬜ Mover Aside de la documentación a un componente separado
+- ✅ Mover Aside de la documentación a un componente separado

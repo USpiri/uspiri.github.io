@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { DocFolder } from "./DocsSideBar.astro";
+
+interface Props {
+  files: CollectionEntry<"docs">[];
+}
+
+const { files } = Astro.props;
+const currentPage = Astro.url.pathname;
+---
+
+<ul class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800">
+  {
+    files.map((file) => (
+      <li>
+        <a
+          class={`block border-l pl-4 -ml-px ${
+            currentPage === `/docs/${file.slug}`
+              ? "border-neutral-400 dark:border-neutral-500 text-neutral-900 dark:text-neutral-400 font-medium"
+              : "border-transparent text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-400 hover:font-medium"
+          }`}
+          href={`/docs/${file.slug}`}
+        >
+          {file.data.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
