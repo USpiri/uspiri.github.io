@@ -25,7 +25,7 @@ draft: false
 - ⬜ Soporte para i18n
 - ✅ Revisar responsive (MarkdowLayout especialmente)
 - ⬜ Agregar "related posts" a los posteos del blog
-- 🟦 Agregar "Previus y next post" o componentes para redirigir a otros artículos de la documentación
+- ✅ Agregar "Previus y next post" o componentes para redirigir a otros artículos de la documentación
 - ✅ Mostrar solo 5 posts en "Más recientes"
 - ✅ Copiar bloque de código
 - ⬜ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
