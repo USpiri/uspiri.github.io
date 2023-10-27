@@ -12,8 +12,6 @@ export const getStaticPaths = (async () => {
     const ordenB = b.data.order || Number.POSITIVE_INFINITY;
     return ordenA - ordenB;
   });
-  console.log(docs);
-
   const folders = getFolders(docs);
   return folders.map((folder) => {
     const filteredDocs = docs.filter((doc) => doc.slug.startsWith(folder));
