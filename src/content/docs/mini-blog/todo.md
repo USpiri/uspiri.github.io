@@ -38,3 +38,6 @@ draft: false
 - ⬜ Mejorar el uso de ViewTransitions
 - ✅ Mover Aside de la documentación a un componente separado
 - ⬜ Analizar la creación de "Today i learned" como "Mini notas" [TIL - Peter Mekhaeil](https://petermekhaeil.com/today-i-learned/)
+- ⬜ Ajustar margen de los títulos markdown
+- ⬜ Ajustar margen de los \<hr\>
+- ⬜ Bug: El markdown aparece en la barra de navegación de la documentación al navegar a otro link
