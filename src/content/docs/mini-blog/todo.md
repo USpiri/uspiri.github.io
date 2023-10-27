@@ -1,5 +1,5 @@
 ---
-title: "Tareas pendientes"
+title: "Lista de tareas"
 pubDate: 2023-10-17
 description: "Lista de tareas de Mini Blog"
 tags: ["todo"]

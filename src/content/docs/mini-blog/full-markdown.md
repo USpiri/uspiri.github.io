@@ -1,13 +1,14 @@
 ---
 title: "Full markdown"
-description: "Full featured MArkdown for test"
+description: "Archivo Markdown de prueba con la mayoría de componentes Markdown"
 draft: false
+order: 1
 ---
 
 # Headers
 
 ````
-# h1 Heading 8-)
+# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
@@ -23,7 +24,7 @@ Alt-H2
 ------
 ````
 
-# h1 Heading 8-)
+# h1 Heading
 
 ## h2 Heading
 
