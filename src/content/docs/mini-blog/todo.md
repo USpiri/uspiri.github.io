@@ -37,7 +37,15 @@ draft: false
 - ⬜ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
 - ✅ Mover Aside de la documentación a un componente separado
-- ⬜ Analizar la creación de "Today i learned" como "Mini notas" [TIL - Peter Mekhaeil](https://petermekhaeil.com/today-i-learned/)
+- ✅ Analizar la creación de "Today i learned" como "Mini notas" [TIL - Peter Mekhaeil](https://petermekhaeil.com/today-i-learned/)
 - ⬜ Ajustar margen de los títulos markdown
 - ⬜ Ajustar margen de los \<hr\>
 - ⬜ Bug: El markdown aparece en la barra de navegación de la documentación al navegar a otro link
+- ⬜ Cambiar a modelo de un solo esquema, dividido por categorías e implementar "series"
+  - Series: conjunto de posts que pueden no estar públicos (o sí) pero pertenecen a un mismo grupo (no necesariamente de la misma categoría). Ej.: la serie "Buenas prácticas en angular" con todos los posts relacionados a esta serie.
+- ⬜ Agregar snippets y mini notes. [Ejemplo](https://onebite.dev/series)
+- ⬜ Analizar diseño [GNDX](https://ev0.gndx.io/)
+- ⬜ Bug: El sidebar dejó de funcionar
+- ⬜ Bug: Sidebar item border no se ve bien en light theme
+- ⬜ Analizar implementación del sidebar [Hallotham](https://github.com/hellotham/hello-astro/blob/main/src/components/leftsidebar.astro)
+- ⬜ Analizar implementación de embeddeds como twitter (𝕏).
