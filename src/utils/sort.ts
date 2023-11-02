@@ -2,6 +2,7 @@ import type { CollectionEntry } from "astro:content";
 
 interface SortOptions {
   filterDrafts?: boolean;
+  filterNonPublished?: boolean;
   filterFurutePosts?: boolean;
   sortByDate?: boolean;
   randomize?: boolean;
@@ -20,12 +21,21 @@ interface SortOptions {
  * @returns La colección de publicaciones ordenada y filtrada.
  */
 export function sortPosts(
-  posts: CollectionEntry<"posts">[],
+  posts: CollectionEntry<"blog">[],
   options?: SortOptions
 ) {
-  const { filterDrafts, filterFurutePosts, sortByDate, randomize, limit } = {
+  const {
+    filterDrafts,
+    filterNonPublished,
+    filterFurutePosts,
+    sortByDate,
+    randomize,
+    limit,
+  } = {
+    // Default sorting values
     ...{
       filterDrafts: true,
+      filterNonPublished: true,
       filterFurutePosts: true,
       sortByDate: true,
       randomize: false,
@@ -34,28 +44,26 @@ export function sortPosts(
   };
 
   // Filters
-  const filteredPosts = posts.reduce(
-    (acc: CollectionEntry<"posts">[], post) => {
-      const { pubDate: date, draft } = post.data;
+  const filteredPosts = posts.reduce((acc: CollectionEntry<"blog">[], post) => {
+    const { date: date, draft, published } = post.data;
 
-      //Drafts
-      if (filterDrafts && draft) return acc;
+    // Drafts
+    if (filterDrafts && draft) return acc;
 
-      // Future posts
-      if (filterFurutePosts && new Date(date) > new Date()) return acc;
+    // Future posts
+    if (filterFurutePosts && new Date(date) > new Date()) return acc;
 
-      acc.push(post);
+    // NonPublished
+    if (filterNonPublished && !published) return acc;
 
-      return acc;
-    },
-    []
-  );
+    acc.push(post);
+
+    return acc;
+  }, []);
 
   // Sort Date
   if (sortByDate) {
-    filteredPosts.sort(
-      (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-    );
+    filteredPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   } else if (!sortByDate && randomize) {
     filteredPosts.sort(() => Math.random() - 0.5);
   }

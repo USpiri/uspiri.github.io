@@ -2,38 +2,57 @@ import { z, defineCollection } from "astro:content";
 
 const mainShema = z.object({
   title: z.string(),
-  description: z.string(),
-  draft: z.boolean().default(true).optional(),
+  tags: z.array(z.string()).optional(),
+  date: z.date(),
+  draft: z.boolean().default(true),
+  published: z.boolean().default(true),
+  serie: z.string().optional(),
+  category: z
+    .enum(["Programación", "Economía", "Fotografía", "Desarrollo personal"])
+    .optional(),
   image: z
     .object({
       src: z.string(),
       alt: z.string(),
     })
     .optional(),
+  description: z
+    .string()
+    .max(
+      160,
+      "For best SEO results, please keep the description under 160 characters."
+    ),
 });
 
-export const blogSchema = mainShema.extend({
-  tags: z.array(z.string()),
-  pubDate: z.date(),
-});
-
-export const docSchema = mainShema.extend({
-  order: z.number().optional(),
-  prev: z.string().optional(),
-  next: z.string().optional(),
+const shortShema = z.object({
+  title: z.string(),
+  draft: z.boolean().default(true),
+  lang: z.string().optional(),
+  description: z
+    .string()
+    .max(
+      160,
+      "For best SEO results, please keep the description under 160 characters."
+    ),
 });
 
 const blogCollection = defineCollection({
-  type: "content", // v2.5.0 and later
-  schema: blogSchema,
+  type: "content",
+  schema: mainShema,
 });
 
-const docCollection = defineCollection({
-  type: "content", // v2.5.0 and later
-  schema: docSchema,
+const snippetCollection = defineCollection({
+  type: "content",
+  schema: shortShema,
+});
+
+const dailyCollection = defineCollection({
+  type: "content",
+  schema: shortShema,
 });
 
 export const collections = {
-  posts: blogCollection,
-  docs: docCollection,
+  blog: blogCollection,
+  snippets: snippetCollection,
+  daily: dailyCollection,
 };
