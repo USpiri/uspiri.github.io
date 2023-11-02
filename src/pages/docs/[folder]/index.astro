@@ -1,42 +1,42 @@
 ---
-import NavigationCard from "@components/NavigationCard.astro";
-import Markdown from "@components/markdown/Markdown.astro";
-import DocsLayout from "@layouts/DocsLayout.astro";
-import { capitalize, getFolders } from "@utils/utils";
-import type { GetStaticPaths } from "astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+// import NavigationCard from "@components/NavigationCard.astro";
+// import Markdown from "@components/markdown/Markdown.astro";
+// import DocsLayout from "@layouts/DocsLayout.astro";
+// import { capitalize, getFolders } from "@utils/utils";
+// import type { GetStaticPaths } from "astro";
+// import { getCollection, type CollectionEntry } from "astro:content";
 
-export const getStaticPaths = (async () => {
-  const docs = (await getCollection("docs")).sort((a, b) => {
-    const ordenA = a.data.order || Number.POSITIVE_INFINITY;
-    const ordenB = b.data.order || Number.POSITIVE_INFINITY;
-    return ordenA - ordenB;
-  });
-  const folders = getFolders(docs);
-  return folders.map((folder) => {
-    const filteredDocs = docs.filter((doc) => doc.slug.startsWith(folder));
-    return {
-      params: {
-        folder,
-      },
-      props: { docs: filteredDocs },
-    };
-  });
-}) satisfies GetStaticPaths;
+// export const getStaticPaths = (async () => {
+//   const docs = (await getCollection("docs")).sort((a, b) => {
+//     const ordenA = a.data.order || Number.POSITIVE_INFINITY;
+//     const ordenB = b.data.order || Number.POSITIVE_INFINITY;
+//     return ordenA - ordenB;
+//   });
+//   const folders = getFolders(docs);
+//   return folders.map((folder) => {
+//     const filteredDocs = docs.filter((doc) => doc.slug.startsWith(folder));
+//     return {
+//       params: {
+//         folder,
+//       },
+//       props: { docs: filteredDocs },
+//     };
+//   });
+// }) satisfies GetStaticPaths;
 
-interface Props {
-  docs: CollectionEntry<"docs">[];
-}
+// interface Props {
+//   docs: CollectionEntry<"docs">[];
+// }
 
-const { docs } = Astro.props;
+// const { docs } = Astro.props;
 
-const { folder } = Astro.params;
-const title = capitalize(folder ?? "Posts");
-const isSingle = docs.length === 1 && docs[0].slug.split("/").length === 1;
-const { Content } = await docs[0].render();
+// const { folder } = Astro.params;
+// const title = capitalize(folder ?? "Posts");
+// const isSingle = docs.length === 1 && docs[0].slug.split("/").length === 1;
+// const { Content } = await docs[0].render();
 ---
 
-<DocsLayout title="" description="">
+<!-- <DocsLayout title="" description="">
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
   >
@@ -73,4 +73,4 @@ const { Content } = await docs[0].render();
       )
     }
   </main>
-</DocsLayout>
+</DocsLayout> -->

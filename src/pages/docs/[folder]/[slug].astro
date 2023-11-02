@@ -1,40 +1,40 @@
 ---
-import type { GetStaticPaths } from "astro";
-import DocsLayout from "@layouts/DocsLayout.astro";
-import {
-  getCollection,
-  type CollectionEntry,
-  getEntryBySlug,
-} from "astro:content";
-import Markdown from "@components/markdown/Markdown.astro";
-import NavigationCard from "@components/NavigationCard.astro";
+// import type { GetStaticPaths } from "astro";
+// import DocsLayout from "@layouts/DocsLayout.astro";
+// import {
+//   getCollection,
+//   type CollectionEntry,
+//   getEntryBySlug,
+// } from "astro:content";
+// import Markdown from "@components/markdown/Markdown.astro";
+// import NavigationCard from "@components/NavigationCard.astro";
 
-export const getStaticPaths = (async () => {
-  const docs = await getCollection("docs");
-  return docs.map((doc) => {
-    return {
-      params: {
-        folder: `${doc.slug.split("/")[0]}`,
-        slug: `${doc.slug.split("/")[1]}`,
-      },
-      props: { doc },
-    };
-  });
-}) satisfies GetStaticPaths;
+// export const getStaticPaths = (async () => {
+//   const docs = await getCollection("docs");
+//   return docs.map((doc) => {
+//     return {
+//       params: {
+//         folder: `${doc.slug.split("/")[0]}`,
+//         slug: `${doc.slug.split("/")[1]}`,
+//       },
+//       props: { doc },
+//     };
+//   });
+// }) satisfies GetStaticPaths;
 
-interface Props {
-  doc: CollectionEntry<"docs">;
-}
+// interface Props {
+//   doc: CollectionEntry<"docs">;
+// }
 
-const { doc } = Astro.props;
-const { folder } = Astro.params;
-const { Content } = await doc.render();
+// const { doc } = Astro.props;
+// const { folder } = Astro.params;
+// const { Content } = await doc.render();
 
-const next = await getEntryBySlug("docs", `${folder}/${doc.data.next}`);
-const prev = await getEntryBySlug("docs", `${folder}/${doc.data.prev}`);
+// const next = await getEntryBySlug("docs", `${folder}/${doc.data.next}`);
+// const prev = await getEntryBySlug("docs", `${folder}/${doc.data.prev}`);
 ---
 
-<DocsLayout title="" description="">
+<!-- <DocsLayout title="" description="">
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
   >
@@ -65,4 +65,4 @@ const prev = await getEntryBySlug("docs", `${folder}/${doc.data.prev}`);
       }
     </nav>
   </main>
-</DocsLayout>
+</DocsLayout> -->

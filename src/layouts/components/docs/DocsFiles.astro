@@ -1,21 +1,21 @@
 ---
-import type { CollectionEntry } from "astro:content";
+// import type { CollectionEntry } from "astro:content";
 
-interface Props {
-  files: CollectionEntry<"docs">[];
-}
+// interface Props {
+//   files: CollectionEntry<"docs">[];
+// }
 
-const { files } = Astro.props;
-const currentPage = Astro.url.pathname;
+// const { files } = Astro.props;
+// const currentPage = Astro.url.pathname;
 
-files.sort((a, b) => {
-  const ordenA = a.data.order || Number.POSITIVE_INFINITY;
-  const ordenB = b.data.order || Number.POSITIVE_INFINITY;
-  return ordenA - ordenB;
-});
+// files.sort((a, b) => {
+//   const ordenA = a.data.order || Number.POSITIVE_INFINITY;
+//   const ordenB = b.data.order || Number.POSITIVE_INFINITY;
+//   return ordenA - ordenB;
+// });
 ---
 
-<ul class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800">
+<!-- <ul class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800">
   {
     files.map((file) => (
       <li>
@@ -32,4 +32,4 @@ files.sort((a, b) => {
       </li>
     ))
   }
-</ul>
+</ul> -->

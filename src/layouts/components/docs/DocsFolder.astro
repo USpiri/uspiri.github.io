@@ -1,17 +1,17 @@
 ---
-import { capitalize } from "@utils/utils";
-import type { DocFolder } from "./DocsSideBar.astro";
-import DocsFiles from "./DocsFiles.astro";
+// import { capitalize } from "@utils/utils";
+// import type { DocFolder } from "./DocsSideBar.astro";
+// import DocsFiles from "./DocsFiles.astro";
 
-interface Props {
-  folder: DocFolder;
-}
+// interface Props {
+//   folder: DocFolder;
+// }
 
-const { folder } = Astro.props;
-const currentPage = Astro.url.pathname;
+// const { folder } = Astro.props;
+// const currentPage = Astro.url.pathname;
 ---
 
-<a
+<!-- <a
   class={`mt-8 hover:font-bold ${
     currentPage.endsWith(folder.title) && currentPage.split("/").length === 3
       ? "text-neutral-800 dark:text-neutral-100 font-bold"
@@ -20,4 +20,4 @@ const currentPage = Astro.url.pathname;
   href={`/docs/${folder.title}`}
   >{capitalize(folder.title)}
 </a>
-{folder.type === "folder" && <DocsFiles files={folder.content} />}
+{folder.type === "folder" && <DocsFiles files={folder.content} />} -->
