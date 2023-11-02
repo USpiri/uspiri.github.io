@@ -1,25 +1,28 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import Markdown from "@components/markdown/Markdown.astro";
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  id: string;
+  title: string;
+  description: string;
+  date?: Date;
+  tags?: string[];
 }
 
-const { post } = Astro.props;
+const { id, title, description, date, tags } = Astro.props;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={title} description={description}>
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
   >
     <Markdown
-      id={post.id}
-      title={post.data.title}
-      description={post.data.description}
-      date={post.data.date}
-      tags={post.data.tags}
+      id={id}
+      title={title}
+      description={description}
+      date={date}
+      tags={tags}
     >
       <slot />
     </Markdown>

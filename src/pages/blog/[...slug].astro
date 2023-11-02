@@ -23,6 +23,12 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<MarkdownLayout post={post}>
+<MarkdownLayout
+  id={post.id}
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+>
   <Content />
 </MarkdownLayout>
