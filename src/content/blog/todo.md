@@ -1,6 +1,6 @@
 ---
 title: "Lista de tareas"
-pubDate: 2023-10-17
+date: 2023-10-17
 description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
 draft: false
@@ -49,3 +49,14 @@ draft: false
 - ⬜ Bug: Sidebar item border no se ve bien en light theme
 - ⬜ Analizar implementación del sidebar [Hallotham](https://github.com/hellotham/hello-astro/blob/main/src/components/leftsidebar.astro)
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
+- ⬜ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
+- ⬜ Mover todos los archivos a la carpeta blog
+- ⬜ Mover Docs la carpeta blogs pero con la configuración adecuada.
+- ⬜ Paginar posts
+- ⬜ Filtrar posts
+- ⬜ Eliminar docs del navbar
+- ⬜ Agregar Daily al navbar
+- ⬜ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
+- ⬜ Renombrar DocsLayout y todos los sub componetnes
+- ⬜ Poder tener una estrucura cualquiera en la capeta blog
+- ⬜ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout

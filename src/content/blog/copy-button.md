@@ -1,6 +1,6 @@
 ---
 title: 'Agregando un botón "Copy code to clipboard"'
-pubDate: 2023-10-21
+date: 2023-10-21
 description: "Una funcionalidad útil a la hora de escribir artículos de programación"
 tags: ["typescript"]
 draft: false
