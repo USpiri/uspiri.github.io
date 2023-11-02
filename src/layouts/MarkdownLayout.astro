@@ -15,11 +15,11 @@ const { post } = Astro.props;
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
   >
     <Markdown
+      id={post.id}
       title={post.data.title}
       description={post.data.description}
       date={post.data.date}
       tags={post.data.tags}
-      slug={post.slug}
     >
       <slot />
     </Markdown>
