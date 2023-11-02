@@ -53,6 +53,6 @@ const dailyCollection = defineCollection({
 
 export const collections = {
   blog: blogCollection,
-  snippets: snippetCollection,
+  snippet: snippetCollection,
   daily: dailyCollection,
 };
