@@ -6,6 +6,10 @@ export const getFolder = (slug: string): string => {
   return slug.split("/")[0];
 };
 
+export const getFile = (slug: string): string => {
+  return slug.split("/").pop() ?? "";
+};
+
 export const getFolders = (docs: any): string[] => {
   return [...new Set(docs.map((doc: any) => getFolder(doc.slug)))] as string[];
 };
