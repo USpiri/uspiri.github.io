@@ -5,6 +5,7 @@ interface SortOptions {
   filterNonPublished?: boolean;
   filterFurutePosts?: boolean;
   sortByDate?: boolean;
+  sortDirection?: "ASC" | "DESC";
   randomize?: boolean;
   limit?: number;
 }
@@ -29,6 +30,7 @@ export function sortPosts(
     filterNonPublished,
     filterFurutePosts,
     sortByDate,
+    sortDirection,
     randomize,
     limit,
   } = {
@@ -38,6 +40,7 @@ export function sortPosts(
       filterNonPublished: true,
       filterFurutePosts: true,
       sortByDate: true,
+      sortDirection: "DESC",
       randomize: false,
     },
     ...options,
@@ -64,6 +67,7 @@ export function sortPosts(
   // Sort Date
   if (sortByDate) {
     filteredPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    if (sortDirection === "ASC") filteredPosts.reverse();
   } else if (!sortByDate && randomize) {
     filteredPosts.sort(() => Math.random() - 0.5);
   }
