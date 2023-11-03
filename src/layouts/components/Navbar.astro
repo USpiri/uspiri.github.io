@@ -13,7 +13,7 @@ import MenuIcon from "@components/icons/MenuIcon.astro";
 >
   <div class="sm:flex items-center justify-between w-full">
     <div class="flex flex-1 sm:flex-none items-center">
-      <Button class="block sm:hidden" id="menu">
+      <Button class="block sm:hidden" id="menu" aria-label="Menu button">
         <MenuIcon class="h-7" />
       </Button>
       <a
@@ -41,7 +41,11 @@ import MenuIcon from "@components/icons/MenuIcon.astro";
         </LinkButton>
       </div>
       <div class="flex justify-around items-start sm:gap-1 md:gap-3">
-        <LinkButton href="/" class="h-9 px-1 flex items-center">
+        <LinkButton
+          href="/"
+          class="h-9 px-1 flex items-center"
+          aria-label="Go to home"
+        >
           <HomeIcon class="w-7" />
         </LinkButton>
         <SearchButton />
