@@ -5,9 +5,10 @@ description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
 draft: false
 collection: Mini Blog
+published: false
 ---
 
-> **✅ Completadas. 🟦 En progreso. ⬜ Pendientes**
+> **✅ Completadas. 🟦 En progreso. ⬜ Pendientes. ❌ Rechazadas**
 
 - ✅ Search component
 - ✅ Que el título de cada coincida con el de la metadata
@@ -15,7 +16,7 @@ collection: Mini Blog
 - ✅ Tags y fecha en posts
 - ✅ Quitar pagefind de TreeFile
 - ✅ Tabs
-- ⬜ Layout para "full code" con botón de copiar
+- ✅ Layout para "full code" con botón de copiar
 - ✅ Filtrar posteos por fecha
 - ✅ Filtrar posteos por "publicados"
 - ⬜ Página de tags
@@ -42,23 +43,24 @@ collection: Mini Blog
 - ⬜ Ajustar margen de los títulos markdown
 - ⬜ Ajustar margen de los \<hr\>
 - ⬜ Bug: El markdown aparece en la barra de navegación de la documentación al navegar a otro link
-- ⬜ Cambiar a modelo de un solo esquema, dividido por categorías e implementar "series"
+- ✅ Cambiar a modelo de un solo esquema, dividido por categorías e implementar "series"
   - Series: conjunto de posts que pueden no estar públicos (o sí) pero pertenecen a un mismo grupo (no necesariamente de la misma categoría). Ej.: la serie "Buenas prácticas en angular" con todos los posts relacionados a esta serie.
-- ⬜ Agregar snippets y mini notes. [Ejemplo](https://onebite.dev/series)
-- ⬜ Analizar diseño [GNDX](https://ev0.gndx.io/)
-- ⬜ Bug: El sidebar dejó de funcionar
+- ✅ Agregar snippets y mini notes. [Ejemplo](https://onebite.dev/series)
+- ✅ Analizar diseño [GNDX](https://ev0.gndx.io/)
+- ✅ Bug: El sidebar dejó de funcionar
 - ⬜ Bug: Sidebar item border no se ve bien en light theme
-- ⬜ Analizar implementación del sidebar [Hallotham](https://github.com/hellotham/hello-astro/blob/main/src/components/leftsidebar.astro)
+- ✅ Analizar implementación del sidebar [Hallotham](https://github.com/hellotham/hello-astro/blob/main/src/components/leftsidebar.astro)
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
-- ⬜ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
-- ⬜ Mover todos los archivos a la carpeta blog
-- ⬜ Mover Docs la carpeta blogs pero con la configuración adecuada.
+- ❌ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
+- ✅ Mover todos los archivos a la carpeta blog
+- ✅ Mover Docs la carpeta blogs pero con la configuración adecuada.
 - ⬜ Paginar posts
 - ⬜ Filtrar posts
-- ⬜ Eliminar docs del navbar
+- ✅ Eliminar docs del navbar
 - ⬜ Agregar Daily al navbar
-- ⬜ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
-- ⬜ Renombrar DocsLayout y todos los sub componetnes
+- ✅ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
+- ✅ Renombrar DocsLayout y todos los sub componetnes
 - ⬜ Poder tener una estrucura cualquiera en la capeta blog
-- ⬜ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
+- ✅ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
 - ⬜ Mover esilos y componentes que se repiten
+- ⬜ Filtrar y ordenar posts en las nuevas pages
