@@ -6,7 +6,7 @@ const mainShema = z.object({
   date: z.date(),
   draft: z.boolean().default(true),
   published: z.boolean().default(true),
-  serie: z.string().optional(),
+  collection: z.string().optional(),
   category: z
     .enum(["Programación", "Economía", "Fotografía", "Desarrollo personal"])
     .optional(),
