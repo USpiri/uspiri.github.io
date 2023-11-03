@@ -6,6 +6,8 @@ tags: ["typescript"]
 draft: false
 ---
 
+import NavigationCard from "@components/NavigationCard.astro";
+
 A la hora de buscar documentación, ejemplos o artículos, muchas plataformas ofrecen la posibilidad de copiar el contenido de un bloque de código, mejorando así la experiencia para el desarrollador. Este pequeño detalle puede marcar la diferencia en la experiencia del desarrollador y, por lo tanto, es razonable desear incorporar esta funcionalidad en un blog.
 
 ## Bloques de código
@@ -70,35 +72,7 @@ Ahora, para mejorar aún más la experiencia del usuario, podemos hacer que, por
 
 ## Resultado
 
-```js
-// Obtenemos los bloques de código "<pre>"
-let blocks = document.querySelectorAll("pre");
-
-// Implementamos una acción para cada bloque
-blocks.forEach(async (block) => {
-  if (navigator.clipboard) {
-    // Creamos un botón
-    let button = document.createElement("button");
-    button.innerText = "Copiar";
-
-    // Lo añadimos al bloque
-    block.appendChild(button);
-
-    // Establecemos un evento para que se ejecute al hacer clic
-    button.addEventListener("click", async () => {
-      // Buscamos los <code> dentro del bloque y guardamos su texto.
-      let code = block.querySelector("code");
-      let text = code.innerText;
-
-      // Copiamos el texto utilizando la API
-      await navigator.clipboard.writeText(text);
-
-      // ¡Copiado!
-      button.innerText = "¡Copiado!";
-      setTimeout(() => {
-        button.innerText = "Copiar";
-      }, 1000);
-    });
-  }
-});
-```
+<NavigationCard
+  label='"Copy code" snippet'
+  href="/snippet/javascript/copy-button"
+></NavigationCard>
