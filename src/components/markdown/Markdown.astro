@@ -9,6 +9,7 @@ interface Props {
   tags?: string[];
   hideHeader?: boolean;
   hideLinks?: boolean;
+  pageFind?: boolean;
 }
 
 const {
@@ -19,11 +20,12 @@ const {
   tags,
   hideHeader = false,
   hideLinks = false,
+  pageFind = true,
 } = Astro.props;
 ---
 
 <section
-  data-pagefind-body
+  data-pagefind-body={pageFind}
   class="max-w-3xl w-full"
   transition:name={`post-${id}`}
 >

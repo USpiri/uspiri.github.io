@@ -8,9 +8,10 @@ interface Props {
   description: string;
   date?: Date;
   tags?: string[];
+  pageFind?: boolean;
 }
 
-const { id, title, description, date, tags } = Astro.props;
+const { id, title, description, date, tags, pageFind } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -23,6 +24,7 @@ const { id, title, description, date, tags } = Astro.props;
       description={description}
       date={date}
       tags={tags}
+      pageFind={pageFind}
     >
       <slot />
     </Markdown>
