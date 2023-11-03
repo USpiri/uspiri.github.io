@@ -1,0 +1,51 @@
+---
+import { slug } from "@utils/utils";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+export interface DocFolder {
+  title: string;
+  content: CollectionEntry<"blog">[];
+  type: "file" | "folder";
+}
+
+const posts = await getCollection("blog");
+const collections = [
+  ...new Set(posts.map((post) => post.data.collection)),
+].filter((collection) => collection !== undefined);
+const currentPage = Astro.url.pathname;
+
+const { collection: collectionParam } = Astro.params;
+const collection = collections.find(
+  (col) => slug(col ?? "") === collectionParam
+);
+const filteredPosts = posts.filter(
+  (post) => slug(post.data.collection ?? "") === collectionParam
+);
+console.log(collectionParam);
+---
+
+<article class="px-8">
+  <h3 class="text-neutral-700 dark:text-neutral-400 font-bold">
+    {collection}
+  </h3>
+  <ul
+    class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800"
+  >
+    {
+      filteredPosts.map((post) => (
+        <li>
+          <a
+            class={`block border-l pl-4 -ml-px ${
+              currentPage === `/collections/${collectionParam}/${post.slug}`
+                ? "border-neutral-400 dark:border-neutral-500 text-neutral-900 dark:text-neutral-400 font-medium"
+                : "border-transparent text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-400 hover:font-medium"
+            }`}
+            href={`/collections/${slug(collection ?? "")}/${post.slug}`}
+          >
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</article>
