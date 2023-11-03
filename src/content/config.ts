@@ -27,13 +27,20 @@ const mainShema = z.object({
 const shortShema = z.object({
   title: z.string(),
   draft: z.boolean().default(true),
-  lang: z.string().optional(),
   description: z
     .string()
     .max(
       160,
       "For best SEO results, please keep the description under 160 characters."
     ),
+});
+
+const snippetShema = shortShema.extend({
+  lang: z.string(),
+});
+
+const dailyShema = shortShema.extend({
+  date: z.date(),
 });
 
 const blogCollection = defineCollection({
@@ -43,12 +50,12 @@ const blogCollection = defineCollection({
 
 const snippetCollection = defineCollection({
   type: "content",
-  schema: shortShema,
+  schema: snippetShema,
 });
 
 const dailyCollection = defineCollection({
   type: "content",
-  schema: shortShema,
+  schema: dailyShema,
 });
 
 export const collections = {
