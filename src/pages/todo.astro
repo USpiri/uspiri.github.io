@@ -1,0 +1,17 @@
+---
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import { getEntryBySlug } from "astro:content";
+
+const post = await getEntryBySlug("blog", "todo");
+const { Content } = await post.render();
+---
+
+<MarkdownLayout
+  id={post.id}
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  tags={post.data.tags}
+>
+  <Content />
+</MarkdownLayout>
