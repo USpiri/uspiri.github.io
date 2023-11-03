@@ -1,0 +1,33 @@
+---
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const snippets = await getCollection("snippet");
+  return snippets.map((snippet) => {
+    return {
+      params: {
+        lang: snippet.data.lang,
+        slug: snippet.slug,
+      },
+      props: { snippet },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  snippet: CollectionEntry<"snippet">;
+}
+
+const { snippet } = Astro.props;
+const { Content } = await snippet.render();
+---
+
+<MarkdownLayout
+  id={snippet.id}
+  title={snippet.data.title}
+  description={snippet.data.description}
+>
+  <Content />
+</MarkdownLayout>

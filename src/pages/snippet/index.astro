@@ -1,0 +1,41 @@
+---
+import NavigationCard from "@components/NavigationCard.astro";
+import Subtitle from "@components/Subtitle.astro";
+import Layout from "@layouts/Layout.astro";
+import { capitalize } from "@utils/utils";
+import { getCollection } from "astro:content";
+
+const snippets = await getCollection("snippet");
+const langs = [
+  ...new Set(snippets.map((snippet) => snippet.data.lang)),
+] as string[];
+---
+
+<Layout
+  title="Snippets | Uriel Spiridione"
+  description="Fragmentos de código de distintos lenguajes de programación"
+>
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <section class="max-w-2xl w-full my-20">
+      <Subtitle>Code snippets</Subtitle>
+      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
+        Fragmentos de código de distintos lenguajes de programación utilizados
+        para ilustrar o proporcionar ejemplos sobre un código en particular
+      </p>
+      <ul class="flex flex-wrap gap-3 px-5 mt-8">
+        {
+          langs.map((lang) => (
+            <li class="flex-[1_0_40%]">
+              <NavigationCard
+                label={capitalize(lang)}
+                href={`snippet/${lang}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,60 @@
+---
+import NavigationCard from "@components/NavigationCard.astro";
+import Subtitle from "@components/Subtitle.astro";
+import Layout from "@layouts/Layout.astro";
+import { capitalize } from "@utils/utils";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const snippets = await getCollection("snippet");
+  const langs = [...new Set(snippets.map((snippet) => snippet.data.lang))];
+  return langs.map((lang) => {
+    const filteredSnippets = snippets.filter(
+      (snippet) => snippet.data.lang === lang
+    );
+    return {
+      params: {
+        lang: lang,
+      },
+      props: { snippets: filteredSnippets },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  snippets: CollectionEntry<"snippet">[];
+}
+
+const { snippets } = Astro.props;
+const { lang } = Astro.params;
+---
+
+<Layout
+  title={`${capitalize(lang)} snippets | Uriel Spiridione`}
+  description={`Fragmentos de código de ${lang}.`}
+>
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <section class="max-w-2xl w-full my-20">
+      <Subtitle>{capitalize(lang)} code snippets</Subtitle>
+      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
+        Fragmentos de código de {lang} utilizados para ilustrar o proporcionar
+        ejemplos sobre un código en particular.
+      </p>
+      <ul class="flex flex-col gap-3 px-5 mt-8">
+        {
+          snippets.map((snippet) => (
+            <li>
+              <NavigationCard
+                label={snippet.data.title}
+                href={`${lang}/${snippet.slug}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>
