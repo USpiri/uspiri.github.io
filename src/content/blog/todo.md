@@ -60,7 +60,7 @@ published: false
 - ⬜ Agregar Daily al navbar
 - ✅ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
 - ✅ Renombrar DocsLayout y todos los sub componetnes
-- ⬜ Poder tener una estrucura cualquiera en la capeta blog
+- ✅ Poder tener una estrucura cualquiera en la capeta blog
 - ✅ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
 - ⬜ Mover esilos y componentes que se repiten
-- ⬜ Filtrar y ordenar posts en las nuevas pages
+- ✅ Filtrar y ordenar posts en las nuevas pages
