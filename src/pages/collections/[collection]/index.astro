@@ -50,7 +50,7 @@ const { collection: collectionParam } = Astro.params;
             <li>
               <NavigationCard
                 label={post.data.title}
-                href={`${collectionParam}/${post.slug}`}
+                href={`/collection/${slug(collection)}/${post.slug}`}
               />
             </li>
           ))
