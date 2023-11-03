@@ -31,7 +31,7 @@ published: false
 - ✅ Mostrar solo 5 posts en "Más recientes"
 - ✅ Copiar bloque de código
 - ⬜ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
-- ⬜ Hacer responsive la documentación
+- ❌ Hacer responsive la documentación
 - ⬜ Agregar Table of Content (ToC)
 - ✅ Agregar navegación a la documentación
 - ✅ Poder ordernar la documentación
@@ -61,11 +61,12 @@ published: false
 - ✅ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
 - ✅ Renombrar DocsLayout y todos los sub componetnes
 - ✅ Poder tener una estrucura cualquiera en la capeta blog
-- ✅ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
+- ❌ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
 - ⬜ Mover esilos y componentes que se repiten
 - ✅ Filtrar y ordenar posts en las nuevas pages
 - ✅ Todo page
 - ✅ Bug: Production links
 - ⬜ Bug: Pagefind duplicados
 - ✅ Pasar todo a w-3xl
-- ⬜ Agregar Home al navbar
+- ✅ Agregar Home al navbar
+- ✅ Responsive navbar
