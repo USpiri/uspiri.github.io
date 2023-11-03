@@ -30,7 +30,7 @@ const filteredPosts = sortPosts(
     {collection}
   </h3>
   <ul
-    class="space-y-2 mt-1 border-l border-neutral-100 dark:border-neutral-800"
+    class="space-y-2 mt-1 border-l border-neutral-300 dark:border-neutral-800"
   >
     {
       filteredPosts.map((post) => (
@@ -38,8 +38,8 @@ const filteredPosts = sortPosts(
           <a
             class={`block border-l pl-4 -ml-px ${
               currentPage === `/collections/${collectionParam}/${post.slug}`
-                ? "border-neutral-400 dark:border-neutral-500 text-neutral-900 dark:text-neutral-400 font-medium"
-                : "border-transparent text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-400 hover:font-medium"
+                ? "border-neutral-400 dark:border-neutral-500 text-neutral-900 dark:text-neutral-400 font-medium border-l-2"
+                : "border-transparent text-neutral-700 dark:text-neutral-400 hover:border-l-2 hover:border-neutral-400 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-400 hover:font-medium"
             }`}
             href={`/collections/${slug(collection ?? "")}/${post.slug}`}
           >
