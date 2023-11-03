@@ -1,14 +1,15 @@
 ---
 import Markdown from "@components/markdown/Markdown.astro";
 import CollectionLayout from "@layouts/CollectionLayout.astro";
+import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const posts = (await getCollection("blog")).filter(
-    (post) => post.data.collection !== undefined
-  );
+  const posts = sortPosts(await getCollection("blog"), {
+    filterNonPublished: false,
+  }).filter((post) => post.data.collection !== undefined);
   return posts.map((post) => {
     return {
       params: {

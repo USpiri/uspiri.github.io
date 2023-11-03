@@ -1,4 +1,5 @@
 ---
+import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import { type CollectionEntry, getCollection } from "astro:content";
 
@@ -18,8 +19,9 @@ const { collection: collectionParam } = Astro.params;
 const collection = collections.find(
   (col) => slug(col ?? "") === collectionParam
 );
-const filteredPosts = posts.filter(
-  (post) => slug(post.data.collection ?? "") === collectionParam
+const filteredPosts = sortPosts(
+  posts.filter((post) => slug(post.data.collection ?? "") === collectionParam),
+  { filterNonPublished: false, sortDirection: "ASC" }
 );
 ---
 

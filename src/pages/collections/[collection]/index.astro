@@ -2,6 +2,7 @@
 import NavigationCard from "@components/NavigationCard.astro";
 import Subtitle from "@components/Subtitle.astro";
 import CollectionLayout from "@layouts/CollectionLayout.astro";
+import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -13,8 +14,11 @@ export const getStaticPaths = (async () => {
   ].filter((collection) => collection !== undefined);
 
   return collections.map((collection) => {
-    const filteredPosts = posts.filter(
-      (post) => slug(post.data.collection ?? "") === slug(collection ?? "")
+    const filteredPosts = sortPosts(
+      posts.filter(
+        (post) => slug(post.data.collection ?? "") === slug(collection ?? "")
+      ),
+      { filterNonPublished: false, sortDirection: "ASC" }
     );
     return {
       params: {
