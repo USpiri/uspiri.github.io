@@ -35,7 +35,7 @@ published: false
 - ⬜ Agregar Table of Content (ToC)
 - ✅ Agregar navegación a la documentación
 - ✅ Poder ordernar la documentación
-- ⬜ Agregar paginación el la página de blogs
+- ⬜ Agregar paginación a página de blogs
 - ⬜ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
 - ✅ Mover Aside de la documentación a un componente separado
@@ -48,7 +48,7 @@ published: false
 - ✅ Agregar snippets y mini notes. [Ejemplo](https://onebite.dev/series)
 - ✅ Analizar diseño [GNDX](https://ev0.gndx.io/)
 - ✅ Bug: El sidebar dejó de funcionar
-- ⬜ Bug: Sidebar item border no se ve bien en light theme
+- ✅ Bug: Sidebar item border no se ve bien en light theme
 - ✅ Analizar implementación del sidebar [Hallotham](https://github.com/hellotham/hello-astro/blob/main/src/components/leftsidebar.astro)
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
 - ❌ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
