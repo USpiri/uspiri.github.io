@@ -1,0 +1,37 @@
+---
+import NavigationCard from "@components/NavigationCard.astro";
+import Subtitle from "@components/Subtitle.astro";
+import Layout from "@layouts/Layout.astro";
+import { capitalize, slug } from "@utils/utils";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const collections = [
+  ...new Set(posts.map((post) => post.data.collection)),
+].filter((collection) => collection !== undefined);
+---
+
+<Layout
+  title="Colecciones de contenido | Uriel Spiridione"
+  description="Posts agupados en colecciones "
+>
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <section class="max-w-2xl w-full my-20">
+      <Subtitle>Colecciones</Subtitle>
+      <ul class="flex flex-col gap-3 px-5 mt-8">
+        {
+          collections.map((collection) => (
+            <li>
+              <NavigationCard
+                label={capitalize(collection ?? "")}
+                href={`collections/${slug(collection ?? "")}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

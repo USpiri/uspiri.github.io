@@ -1,0 +1,47 @@
+---
+import Markdown from "@components/markdown/Markdown.astro";
+import CollectionLayout from "@layouts/CollectionLayout.astro";
+import { slug } from "@utils/utils";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const posts = (await getCollection("blog")).filter(
+    (post) => post.data.collection !== undefined
+  );
+  return posts.map((post) => {
+    return {
+      params: {
+        collection: slug(post.data.collection ?? ""),
+        slug: post.slug,
+      },
+      props: { post, collection: post.data.collection },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  collection: string;
+}
+
+const { post, collection } = Astro.props;
+const { Content } = await post.render();
+---
+
+<CollectionLayout
+  title={`${collection} | ${post.data.title}`}
+  description={post.data.description}
+>
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
+  >
+    <Markdown
+      title={post.data.title}
+      description={post.data.description}
+      id={post.id}
+    >
+      <Content />
+    </Markdown>
+  </main>
+</CollectionLayout>
