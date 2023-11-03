@@ -1,28 +1,69 @@
 ---
+import HomeIcon from "@components/icons/HomeIcon.astro";
+import DevlyIcon from "@components/icons/DevlyIcon.astro";
 import SearchButton from "./SearchButton.astro";
 import ThemeButton from "./ThemeButton.astro";
 import LinkButton from "@components/LinkButton.astro";
+import Button from "@components/Button.astro";
+import MenuIcon from "@components/icons/MenuIcon.astro";
 ---
 
 <nav
-  class="h-16 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full flex items-center px-8 justify-between text-neutral-900 dark:text-neutral-200"
+  class="sm:h-16 py-3 sm:py-0 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full px-2 sm:px-8 text-neutral-700 dark:text-neutral-400 flex items-center"
 >
-  <a href="/">
-    <span class="font-semibold text-xl">🖥️ Mini Blog</span>
-  </a>
-  <div class="flex items-start gap-3">
-    <nav class="flex gap-3">
-      <LinkButton href="/blog" class="h-9 flex items-center px-2">
-        Blog
-      </LinkButton>
-      <LinkButton href="/collections" class="h-9 flex items-center px-2">
-        Collections
-      </LinkButton>
-      <LinkButton href="/snippet" class="h-9 flex items-center px-2">
-        Snippets
-      </LinkButton>
-    </nav>
-    <SearchButton />
-    <ThemeButton />
+  <div class="sm:flex items-center justify-between w-full">
+    <div class="flex flex-1 sm:flex-none items-center">
+      <Button class="block sm:hidden" id="menu">
+        <MenuIcon class="h-7" />
+      </Button>
+      <a
+        href="/"
+        class="flex flex-1 sm:flex-none gap-2 items-center justify-center"
+        ><DevlyIcon class="h-5" />
+        <span class="font-semibold text-xl"> Uriel Spiridione</span>
+      </a>
+    </div>
+    <div
+      class="flex flex-col sm:flex-row sm:flex-1 gap-5 sm:gap-1 md:gap-3 overflow-hidden sm:h-full max-h-0 sm:max-h-none navmenu-toggle"
+      id="navmenu-toggle"
+    >
+      <div
+        class="flex flex-col sm:flex-row gap-1 md:gap-3 px-5 sm:px-0 mt-5 sm:mt-0 sm:flex-1 md:justify-center sm:justify-end"
+      >
+        <LinkButton href="/blog" class="h-9 flex items-center px-2">
+          <span class="text-sm md:text-base">Blog</span>
+        </LinkButton>
+        <LinkButton href="/collections" class="h-9 flex items-center px-2">
+          <span class="text-sm md:text-base">Collections</span>
+        </LinkButton>
+        <LinkButton href="/snippet" class="h-9 flex items-center px-2">
+          <span class="text-sm md:text-base">Snippets</span>
+        </LinkButton>
+      </div>
+      <div class="flex justify-around items-start sm:gap-1 md:gap-3">
+        <LinkButton href="/" class="h-9 px-1 flex items-center">
+          <HomeIcon class="w-7" />
+        </LinkButton>
+        <SearchButton />
+        <ThemeButton />
+      </div>
+    </div>
   </div>
 </nav>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const menuButton = document.getElementById("menu");
+    const toggle = document.getElementById("navmenu-toggle");
+    menuButton?.addEventListener("click", () => {
+      toggle?.classList.toggle("height-transition");
+    });
+  });
+</script>
+<style>
+  .navmenu-toggle {
+    transition: max-height 0.3s linear;
+  }
+  .height-transition {
+    max-height: 200px;
+  }
+</style>
