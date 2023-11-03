@@ -65,3 +65,6 @@ published: false
 - ⬜ Mover esilos y componentes que se repiten
 - ✅ Filtrar y ordenar posts en las nuevas pages
 - ✅ Todo page
+- ✅ Bug: Production links
+- ⬜ Bug: Pagefind duplicados
+- ⬜ Pasar todo a w-3xl
