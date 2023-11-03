@@ -67,5 +67,5 @@ published: false
 - ✅ Todo page
 - ✅ Bug: Production links
 - ⬜ Bug: Pagefind duplicados
-- ⬜ Pasar todo a w-3xl
+- ✅ Pasar todo a w-3xl
 - ⬜ Agregar Home al navbar
