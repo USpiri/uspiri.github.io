@@ -4,6 +4,7 @@ date: 2023-10-17
 description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
 draft: false
+collection: Mini Blog
 ---
 
 > **✅ Completadas. 🟦 En progreso. ⬜ Pendientes**
@@ -60,3 +61,4 @@ draft: false
 - ⬜ Renombrar DocsLayout y todos los sub componetnes
 - ⬜ Poder tener una estrucura cualquiera en la capeta blog
 - ⬜ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
+- ⬜ Mover esilos y componentes que se repiten

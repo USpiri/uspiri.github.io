@@ -2,9 +2,7 @@
 title: "Pipes y Observables"
 description: "Recomendaciones en el uso de Pipes y Observables en Angular"
 draft: false
-order: 6
-next: "typescript"
-prev: "folder-structure"
+collection: Buenas Prácticas en Angular
 date: 2023-10-11
 ---
 
@@ -55,7 +53,7 @@ Una buena recomendación es que (Por más que Angular por defecto se desuscriba 
 En caso de necesitar una constante actualización de los datos utilizaremos el ngOnDestroy para desuscribirse del observable.
 
 ```ts
-private subs: Subscription | undefined;
+const subs: Subscription | undefined;
 
 ngOnDestroy(){
   if (this.subs){
