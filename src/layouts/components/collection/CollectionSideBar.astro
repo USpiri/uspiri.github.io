@@ -21,7 +21,6 @@ const collection = collections.find(
 const filteredPosts = posts.filter(
   (post) => slug(post.data.collection ?? "") === collectionParam
 );
-console.log(collectionParam);
 ---
 
 <article class="px-8">
