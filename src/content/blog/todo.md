@@ -64,3 +64,4 @@ published: false
 - ✅ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
 - ⬜ Mover esilos y componentes que se repiten
 - ✅ Filtrar y ordenar posts en las nuevas pages
+- ✅ Todo page
