@@ -5,16 +5,29 @@ import Markdown from "@components/markdown/Markdown.astro";
 interface Props {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   date?: Date;
   tags?: string[];
   pageFind?: boolean;
+  seoDescription?: string;
+  hideLinks?: boolean;
 }
 
-const { id, title, description, date, tags, pageFind } = Astro.props;
+const {
+  id,
+  title,
+  description,
+  date,
+  tags,
+  pageFind,
+  seoDescription,
+  hideLinks = false,
+} = Astro.props;
+
+console.log(description);
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={seoDescription ?? description ?? ""}>
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
   >
@@ -25,6 +38,7 @@ const { id, title, description, date, tags, pageFind } = Astro.props;
       date={date}
       tags={tags}
       pageFind={pageFind}
+      hideLinks={hideLinks}
     >
       <slot />
     </Markdown>

@@ -5,7 +5,7 @@ import ShareLinks from "@components/ShareLinks.astro";
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   tags?: string[];
   date?: Date;
   hideLinks?: boolean;
@@ -23,9 +23,13 @@ const { title, description, tags, date, hideLinks = false } = Astro.props;
   )
 }
 <h1 class="text-4xl font-bold mb-3">{title}</h1>
-<p class="mb-3 text-base font-semibold dark:text-neutral-400 text-neutral-500">
-  {description}
-</p>
+{
+  description !== undefined && (
+    <p class="mb-3 text-base font-semibold dark:text-neutral-400 text-neutral-500">
+      {description}
+    </p>
+  )
+}
 {
   !hideLinks && (
     <aside class="flex gap-2 justify-end" data-pagefind-ignore>

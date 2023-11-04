@@ -4,7 +4,7 @@ import MarkdownHeader from "./MarkdownHeader.astro";
 interface Props {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   date?: Date;
   tags?: string[];
   hideHeader?: boolean;
@@ -40,7 +40,11 @@ const {
             tags={tags}
             hideLinks={hideLinks}
           />
-          <hr class="mb-5 mt-3 dark:border-neutral-500 border-neutral-400" />
+          <hr
+            class={`mb-5 mt-3 dark:border-neutral-500 border-neutral-400 ${
+              description === undefined ? "mt-6" : ""
+            }`}
+          />
         </>
       )
     }
