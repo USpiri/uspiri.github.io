@@ -57,7 +57,7 @@ published: false
 - ⬜ Paginar posts
 - ⬜ Filtrar posts
 - ✅ Eliminar docs del navbar
-- 🟦 Agregar Daily Layouot y pages
+- ✅ Agregar Daily Layouot y pages
 - ⬜ Agregar Daily al navbar
 - ✅ Comportamiento del sidebar: Mostrar "Serie" como título y abajo cada post
 - ✅ Renombrar DocsLayout y todos los sub componetnes
@@ -71,3 +71,4 @@ published: false
 - ✅ Pasar todo a w-3xl
 - ✅ Agregar Home al navbar
 - ✅ Responsive navbar
+- ⬜ Hacer footer

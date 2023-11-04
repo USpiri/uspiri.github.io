@@ -1,0 +1,19 @@
+---
+title: Math.random() vs Crypto.getRandomValue()
+date: 2023-11-03
+description: Comparación entre Math.random() y Crypto.getRandomValue()
+draft: false
+---
+
+- [Math.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) no provee de números aleatorios criptográficamente seguros.
+
+- [Crypto.getRandomValues()](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues) devuelve valores aleatorios y seguros.
+
+`Math.random()` realmente es un generados de números pseudoaleatorios [(PRNG)](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). El número aleatorio se deriva de un estado interno del dispositivo que es modificado mediante un algoritmo fijo para cada nuevo número aleatorio. El resultado es una secuencia de numeros determinista.
+
+`Crypto.getRandomValues()` utiliza fuentes de entropía seguras del sistema subyacente (como el generador de números aleatorios del sistema operativo), para generar números aleatorios que son adecuados para aplicaciones que requieren alta seguridad. Este _extra de seguridad_ pueden llevar a una ejecución más lenta en comparación con métodos más simples.
+
+```js
+crypto.getRandomValues(new Uint8Array(10));
+// Uint8Array(10) [85, 215, 117, 156, 114, 11, 222, 34, 65, 119]
+```
