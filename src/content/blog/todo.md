@@ -30,7 +30,7 @@ published: false
 - ✅ Agregar "Previus y next post" o componentes para redirigir a otros artículos de la documentación
 - ✅ Mostrar solo 5 posts en "Más recientes"
 - ✅ Copiar bloque de código
-- ⬜ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
+- ✅ Fix fechas: la card dice Oct. 20 pero el doc tiene fecha Oct. 21
 - ❌ Hacer responsive la documentación
 - ❌ Agregar Table of Content (ToC)
 - ✅ Agregar navegación a la documentación
@@ -71,3 +71,6 @@ published: false
 - ✅ Agregar Home al navbar
 - ✅ Responsive navbar
 - ⬜ Hacer footer
+- ⬜ Cambiar favicon
+- ⬜ Agregar About
+- ⬜ Mejorar Home
