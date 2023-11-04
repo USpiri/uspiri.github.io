@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props extends HTMLAttributes<"a"> {
+  title: string;
+  date: Date;
+}
+
+const { title, date, ...props } = Astro.props;
+---
+
+<a
+  class="flex gap-3 hover:scale-[101%] transition-all hover:bg-neutral-200/50 dark:hover:bg-neutral-800 rounded-md px-2 text-sm md:text-base"
+  {...props}
+>
+  <span
+    class="text-neutral-500 dark:text-neutral-400 font-medium whitespace-nowrap"
+  >
+    <FormattedDate date={date} />
+  </span>
+  <span>-</span>
+  <h3 class="font-semibold">{title}</h3>
+</a>
