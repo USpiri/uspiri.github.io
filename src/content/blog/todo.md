@@ -71,6 +71,6 @@ published: false
 - ✅ Agregar Home al navbar
 - ✅ Responsive navbar
 - ⬜ Hacer footer
-- ⬜ Cambiar favicon
+- ✅ Cambiar favicon
 - ⬜ Agregar About
 - ⬜ Mejorar Home
