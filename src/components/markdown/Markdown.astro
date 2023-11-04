@@ -50,12 +50,16 @@ const {
     }
   </header>
   <article
-    class="min-w-full relative rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-2 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0 first:prose-p:mt-3"
+    class="markdown-article min-w-full relative rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-5 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0"
   >
     <slot />
   </article>
 </section>
 <style is:global lang="scss">
+  .markdown-article {
+    @apply prose-headings:mt-6 prose-hr:mb-8 first:prose-headings:mt-0;
+  }
+
   code {
     &:not(pre code) {
       @apply dark:bg-neutral-900 bg-neutral-200/75 rounded-md px-1;

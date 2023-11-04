@@ -36,12 +36,12 @@ published: false
 - ✅ Agregar navegación a la documentación
 - ✅ Poder ordernar la documentación
 - ⬜ Agregar paginación a página de blogs
-- ⬜ Agregar margin a FileTree component
+- ❌ Agregar margin a FileTree component
 - ⬜ Mejorar el uso de ViewTransitions
 - ✅ Mover Aside de la documentación a un componente separado
 - ✅ Analizar la creación de "Today i learned" como "Mini notas" [TIL - Peter Mekhaeil](https://petermekhaeil.com/today-i-learned/)
-- ⬜ Ajustar margen de los títulos markdown
-- ⬜ Ajustar margen de los \<hr\>
+- ✅ Ajustar margen de los títulos markdown
+- ✅ Ajustar margen de los \<hr\>
 - ✅ Bug: El markdown aparece en la barra de navegación de la documentación al navegar a otro link
 - ✅ Cambiar a modelo de un solo esquema, dividido por categorías e implementar "series"
   - Series: conjunto de posts que pueden no estar públicos (o sí) pero pertenecen a un mismo grupo (no necesariamente de la misma categoría). Ej.: la serie "Buenas prácticas en angular" con todos los posts relacionados a esta serie.
@@ -54,8 +54,7 @@ published: false
 - ❌ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
 - ✅ Mover todos los archivos a la carpeta blog
 - ✅ Mover Docs la carpeta blogs pero con la configuración adecuada.
-- ⬜ Paginar posts
-- ⬜ Filtrar posts
+- ✅ Filtrar posts
 - ✅ Eliminar docs del navbar
 - ✅ Agregar Daily Layouot y pages
 - ⬜ Agregar Daily al navbar
