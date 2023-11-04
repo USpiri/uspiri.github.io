@@ -70,7 +70,7 @@ published: false
 - ✅ Pasar todo a w-3xl
 - ✅ Agregar Home al navbar
 - ✅ Responsive navbar
-- ⬜ Hacer footer
+- ✅ Hacer footer
 - ✅ Cambiar favicon
 - ⬜ Agregar About
 - ⬜ Mejorar Home
