@@ -7,71 +7,87 @@ const year = new Date().getFullYear();
 ---
 
 <footer
-  class="mb-8 font-bold text-neutral-500 px-5 flex flex-col items-center gap-4"
+  class="mb-8 text-neutral-500 text-sm px-5 flex flex-col items-center gap-4"
 >
-  <div class="flex items-center gap-3 flex-col sm:flex-row">
+  <div class="flex items-center gap-4 flex-col sm:flex-row">
     <header class="flex items-center gap-3">
       <div class="avatar"></div>
-      <p class="text-lg font-medium">Uriel Spiridione | Devlyz</p>
+      <p class="text-lg font-bold">Uriel Spiridione | Devlyz</p>
     </header>
-    <section class="flex gap-3">
+    <section class="flex gap-4 items-center">
       <a
         href="/rss.xml"
         target="_blank"
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
       >
-        <RssIcon class="h-5" />
+        <RssIcon class="h-6" />
       </a>
       <a
         href="https://github.com/USpiri/"
         target="_blank"
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
       >
-        <GithubIcon class="h-5" />
+        <GithubIcon class="h-6" />
       </a>
       <a
         href="https://www.linkedin.com/in/urielspiridione/"
         target="_blank"
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
       >
-        <LinkedinIcon class="h-5" />
+        <LinkedinIcon class="h-6" />
       </a>
       <a
         href="https://twitter.com/UrielSpiridione"
         target="_blank"
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
       >
-        <XTwitterIcon class="h-5" />
+        <XTwitterIcon class="h-6" />
       </a>
     </section>
   </div>
   <div class="flex items-center flex-col gap-2">
     <section>
       <ul class="flex flex-wrap gap-x-3 justify-center">
-        <li><p class="font-semibold">Web:</p></li>
+        <li><p class="font-medium">Web:</p></li>
         <li>
-          <a href="/" class="hover:text-neutral-400 transition-all">Home</a>
+          <a
+            href="/"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+            >Home</a
+          >
         </li>
         <li>
-          <a href="/blog" class="hover:text-neutral-400 transition-all">Blog</a>
+          <a
+            href="/blog"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+            >Blog</a
+          >
         </li>
         <li>
-          <a href="/snippet" class="hover:text-neutral-400 transition-all"
+          <a
+            href="/snippet"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
             >Snippets</a
           >
         </li>
         <li>
-          <a href="/collections" class="hover:text-neutral-400 transition-all"
+          <a
+            href="/collections"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
             >Collections</a
           >
         </li>
         <li>
-          <a href="/daily" class="hover:text-neutral-400 transition-all"
+          <a
+            href="/daily"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
             >Daily</a
           >
         </li>
         <li>
-          <a href="/todo" class="hover:text-neutral-400 transition-all"
+          <a
+            href="/todo"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
             >Teareas pendientes</a
           >
         </li>
@@ -80,12 +96,12 @@ const year = new Date().getFullYear();
     <section>
       <ul class="flex flex-wrap gap-x-3 justify-center">
         <li>
-          <p class="font-semibold">Recursos:</p>
+          <p class="font-medium">Recursos:</p>
         </li>
         <li>
           <a
             href="/rss.xml"
-            class="hover:text-neutral-400 transition-all"
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
             target="_blank">Rss</a
           >
         </li>
@@ -93,13 +109,17 @@ const year = new Date().getFullYear();
           <a
             href="https://github.com/USpiri/uspiri.github.io"
             target="_blank"
-            class="hover:text-neutral-400 transition-all">Source code</a
+            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+            >Source code</a
           >
         </li>
       </ul>
     </section>
   </div>
-  <p class="text-center text-sm">&copy; {year} Uriel Spiridione</p>
+  <p class="text-center text-sm">
+    &copy; {year}
+    <span class="font-semibold"> Uriel Spiridione</span>
+  </p>
 </footer>
 
 <style lang="scss">
@@ -107,7 +127,7 @@ const year = new Date().getFullYear();
     width: 25px;
     height: 25px;
     border-radius: 100%;
-    @apply bg-neutral-700 dark:bg-neutral-900 border border-neutral-600 relative;
+    @apply bg-neutral-600 dark:bg-neutral-900 border border-neutral-600 relative;
     &::before {
       content: "";
       height: 4px;
