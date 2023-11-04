@@ -1,0 +1,45 @@
+---
+import Daily from "@components/Daily.astro";
+import Subtitle from "@components/Subtitle.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const dailyList = (await getCollection("daily")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout
+  title="Snippets | Uriel Spiridione"
+  description="Fragmentos de código de distintos lenguajes de programación"
+>
+  <main
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+  >
+    <section class="max-w-3xl w-full my-20">
+      <Subtitle>Daily Notes</Subtitle>
+      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
+        Daily es una colección de pequeñas notas que voy haciendo dia a dia.
+        Estas notas son menos formales que los artículos principales y pueden
+        ser utilizadas como referencias o como punto de partida para la creación
+        de otros contenidos.
+      </p>
+      <p class="mt-4 px-5 ms-2 text-neutral-600 dark:text-neutral-400">
+        <strong>{dailyList.length}</strong> Notas y contando
+      </p>
+      <ul class="flex flex-col px-5 mt-8 gap-1">
+        {
+          dailyList.map((daily) => (
+            <li>
+              <Daily
+                title={daily.data.title}
+                date={daily.data.date}
+                href={`/daily/${daily.slug}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

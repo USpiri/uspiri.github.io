@@ -1,0 +1,34 @@
+---
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const dailyList = await getCollection("daily");
+  return dailyList.map((daily) => {
+    return {
+      params: {
+        slug: daily.slug,
+      },
+      props: { daily },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  daily: CollectionEntry<"daily">;
+}
+
+const { daily } = Astro.props;
+const { Content } = await daily.render();
+---
+
+<MarkdownLayout
+  id={daily.id}
+  title={daily.data.title}
+  seoDescription={daily.data.description}
+  date={daily.data.date}
+  hideLinks
+>
+  <Content />
+</MarkdownLayout>
