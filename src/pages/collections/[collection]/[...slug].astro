@@ -1,6 +1,6 @@
 ---
 import Markdown from "@components/markdown/Markdown.astro";
-import CollectionLayout from "@layouts/CollectionLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
@@ -30,7 +30,7 @@ const { post, collection } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<CollectionLayout
+<Layout
   title={`${collection} | ${post.data.title}`}
   description={post.data.description}
 >
@@ -46,4 +46,4 @@ const { Content } = await post.render();
       <Content />
     </Markdown>
   </main>
-</CollectionLayout>
+</Layout>

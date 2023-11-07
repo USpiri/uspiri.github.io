@@ -1,7 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
 import Subtitle from "@components/Subtitle.astro";
-import CollectionLayout from "@layouts/CollectionLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
@@ -35,10 +35,9 @@ interface Props {
 }
 
 const { collection, posts } = Astro.props;
-const { collection: collectionParam } = Astro.params;
 ---
 
-<CollectionLayout title="Title" description="desc">
+<Layout title="Title" description="desc">
   <main
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
@@ -58,4 +57,4 @@ const { collection: collectionParam } = Astro.params;
       </ul>
     </section>
   </main>
-</CollectionLayout>
+</Layout>
