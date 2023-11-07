@@ -3,7 +3,7 @@ title: "Full markdown"
 description: "Archivo Markdown de prueba con la mayoría de componentes Markdown"
 date: 2023-10-11
 draft: false
-collection: Mini Blog
+collection: Blog
 published: false
 ---
 

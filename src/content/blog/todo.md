@@ -4,7 +4,7 @@ date: 2023-10-17
 description: "Lista de tareas de Mini Blog"
 tags: ["todo"]
 draft: false
-collection: Mini Blog
+collection: Blog
 published: false
 ---
 
@@ -72,5 +72,9 @@ published: false
 - ✅ Responsive navbar
 - ✅ Hacer footer
 - ✅ Cambiar favicon
-- ⬜ Agregar About
-- ⬜ Mejorar Home
+- ✅ Agregar About
+- ✅ Mejorar Home
+- 🟦 Mejorar la accesibilidad
+- 🟦 Revisar uso de colores de fuente
+- ⬜ Revisar collection layout (Posibilidad de eliminarlo)
+- 🟦 Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
