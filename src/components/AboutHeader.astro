@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import XTwitterIcon from "./icons/XTwitterIcon.astro";
+---
+
+<header class="flex flex-col-reverse md:flex-row justify-around px-5 gap-3">
+  <div>
+    <h1 class="text-4xl font-bold">Uriel Spiridione</h1>
+    <h2 class="font-semibold text-neutral-400 mt-3">
+      Full stack web developer
+    </h2>
+    <p>
+      Desarrollador Front-End especializado en Angular con pasión por el
+      aprendizaje y la creación de experiencias web únicas y funcionales.
+    </p>
+    <p class="mt-2">Blog personal</p>
+    <div class="flex gap-4 items-center mt-3">
+      <a
+        href="https://github.com/USpiri/"
+        target="_blank"
+        class="rounded-lg transition-all hover:scale-110 active:scale-90"
+      >
+        <GithubIcon class="h-6" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/urielspiridione/"
+        target="_blank"
+        class="rounded-lg transition-all hover:scale-110 active:scale-90"
+      >
+        <LinkedinIcon class="h-6" />
+      </a>
+      <a
+        href="https://twitter.com/UrielSpiridione"
+        target="_blank"
+        class="rounded-lg transition-all hover:scale-110 active:scale-90"
+      >
+        <XTwitterIcon class="h-6" />
+      </a>
+    </div>
+  </div>
+  <div class="sm:flex justify-center hidden md:block sm:mb-8 md:mb-0">
+    <Image
+      src="/profile.jpg"
+      alt="Uriel Spiridione profile image"
+      width="220"
+      height="220"
+      class="rounded-lg"
+    />
+  </div>
+</header>
