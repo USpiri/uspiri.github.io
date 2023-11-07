@@ -5,6 +5,10 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import PostDivider from "@components/PostDivider.astro";
 import Subtitle from "@components/Subtitle.astro";
 import { sortPosts } from "@utils/sort";
+import Aside from "@components/Aside.astro";
+import NavigationCard from "@components/NavigationCard.astro";
+import LinkButton from "@components/LinkButton.astro";
+import AboutHeader from "@components/AboutHeader.astro";
 interface Props {
   posts: CollectionEntry<"blog">[];
 }
@@ -17,10 +21,13 @@ const posts = sortPosts(await getCollection("blog"), { limit: 5 });
   description="Blog y repositorio personal hecho con astro"
 >
   <main
-    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
+    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-20"
   >
-    <section class="max-w-3xl w-full my-20">
-      <Subtitle>Más recientes</Subtitle>
+    <section class="max-w-3xl w-full mb-16 md:mb-24">
+      <AboutHeader />
+    </section>
+    <section class="max-w-3xl w-full">
+      <Subtitle>Posteos más recientes</Subtitle>
       <ul class="mt-8 px-2 md:px-0">
         {
           posts.map((post, i) => (
@@ -31,6 +38,34 @@ const posts = sortPosts(await getCollection("blog"), { limit: 5 });
           ))
         }
       </ul>
+      <div class="flex justify-end m-3 md:mx-0">
+        <LinkButton href="/blog" class="pt-1 px-2">Ver más...</LinkButton>
+      </div>
+    </section>
+    <section class="max-w-3xl w-full mt-16">
+      <Subtitle>Colecciones</Subtitle>
+      <div class="mt-10 px-3 md:px-0">
+        <NavigationCard
+          label="Buenas prácticas en Angular"
+          href="/collections/buenas-practicas-en-angular"
+        />
+      </div>
+      <div class="flex justify-end m-3 md:mx-0">
+        <LinkButton href="/collections" class="pt-1 px-2">
+          Ver más...
+        </LinkButton>
+      </div>
+    </section>
+    <section class="max-w-3xl w-full mt-8 px-3 md:px-0">
+      <Aside title="Nota:">
+        <div class="flex flex-col gap-3">
+          <p class="text-base font-medium">
+            Este sitio se encuentra en desarrollo, puedes ver una lista de
+            progreso en el siguiente enlace:
+          </p>
+          <NavigationCard label="Lista de tareas" href="/todo" />
+        </div>
+      </Aside>
     </section>
   </main>
 </Layout>
