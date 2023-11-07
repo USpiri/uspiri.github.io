@@ -10,13 +10,12 @@ interface Props extends HTMLAttributes<"a"> {
 const { label, type = "next" } = Astro.props;
 ---
 
-<a class="flex-[1_0_40%] not-prose" {...Astro.props}>
-  <article
-    class={`transition-all border rounded-lg py-3 px-4 dark:border-neutral-700 dark:hover:bg-neutral-800 hover:bg-neutral-200 flex items-center justify-between ${
-      type !== "next" ? "flex-row-reverse" : ""
-    }`}
-  >
-    <p class="text-xl font-semibold line-clamp-1">{label}</p>
-    {type === "next" ? <NavigationNextIcon /> : <NavigationPrevIcon />}
-  </article>
+<a
+  class={`flex-[1_0_40%] not-prose border rounded-lg py-3 px-4 dark:border-neutral-700 hover:bg-neutral-500/10 transition-all flex items-center justify-between ${
+    type !== "next" ? "flex-row-reverse" : ""
+  }`}
+  {...Astro.props}
+>
+  <p class="text-xl font-semibold line-clamp-1">{label}</p>
+  {type === "next" ? <NavigationNextIcon /> : <NavigationPrevIcon />}
 </a>
