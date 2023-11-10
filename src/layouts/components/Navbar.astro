@@ -6,6 +6,8 @@ import ThemeButton from "./ThemeButton.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Button from "@components/Button.astro";
 import MenuIcon from "@components/icons/MenuIcon.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <nav
@@ -32,13 +34,29 @@ import MenuIcon from "@components/icons/MenuIcon.astro";
         class="flex flex-col sm:flex-row gap-1 md:gap-3 px-5 sm:px-0 mt-5 sm:mt-0 sm:flex-1 md:justify-center sm:justify-end"
       >
         <LinkButton href="/blog" class="h-9 flex items-center px-2">
-          <span class="text-sm md:text-base">Blog</span>
+          <span
+            class={`${
+              currentPath === "/blog" ? "text-neutral-200 transition-all" : ""
+            } text-sm md:text-base`}>Blog</span
+          >
         </LinkButton>
         <LinkButton href="/collections" class="h-9 flex items-center px-2">
-          <span class="text-sm md:text-base">Collections</span>
+          <span
+            class={`${
+              currentPath === "/collections"
+                ? "text-neutral-200 transition-all"
+                : ""
+            } text-sm md:text-base`}>Collections</span
+          >
         </LinkButton>
         <LinkButton href="/snippet" class="h-9 flex items-center px-2">
-          <span class="text-sm md:text-base">Snippets</span>
+          <span
+            class={`${
+              currentPath === "/snippet"
+                ? "text-neutral-200 transition-all"
+                : ""
+            } text-sm md:text-base`}>Snippets</span
+          >
         </LinkButton>
       </div>
       <div class="flex justify-around items-start sm:gap-1 md:gap-3">
