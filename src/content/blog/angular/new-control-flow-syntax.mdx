@@ -1,0 +1,231 @@
+---
+title: "Introducción a la @-syntax de Angular | Angular 17 Update"
+description: "Primer aproximación a la nueva sintaxis de Angular, sus beneficios y cómo transforma la experiencia de desarrollo"
+draft: false
+published: true
+tags: ["angular"]
+date: 2023-11-09
+---
+
+import Tabs from "@components/tabs/Tabs.astro";
+import TabItem from "@components/tabs/TabItem.astro";
+
+La versión 17 de Angular ya está aquí y nos introduce la nueva sintaxis llamada @-syntax que busca redefinir cómo los desarrolladores interactuamos con el framework.Esta nueva forma de redactar las templates viene a reemplazar los tradicionales `*ngIf, *ngFor, *ngSwitch` y olvidarnos de los elementos `<ng-template>` y `<ng-container>` en nuestras aplicaciones.
+
+Esta nueva sintaxis promete simplificar y modernizar la forma en la que trabajamos con Angular e incluso mejorar el rendimiento de nuestra aplicación.
+
+## Ventajas
+
+La nueva @-syntax pone importantes beneficios que tener en cuenta:
+
+- Mejoras en la Legibilidad: La sintaxis es más declarativa haciendo más facil de leer la lógica del template para los desarrolladores.
+- Mejora en la eficiencia: Disminuye la cantidad de boilerplate y aprovecha el nuevo sistema de detección de cambios sin zone.js.
+- Soporte para lazy components (`@defer`): Esta nueva adición permite renderizar componentes bajo condiciones especificas.
+
+## Estrucutra condicional @if
+
+Anteriormente, para renderizar condicionalmente un componente u otro en el DOM, utilizaríamos la directiva `*ngIf`. El nuevo `@if` aprovecha el nuevo sistema de detección de cambios basado en signals.
+
+<Tabs>
+
+<TabItem label="@if">
+
+```html
+@if (show) {
+  <span>Inside if</span>
+} @else if (showAnotherIf) {
+  <span>Inside else if</span>
+} @else {
+  <span>Inside else</span>
+}
+```
+
+</TabItem>
+
+<TabItem label="*ngIf">
+
+```html
+<ng-container *ngIf="show; else elseTemplate">
+  <span>Inside if</span>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <ng-container *ngIf="show; else anotherElseTemplate">
+    <span>Inside if</span>
+  </ng-container>
+
+  <ng-template #anotherElseTemplate>
+    <span>Inside else</span>
+  </ng-template>
+</ng-template>
+```
+
+</TabItem>
+
+<TabItem label="component.ts">
+
+```ts
+@Component({
+  selector: 'some-component',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './some.component.html',
+  styleUrls: ['./some.component.scss'],
+})
+export class SomeComponent {
+  show = true;
+  showAnotherIf = false;
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+Esta nueva sintaxis acepta una condición que al ser vedadera muestra el contenido entre llaves, de lo contrario podemos mostrar lo que se encuentra dentro de las llaves de `@else` o distintos `@else if ()`.
+
+La nueva sintaxis es más concisa, legible e igual o más flexible que antes. Por otro lado evitamos el uso de `<ng-template>` y `<ng-container>` que, muchas veces, no son tan utilizados por los desarrolladores.
+
+## Estrucutra repetitiva @for
+
+The days of *ngFor are numbered as Angular 17 introduces @for. This syntax allows for elegant iteration over lists, bringing along a new block called @empty to handle empty arrays gracefully.
+The *ngFor directive can be replaced by @for, which allows us to render content of a list (iterable) for each item in it. Additionally, the new syntax provides a new block defined as @empty that will be rendered in case the items array is empty.
+The @for structure replaces the *ngFor directive, enabling the rendering of list content for each item in an iterable. It also introduces an @empty block, rendering specific content when the items array is empty.
+
+La estructura `@for` reemplaza a la directiva `*ngFor`, permitiendonos renderizar contenido de un arrelgo o iterable. También provee de un nuevo bloque, definido como `@empty`, que será renderizado en caso de que la lista esté vacía.
+
+<Tabs>
+
+<TabItem label="@for">
+
+```html
+<ul>
+  @for (user of userList; track user.id; let i = $index){
+    <li>{{i}}. {{ user.name }}</li>
+  } @empty {
+    <li>Empty array</li>
+  }
+</ul>
+```
+
+</TabItem>
+
+<TabItem label="*ngFor">
+
+```html
+<ul>
+  <ng-container *ngIf="userList.length; else emptyArray">
+    <li *ngFor="let user of userList; index as i">{{i}}. {{ user.name }}</li>
+  </ng-container>
+  <ng-template #emptyArray>
+    <li>Empty array</li>
+  </ng-template>
+</ul>
+```
+
+</TabItem>
+
+<TabItem label="component.ts">
+
+```ts
+@Component({
+  selector: 'some-component',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './some.component.html',
+  styleUrls: ['./some.component.scss'],
+})
+export class SomeComponent {
+  userList = [{ name: 'Jhon', id:1 }, { name: 'Steve', id:2 }, { name: 'Alex', id:3 }];
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+El bloque `@empty` nos facilita renderizar un elemento especial en caso de que el iterable esté vacío sin la necesidad de agregar un `*ngIf`.
+
+Un punto destacado a mencionar es que ahora `track` es requerido, en este debemos usar id o cualquier otro identificador **único**. Se mantienen las variables implícitas de la estructura como: `$index, $first, $last, $even, $odd`
+
+## Estrucutra de control @switch
+
+El bloque `@switch` toma el lugar de `*ngSwitch`, esta nueva forma de escribir esta estrucura brinda una clara mejora en la legibilidad y elimina la necesidad de contenedores extra para mantener las expresiones de cada condición.
+
+<Tabs>
+
+<TabItem label="@switch">
+
+```html
+@switch (page) {
+  @case (1) {
+    <p>Viewing content of first page</p>
+  }
+  @case (2) {
+    <p>Viewing content of second page</p>
+  }
+  @case (3) {
+    <p>Viewing content of third page</p>
+  }
+  @default {
+    <p>No page selected</p>
+  }
+}
+```
+
+</TabItem>
+
+<TabItem label="*ngSwitch">
+
+```html
+<ng-container [ngSwitch]="page">
+  <ng-container *ngSwitchCase="1">
+    <p>Viewing content of first page</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <p>Viewing content of second page</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="3">
+    <p>Viewing content of third page</p>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <p>No page selected</p>
+  </ng-container>
+</ng-container>
+```
+
+</TabItem>
+
+<TabItem label="component.ts">
+
+```ts
+@Component({
+  selector: 'some-component',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './some.component.html',
+  styleUrls: ['./some.component.scss'],
+})
+export class SomeComponent {
+  page = 2;
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+## Notas importantes
+
+Por último hay unos puntos importantes a saber con el lanzamiento de Angular 17:
+
+- Las directivas `*ngIf`, `*ngFor`, `*ngSwitch` y los elementos `<ng-template>` y `<ng-container>` no están deprecados, siguen siendo soportados por la nueva actualización.
+- Ambas sintaxis son compatibles entre ellas, es decir, se pueden usar ambas simultaneamente.
+- No es solo una nueva sintaxis, sino que trae mejoras en rendimiento, entre un 30% y 90%.
+- Hay otro bloque nuevo introducido del que hablaremos luego (`@defer`)
+- Existe un comando de Angular CLI que ejecuta la migración automáticamente 
+> ```
+> ng g @angular/core:control-flow
+> ```
+
+Las últimas actualizaciones de Angular están cambiando las reglas de juego tradicionales de este framework brindando mejoras significativas y mejorarndo la calidad de desarrollo. Es hora de `ng update`.
