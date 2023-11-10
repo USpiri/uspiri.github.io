@@ -36,14 +36,16 @@ const currentPath = Astro.url.pathname;
         <LinkButton href="/blog" class="h-9 flex items-center px-2">
           <span
             class={`${
-              currentPath === "/blog" ? "text-neutral-200 transition-all" : ""
+              currentPath.includes("/blog")
+                ? "text-neutral-200 transition-all"
+                : ""
             } text-sm md:text-base`}>Blog</span
           >
         </LinkButton>
         <LinkButton href="/collections" class="h-9 flex items-center px-2">
           <span
             class={`${
-              currentPath === "/collections"
+              currentPath.includes("/collections")
                 ? "text-neutral-200 transition-all"
                 : ""
             } text-sm md:text-base`}>Collections</span
@@ -52,7 +54,7 @@ const currentPath = Astro.url.pathname;
         <LinkButton href="/snippet" class="h-9 flex items-center px-2">
           <span
             class={`${
-              currentPath === "/snippet"
+              currentPath.includes("/snippet")
                 ? "text-neutral-200 transition-all"
                 : ""
             } text-sm md:text-base`}>Snippets</span
