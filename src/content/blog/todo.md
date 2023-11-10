@@ -25,7 +25,7 @@ published: false
 - 🟦 Revisar uso de colores de fuente
 - ⬜ Revisar collection layout (Posibilidad de eliminarlo)
 - 🟦 Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
-- ⬜ Desatacar item del navbar de acuerdo al path
+- ✅ Desatacar item del navbar de acuerdo al path
 
 ## Tareas cerradas
 
