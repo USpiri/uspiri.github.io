@@ -10,7 +10,7 @@ import NavigationCard from "@components/NavigationCard.astro";
 
 Las ventanas emergentes, comúnmente conocidas como "dialogs", son parte del desarrollo habitual de interfaces desde hace años. Una ventana de diálogo es un tipo especial de cuadro emergente en una página web. Estos _dialogs_ siempre fueron difíciles de crear o implican la instalación de librerías Javascript que conllevan mayor complejidad y aumentan el tamaño general de la aplicación en desarrollo.
 
-Aquí es donde entra en juego el elemento HTML nativo de los navegadores llamado `<dialog>`, que permite crear estos diálogos sin necesidad de JavaScript o con un mínimo de código. Veamos brevemente cómo se usan.
+Aquí es donde entra en juego el elemento HTML nativo de los navegadores llamado `<dialog>`, que permite generar estos diálogos sin necesidad de JavaScript o con un mínimo de código. Veamos brevemente cómo se usan.
 
 ## La etiqueta `<dialog>`
 
@@ -24,7 +24,7 @@ Un elemento `<dialog>` básico se vería de la siguiente forma, en dónde el con
 
 Por defecto, estos elementos se mantienen ocultos a menos que se les agregue el atributo `open` al dialog, como se ve en el HTML de arriba.
 
-Sin embargo, `open` no es lo recomendado, ya que limita la funcionalidad de estos diálogos. En su lugar, se pueden emplear los métodos `show()` ó `showModal()` con Javascript. Ambos métodos muestran el elemento, pero difieren en que uno permite interactuar con el fondo (`show`) y el otro no (`showModal`).
+Sin embargo, `open` no es lo recomendado, ya que limita la funcionalidad de estos diálogos. En su lugar, se pueden emplear los métodos `show()` o `showModal()` con Javascript. Ambos métodos muestran el elemento, pero difieren en que uno permite interactuar con el fondo (`show`) y el otro no (`showModal`).
 
 ```typescript
 // Obtenemos el elemento "<dialog>" del documento
@@ -152,10 +152,10 @@ Por último, podemos cerrar la ventana presionando la tecla `ESC`. **Pero** pode
 Este botón generalmente se ubicará dentro del dialog, ya que suele ser difícil acceder a elementos fuera de este. Y al igual que antes, no queremos que cualquier botón cierre el modal, así que buscaremos un botón con el atributo `close-dialog` (esto es similar a la implementación de Angular Material en sus diálogos).
 
 ```typescript
-// El "querySelectorAll()"" dentro del dialog no dará todos los elementos que tengan el atributo "dialog-close"
+// El "querySelectorAll()" dentro del dialog nos dará todos los elementos que tengan el atributo "dialog-close"
 const closeButtons = dialog.querySelectorAll("[dialog-close]");
 
-// Hacemos que cada elemento cierre el dialog al hacer "click"
+// Haremos que cada elemento cierre el dialog al hacer "click"
 closeButtons.forEach((close) =>
   close?.addEventListener("click", () => dialog.close())
 );
