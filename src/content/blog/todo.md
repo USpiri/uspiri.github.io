@@ -24,8 +24,9 @@ published: false
 - 🟦 Mejorar la accesibilidad
 - 🟦 Revisar uso de colores de fuente
 - ⬜ Revisar collection layout (Posibilidad de eliminarlo)
-- 🟦 Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
+- ✅ Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
 - ✅ Desatacar item del navbar de acuerdo al path
+- ✅ Fix: Tags de los posts
 
 ## Tareas cerradas
 
