@@ -16,7 +16,7 @@ published: false
 - ⬜ Organizar por Categorías
 - ⬜ Soporte para i18n
 - ⬜ Agregar "related posts" a los posteos del blog
-- ⬜ Agregar paginación a `/blog`
+- ✅ Agregar paginación a `/blog`
 - ⬜ Mejorar el uso de ViewTransitions
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
 - ⬜ Agregar Daily al navbar
@@ -25,13 +25,13 @@ published: false
 - 🟦 Revisar uso de colores de fuente
 - ⬜ Revisar collection layout (Posibilidad de eliminarlo)
 - ✅ Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
-- ✅ Desatacar item del navbar de acuerdo al path
-- ✅ Fix: Tags de los posts
 
 ## Tareas cerradas
 
 ### Completadas
 
+- ✅ Desatacar item del navbar de acuerdo al path
+- ✅ Fix: Tags de los posts
 - ✅ Search component
 - ✅ Que el título de cada coincida con el de la metadata
 - ✅ Share links
