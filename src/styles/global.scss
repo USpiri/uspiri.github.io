@@ -15,3 +15,6 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+html {
+  scroll-behavior: smooth;
+}
