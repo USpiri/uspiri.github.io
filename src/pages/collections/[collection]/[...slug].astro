@@ -1,4 +1,5 @@
 ---
+import NavigationCard from "@components/NavigationCard.astro";
 import Markdown from "@components/markdown/Markdown.astro";
 import Layout from "@layouts/Layout.astro";
 import { sortPosts } from "@utils/sort";
@@ -7,26 +8,59 @@ import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export const getStaticPaths = (async () => {
+  // Posts
   const posts = sortPosts(await getCollection("blog"), {
     filterNonPublished: false,
+    sortDirection: "ASC",
   }).filter((post) => post.data.collection !== undefined);
+
+  // Collections
+  const collections = [...new Set(posts.map((post) => post.data.collection))]
+    .filter((collection) => collection !== undefined)
+    .map((c) => slug(c ?? ""));
+
+  // Posts by collection
+  const postsByCollection = collections.reduce(
+    (res: { [key: string]: CollectionEntry<"blog">[] }, col) => {
+      res[col] = posts.filter(
+        (post) => slug(post.data.collection ?? "") === col
+      );
+      return res;
+    },
+    {}
+  );
+
   return posts.map((post) => {
+    const colSlug = slug(post.data.collection ?? "");
+    const postsInCollection = postsByCollection[colSlug];
+    const postIndex = postsInCollection.indexOf(post);
+
     return {
       params: {
-        collection: slug(post.data.collection ?? ""),
+        collection: colSlug,
         slug: post.slug,
       },
-      props: { post, collection: post.data.collection },
+      props: {
+        post,
+        collection: post.data.collection,
+        prev: postIndex === 0 ? undefined : postsInCollection[postIndex - 1],
+        next:
+          postsInCollection.length === postIndex + 1
+            ? undefined
+            : postsInCollection[postIndex + 1],
+      },
     };
   });
 }) satisfies GetStaticPaths;
 
 interface Props {
   post: CollectionEntry<"blog">;
+  prev?: CollectionEntry<"blog">;
+  next?: CollectionEntry<"blog">;
   collection: string;
 }
 
-const { post, collection } = Astro.props;
+const { post, collection, prev, next } = Astro.props;
 const { Content } = await post.render();
 ---
 
@@ -34,16 +68,39 @@ const { Content } = await post.render();
   title={`${collection} | ${post.data.title}`}
   description={post.data.description}
 >
-  <main
-    class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col my-10 md:my-20"
-  >
-    <Markdown
-      title={post.data.title}
-      description={post.data.description}
-      id={post.id}
-      pageFind={!post.data.published}
+  <section class="my-10 md:my-20">
+    <main
+      class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
     >
-      <Content />
-    </Markdown>
-  </main>
+      <Markdown
+        title={post.data.title}
+        description={post.data.description}
+        id={post.id}
+        pageFind={!post.data.published}
+      >
+        <Content />
+      </Markdown>
+    </main>
+    {
+      (prev || next) && (
+        <aside class="flex justify-center mt-3 text-neutral-800 dark:text-neutral-200">
+          <div class="flex flex-wrap gap-3 w-full max-w-3xl">
+            {prev && (
+              <NavigationCard
+                label={prev.data.title}
+                href={`/collections/${slug(collection)}/${prev.slug}`}
+                type="prev"
+              />
+            )}
+            {next && (
+              <NavigationCard
+                label={next.data.title}
+                href={`/collections/${slug(collection)}/${next.slug}`}
+              />
+            )}
+          </div>
+        </aside>
+      )
+    }
+  </section>
 </Layout>
