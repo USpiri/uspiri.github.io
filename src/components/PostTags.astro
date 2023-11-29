@@ -10,7 +10,7 @@ const { tags } = Astro.props;
 <section class="flex gap-2">
   {
     tags.map((tag) => (
-      <LinkButton href={`/tags/${tag}`} class="p-0">
+      <LinkButton href={`/tag/${tag}`} class="p-0">
         #{tag}
       </LinkButton>
     ))
