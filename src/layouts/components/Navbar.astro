@@ -12,33 +12,34 @@ const currentPath = Astro.url.pathname.split("/")[1];
 const navItems: Link[] = [
   { label: "Blog", path: "/blog" },
   { label: "Explorar", path: "/explore" },
+  { label: "Daily", path: "/daily" },
   { label: "Collections", path: "/collections" },
   { label: "Snippets", path: "/snippet" },
 ];
 ---
 
 <nav
-  class="sticky top-0 sm:h-16 py-3 sm:py-0 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full px-2 sm:px-8 text-neutral-700 dark:text-neutral-400 flex items-center z-10 bg-neutral-50 dark:bg-neutral-900"
+  class="sticky top-0 md:h-16 py-3 dm:py-0 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full px-2 md:px-8 text-neutral-700 dark:text-neutral-400 flex items-center z-10 bg-neutral-50 dark:bg-neutral-900"
   transition:animate="none"
 >
-  <div class="sm:flex items-center justify-between w-full">
-    <div class="flex flex-1 sm:flex-none items-center">
-      <Button class="block sm:hidden" id="menu" aria-label="Menu button">
+  <div class="md:flex items-center justify-between w-full">
+    <div class="flex flex-1 md:flex-none items-center">
+      <Button class="block md:hidden" id="menu" aria-label="Menu button">
         <MenuIcon class="h-7" />
       </Button>
       <a
         href="/"
-        class="flex flex-1 sm:flex-none gap-2 items-center justify-center"
+        class="flex flex-1 md:flex-none gap-2 items-center justify-center"
         ><DevlyIcon class="h-5" />
         <span class="font-semibold text-xl"> Uriel Spiridione</span>
       </a>
     </div>
     <div
-      class="flex flex-col sm:flex-row sm:flex-1 gap-5 sm:gap-1 md:gap-3 overflow-hidden sm:h-full max-h-0 sm:max-h-none navmenu-toggle"
+      class="flex flex-col md:flex-row md:flex-1 gap-5 md:gap-1 lg:gap-3 overflow-hidden md:h-full max-h-0 md:max-h-none navmenu-toggle"
       id="navmenu-toggle"
     >
       <div
-        class="flex flex-col sm:flex-row gap-1 md:gap-3 px-5 sm:px-0 mt-5 sm:mt-0 sm:flex-1 md:justify-center sm:justify-end"
+        class="flex flex-col md:flex-row gap-1 lg:gap-3 px-5 md:px-0 mt-5 md:mt-0 md:flex-1 lg:justify-center sm:justify-end"
       >
         {
           navItems.map((item) => (
@@ -56,10 +57,10 @@ const navItems: Link[] = [
           ))
         }
       </div>
-      <div class="flex justify-around items-start sm:gap-1 md:gap-3">
+      <div class="flex justify-around items-start md:gap-1 lg:gap-3">
         <LinkButton
           href="/"
-          class="h-9 px-1 flex items-center"
+          class="h-9 px-1 flex items-center md:hidden"
           aria-label="Go to home"
         >
           <HomeIcon class="w-7" />
