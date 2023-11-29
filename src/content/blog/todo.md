@@ -26,6 +26,7 @@ published: false
 - ⬜ Mejorar la renderización de items en el navbar
 - 🟦 Revisar jerarquía de titulos
 - 🟦 Revisar titulos y descripciones de los Layouts
+- ⬜ About page
 
 ## Tareas cerradas
 
