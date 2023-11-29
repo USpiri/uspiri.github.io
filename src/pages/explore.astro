@@ -1,5 +1,6 @@
 ---
 import Subtitle from "@components/Subtitle.astro";
+import TagLink from "@components/TagLink.astro";
 import Title from "@components/Title.astro";
 import TagIcon from "@components/icons/TagIcon.astro";
 import Layout from "@layouts/Layout.astro";
@@ -7,7 +8,9 @@ import { sortPosts } from "@utils/sort";
 import { getCollection } from "astro:content";
 
 const posts = sortPosts(await getCollection("blog"));
-const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+const tags = [
+  ...new Set(posts.map((post) => post.data.tags).flat()),
+] as string[];
 ---
 
 <Layout
@@ -24,21 +27,15 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
         {
           tags.map((tag) => (
             <li>
-              <a
-                class="flex items-center gap-1 border border-neutral-500 rounded-md py-1 px-2 hover:bg-neutral-500/10 transition-all hover:scale-[102%]"
-                href={`/tag/${tag}`}
-              >
-                <TagIcon class="h-5 dark:fill-neutral-400 fill-neutral-600" />
-                <span class="font-semibold">#{tag}</span>
-              </a>
+              <TagLink tag={tag} href={`/tag/${tag}`} />
             </li>
           ))
         }
       </ul>
-      <Subtitle>Categorías</Subtitle>
-      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
-        Próximamente...
-      </p>
     </section>
+    <Subtitle>Categorías</Subtitle>
+    <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
+      Próximamente...
+    </p>
   </main>
 </Layout>
