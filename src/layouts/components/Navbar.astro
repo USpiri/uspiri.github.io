@@ -8,6 +8,12 @@ import Button from "@components/Button.astro";
 import MenuIcon from "@components/icons/MenuIcon.astro";
 
 const currentPath = Astro.url.pathname.split("/")[1];
+const navItems: { label: string; path: string }[] = [
+  { label: "Blog", path: "/blog" },
+  { label: "Explorar", path: "/explore" },
+  { label: "Collections", path: "/collections" },
+  { label: "Snippets", path: "/snippet" },
+];
 ---
 
 <nav
@@ -33,42 +39,21 @@ const currentPath = Astro.url.pathname.split("/")[1];
       <div
         class="flex flex-col sm:flex-row gap-1 md:gap-3 px-5 sm:px-0 mt-5 sm:mt-0 sm:flex-1 md:justify-center sm:justify-end"
       >
-        <LinkButton href="/blog" class="h-9 flex items-center px-2">
-          <span
-            class={`${
-              currentPath.includes("blog")
-                ? "text-neutral-200 transition-all"
-                : ""
-            } text-sm md:text-base`}>Blog</span
-          >
-        </LinkButton>
-        <LinkButton href="/explore" class="h-9 flex items-center px-2">
-          <span
-            class={`${
-              currentPath.includes("explore")
-                ? "text-neutral-200 transition-all"
-                : ""
-            } text-sm md:text-base`}>Explorar</span
-          >
-        </LinkButton>
-        <LinkButton href="/collections" class="h-9 flex items-center px-2">
-          <span
-            class={`${
-              currentPath.includes("collections")
-                ? "text-neutral-200 transition-all"
-                : ""
-            } text-sm md:text-base`}>Collections</span
-          >
-        </LinkButton>
-        <LinkButton href="/snippet" class="h-9 flex items-center px-2">
-          <span
-            class={`${
-              currentPath.includes("snippet")
-                ? "text-neutral-200 transition-all"
-                : ""
-            } text-sm md:text-base`}>Snippets</span
-          >
-        </LinkButton>
+        {
+          navItems.map((item) => (
+            <LinkButton href={item.path} class="h-9 flex items-center px-2">
+              <span
+                class={`${
+                  currentPath.includes(item.path.slice(1))
+                    ? "text-neutral-200 transition-all"
+                    : ""
+                } text-sm md:text-base`}
+              >
+                {item.label}
+              </span>
+            </LinkButton>
+          ))
+        }
       </div>
       <div class="flex justify-around items-start sm:gap-1 md:gap-3">
         <LinkButton
@@ -84,6 +69,7 @@ const currentPath = Astro.url.pathname.split("/")[1];
     </div>
   </div>
 </nav>
+
 <script>
   document.addEventListener("astro:page-load", () => {
     const menuButton = document.getElementById("menu");
@@ -93,6 +79,7 @@ const currentPath = Astro.url.pathname.split("/")[1];
     });
   });
 </script>
+
 <style>
   .navmenu-toggle {
     transition: max-height 0.3s linear;
