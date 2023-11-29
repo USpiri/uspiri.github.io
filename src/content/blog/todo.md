@@ -1,8 +1,7 @@
 ---
 title: "Lista de tareas"
-date: 2023-10-17
+date: 2023-11-29
 description: "Lista de tareas de Mini Blog, se actualiza periodicamente."
-tags: ["todo"]
 draft: false
 collection: Blog
 published: false
@@ -18,14 +17,14 @@ published: false
 - ❌ Agregar "related posts" a los posteos del blog
 - ⬜ Mejorar el uso de ViewTransitions
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
-- ⬜ Agregar Daily al navbar
+- ✅ Agregar Daily al navbar
 - 🟦 Mover esilos y componentes que se repiten
 - 🟦 Mejorar la accesibilidad
-- 🟦 Revisar uso de colores de fuente
+- ✅ Revisar uso de colores de fuente
 - ✅ Revisar collection layout (Posibilidad de eliminarlo)
-- ⬜ Mejorar la renderización de items en el navbar
-- 🟦 Revisar jerarquía de titulos
-- 🟦 Revisar titulos y descripciones de los Layouts
+- ✅ Mejorar la renderización de items en el navbar
+- ✅ Revisar jerarquía de titulos
+- ✅ Revisar titulos y descripciones de los Layouts
 - ⬜ About page
 
 ## Tareas cerradas
