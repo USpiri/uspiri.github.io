@@ -37,7 +37,10 @@ interface Props {
 const { collection, posts } = Astro.props;
 ---
 
-<Layout title="Title" description="desc">
+<Layout
+  title={`${collection} | Uriel Spiridione`}
+  description={`Posteos de ${collection}`}
+>
   <main class="flex items-center flex-col">
     <section class="max-w-3xl w-full my-20">
       <Title>{collection}</Title>

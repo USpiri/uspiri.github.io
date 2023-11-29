@@ -15,7 +15,7 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html id="layout" lang="es" class="dark">
   <head>
-    <BaseHead title={`${title} | Uriel Spiridione`} description={description} />
+    <BaseHead title={title} description={description} />
     <ViewTransitions fallback="none" />
   </head>
   <body
