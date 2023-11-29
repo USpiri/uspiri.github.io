@@ -3,7 +3,23 @@ import GithubIcon from "@components/icons/GithubIcon.astro";
 import LinkedinIcon from "@components/icons/LinkedinIcon.astro";
 import RssIcon from "@components/icons/RssIcon.astro";
 import XTwitterIcon from "@components/icons/XTwitterIcon.astro";
+import type { Link } from "@utils/models/links.interface";
 const year = new Date().getFullYear();
+
+const web: Link[] = [
+  { label: "Home", path: "/" },
+  { label: "Blog", path: "/blog" },
+  { label: "Explorar", path: "/explore" },
+  { label: "Snippets", path: "/snippet" },
+  { label: "Collections", path: "/collections" },
+  { label: "Daily", path: "/daily" },
+  { label: "Lista de tareas", path: "/todo" },
+];
+
+const resources: Link[] = [
+  { label: "Rss", path: "/rss.xml" },
+  { label: "Source code", path: "https://github.com/USpiri/uspiri.github.io" },
+];
 ---
 
 <footer
@@ -49,48 +65,18 @@ const year = new Date().getFullYear();
     <section>
       <ul class="flex flex-wrap gap-x-3 justify-center">
         <li><p class="font-medium">Web:</p></li>
-        <li>
-          <a
-            href="/"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="/blog"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Blog</a
-          >
-        </li>
-        <li>
-          <a
-            href="/snippet"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Snippets</a
-          >
-        </li>
-        <li>
-          <a
-            href="/collections"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Collections</a
-          >
-        </li>
-        <li>
-          <a
-            href="/daily"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Daily</a
-          >
-        </li>
-        <li>
-          <a
-            href="/todo"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Teareas pendientes</a
-          >
-        </li>
+        {
+          web.map((link) => (
+            <li>
+              <a
+                href={link.path}
+                class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </section>
     <section>
@@ -98,21 +84,19 @@ const year = new Date().getFullYear();
         <li>
           <p class="font-medium">Recursos:</p>
         </li>
-        <li>
-          <a
-            href="/rss.xml"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            target="_blank">Rss</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/USpiri/uspiri.github.io"
-            target="_blank"
-            class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
-            >Source code</a
-          >
-        </li>
+        {
+          resources.map((link) => (
+            <li>
+              <a
+                href={link.path}
+                class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+                target="_blank"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </section>
   </div>
