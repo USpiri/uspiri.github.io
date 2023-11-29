@@ -1,6 +1,6 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Subtitle from "@components/Subtitle.astro";
+import Title from "@components/Title.astro";
 import Layout from "@layouts/Layout.astro";
 import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
@@ -42,7 +42,7 @@ const { collection, posts } = Astro.props;
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
     <section class="max-w-3xl w-full my-20">
-      <Subtitle>{collection}</Subtitle>
+      <Title>{collection}</Title>
       <ul class="flex flex-col gap-3 px-5 mt-8">
         {
           posts.map((post) => (

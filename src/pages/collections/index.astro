@@ -1,6 +1,6 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Subtitle from "@components/Subtitle.astro";
+import Title from "@components/Title.astro";
 import Layout from "@layouts/Layout.astro";
 import { capitalize, slug } from "@utils/utils";
 import { getCollection } from "astro:content";
@@ -19,7 +19,7 @@ const collections = [
     class="text-neutral-800 dark:text-neutral-200 flex items-center flex-col"
   >
     <section class="max-w-3xl w-full my-20">
-      <Subtitle>Colecciones</Subtitle>
+      <Title>Colecciones</Title>
       <ul class="flex flex-col gap-3 px-5 mt-8">
         {
           collections.map((collection) => (
