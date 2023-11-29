@@ -1,7 +1,7 @@
 ---
 title: "Lista de tareas"
 date: 2023-10-17
-description: "Lista de tareas de Mini Blog"
+description: "Lista de tareas de Mini Blog, se actualiza periodicamente."
 tags: ["todo"]
 draft: false
 collection: Blog
@@ -10,26 +10,29 @@ published: false
 
 > **✅ Completadas. 🟦 En progreso. ⬜ Pendientes. ❌ Rechazadas**
 
-## Tareas abiertas
+## Tareas activas recientemente
 
-- ⬜ Página de tags
-- ⬜ Organizar por Categorías
+- ✅ Página de tags
+- ✅ Organizar por Categorías
 - ⬜ Soporte para i18n
-- ⬜ Agregar "related posts" a los posteos del blog
-- ✅ Agregar paginación a `/blog`
+- ❌ Agregar "related posts" a los posteos del blog
 - ⬜ Mejorar el uso de ViewTransitions
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
 - ⬜ Agregar Daily al navbar
-- ⬜ Mover esilos y componentes que se repiten
+- 🟦 Mover esilos y componentes que se repiten
 - 🟦 Mejorar la accesibilidad
 - 🟦 Revisar uso de colores de fuente
-- ⬜ Revisar collection layout (Posibilidad de eliminarlo)
-- ✅ Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
+- ✅ Revisar collection layout (Posibilidad de eliminarlo)
+- ⬜ Mejorar la renderización de items en el navbar
+- 🟦 Revisar jerarquía de titulos
+- 🟦 Revisar titulos y descripciones de los Layouts
 
 ## Tareas cerradas
 
 ### Completadas
 
+- ✅ Agregar paginación a `/blog`
+- ✅ Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
 - ✅ Desatacar item del navbar de acuerdo al path
 - ✅ Fix: Tags de los posts
 - ✅ Search component
