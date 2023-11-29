@@ -42,6 +42,15 @@ const currentPath = Astro.url.pathname.split("/")[1];
             } text-sm md:text-base`}>Blog</span
           >
         </LinkButton>
+        <LinkButton href="/explore" class="h-9 flex items-center px-2">
+          <span
+            class={`${
+              currentPath.includes("explore")
+                ? "text-neutral-200 transition-all"
+                : ""
+            } text-sm md:text-base`}>Explorar</span
+          >
+        </LinkButton>
         <LinkButton href="/collections" class="h-9 flex items-center px-2">
           <span
             class={`${
