@@ -16,6 +16,8 @@ const { label, type = "next" } = Astro.props;
   }`}
   {...Astro.props}
 >
-  <p class="text-xl font-semibold line-clamp-1">{label}</p>
+  <p class="text-base md:text-lg lg:text-xl font-semibold line-clamp-1">
+    {label}
+  </p>
   {type === "next" ? <NavigationNextIcon /> : <NavigationPrevIcon />}
 </a>
