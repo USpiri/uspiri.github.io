@@ -12,17 +12,16 @@ published: false
 ## Tareas activas recientemente
 
 - ⬜ Soporte para i18n
-- ⬜ Analizar implementación de embeddeds como twitter (𝕏).
-- ✅ Mejorar el uso de ViewTransitions
 - 🟦 Mejorar la accesibilidad
-- ✅ Mover esilos y componentes que se repiten
 - ⬜ About page
-- ✅ Achicar font en mobile (@typography)
 
 ## Tareas cerradas
 
 ### Completadas
 
+- ✅ Mejorar el uso de ViewTransitions
+- ✅ Mover esilos y componentes que se repiten
+- ✅ Achicar font en mobile (@typography)
 - ✅ Página de tags
 - ✅ Organizar por Categorías
 - ✅ Agregar Daily al navbar
@@ -93,4 +92,5 @@ published: false
 - ❌ Agregar Table of Content (ToC)
 - ❌ Agregar margin a FileTree component
 - ❌ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
+- ❌ Analizar implementación de embeddeds como twitter (𝕏).
 - ❌ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
