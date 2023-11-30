@@ -11,26 +11,26 @@ published: false
 
 ## Tareas activas recientemente
 
-- ✅ Página de tags
-- ✅ Organizar por Categorías
 - ⬜ Soporte para i18n
-- ❌ Agregar "related posts" a los posteos del blog
-- ⬜ Mejorar el uso de ViewTransitions
 - ⬜ Analizar implementación de embeddeds como twitter (𝕏).
-- ✅ Agregar Daily al navbar
-- 🟦 Mover esilos y componentes que se repiten
+- ✅ Mejorar el uso de ViewTransitions
 - 🟦 Mejorar la accesibilidad
-- ✅ Revisar uso de colores de fuente
-- ✅ Revisar collection layout (Posibilidad de eliminarlo)
-- ✅ Mejorar la renderización de items en el navbar
-- ✅ Revisar jerarquía de titulos
-- ✅ Revisar titulos y descripciones de los Layouts
+- ✅ Mover esilos y componentes que se repiten
 - ⬜ About page
+- ⬜ Achicar font en mobile (@typography)
 
 ## Tareas cerradas
 
 ### Completadas
 
+- ✅ Página de tags
+- ✅ Organizar por Categorías
+- ✅ Agregar Daily al navbar
+- ✅ Revisar uso de colores de fuente
+- ✅ Revisar collection layout (Posibilidad de eliminarlo)
+- ✅ Mejorar la renderización de items en el navbar
+- ✅ Revisar jerarquía de titulos
+- ✅ Revisar titulos y descripciones de los Layouts
 - ✅ Agregar paginación a `/blog`
 - ✅ Agregar botones "Prev", "Next" y "Collection" a los posts de las collections
 - ✅ Desatacar item del navbar de acuerdo al path
@@ -88,6 +88,7 @@ published: false
 
 ### Rechazadas
 
+- ❌ Agregar "related posts" a los posteos del blog
 - ❌ Hacer responsive la documentación
 - ❌ Agregar Table of Content (ToC)
 - ❌ Agregar margin a FileTree component
