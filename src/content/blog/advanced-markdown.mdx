@@ -67,7 +67,19 @@ bloque de código, se configura mediante meta datos en el encabezado del bloque 
 Agrega un número o rango numérico dentro de `{}`.
 
 <Tabs>
+<TabItem label="Resultado">
 
+```javascript {1-2,5}
+const baseValue = prompt("Enter the base of a triangle: ");
+const heightValue = prompt("Enter the height of a triangle: ");
+
+// calculate the area
+const areaValue = (baseValue * heightValue) / 2;
+
+console.log(`The area of the triangle is ${areaValue}`);
+```
+
+</TabItem>
 <TabItem label="Markdown">
 
 ```mdx
@@ -83,10 +95,16 @@ console.log('The area of the triangle is ${areaValue}');
 ```
 
 </TabItem>
+</Tabs>
 
+### Palabras
+
+Una serie de carácteres, como un regex literal.
+
+<Tabs>
 <TabItem label="Resultado">
 
-```javascript {1-2,5}
+```javascript /baseValue/ /heightValue/
 const baseValue = prompt("Enter the base of a triangle: ");
 const heightValue = prompt("Enter the height of a triangle: ");
 
@@ -97,13 +115,6 @@ console.log(`The area of the triangle is ${areaValue}`);
 ```
 
 </TabItem>
-</Tabs>
-
-### Palabras
-
-Una serie de carácteres, como un regex literal.
-
-<Tabs>
 <TabItem label="Markdown">
 
 ```mdx
@@ -116,19 +127,6 @@ const areaValue = (baseValue \* heightValue) / 2;
 
 console.log(`The area of the triangle is ${areaValue}`);
 '''
-```
-
-</TabItem>
-<TabItem label="Resultado">
-
-```javascript /baseValue/ /heightValue/
-const baseValue = prompt("Enter the base of a triangle: ");
-const heightValue = prompt("Enter the height of a triangle: ");
-
-// calculate the area
-const areaValue = (baseValue * heightValue) / 2;
-
-console.log(`The area of the triangle is ${areaValue}`);
 ```
 
 </TabItem>

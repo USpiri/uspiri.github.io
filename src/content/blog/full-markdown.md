@@ -7,25 +7,9 @@ collection: Blog
 published: false
 ---
 
-# Headers
+# Titulos
 
-````
-# h1 Heading
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
-
-Alternatively, for H1 and H2, an ```underline```-ish style:
-
-Alt-H1
-======
-
-Alt-H2
-------
-````
-
+```md
 # h1 Heading
 
 ## h2 Heading
@@ -38,7 +22,26 @@ Alt-H2
 
 ###### h6 Heading
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternativamente, para H1 y H2, hay un estilo subrayado:
+
+# Alt-H1
+
+## Alt-H2
+```
+
+# h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+Alternativamente, para H1 y H2, hay un estilo subrayado:
 
 # Alt-H1
 
@@ -46,462 +49,224 @@ Alternatively, for H1 and H2, an underline-ish style:
 
 ---
 
-# Emphasis
+# Énfasis
 
-```
-Emphasis, aka italics, with *asterisks* or _underscores_.
+```md
+Énfasis, o italica, con _1 asterisco_ o _1 underscore_.
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Negrita, with **2 asteriscos** or **2 underscores**.
 
-Combined emphasis with **asterisks and _underscores_**.
+Énfasis combinada con **asteriscos y _underscores_**.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+Tachado usa doble virgulilla. ~~Esto está tachado.~~
 
-**This is bold text**
+**Negrita**
 
-__This is bold text__
+_Italica_
 
-*This is italic text*
-
-_This is italic text_
-
-~~Strikethrough~~
+~~Tachado~~
 ```
 
-Emphasis, aka italics, with _asterisks_ or _underscores_.
+Énfasis, o italica, con _1 asterisco_ o _1 underscore_.
 
-Strong emphasis, aka bold, with **asterisks** or **underscores**.
+Negrita, with **2 asteriscos** or **2 underscores**.
 
-Combined emphasis with **asterisks and _underscores_**.
+Énfasis combinada con **asteriscos y _underscores_**.
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+Tachado usa doble virgulilla. ~~Esto está tachado.~~
 
-**This is bold text**
+**Negrita**
 
-**This is bold text**
+_Italica_
 
-_This is italic text_
-
-_This is italic text_
-
-~~Strikethrough~~
+~~Tachado~~
 
 ---
 
 # Lists
 
-```
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
+```md
+1. Primer item de la lista
+2. Otro item
+3. Los números no importan, solo que sea un número
+   1. Sub lista ordenada
+4. Otro item más.
+   - Es posible tener párrafos indentados con las listas
 
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+- Las listas no ordenadas pueden hacerse con guiones
 
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+* O arteriscos
 
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
-
-1. Make my changes
-    1. Fix bug
-    2. Improve formatting
-        - Make the headings bigger
-2. Push my commits to GitHub
-3. Open a pull request
-    * Describe my changes
-    * Mention all the members of my team
-        * Ask for feedback
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
+- O con el símbolo más (+)
 ```
 
-1. First ordered list item
-2. Another item
-   ⋅⋅\* Unordered sub-list.
-3. Actual numbers don't matter, just that it's a number
-   ⋅⋅1. Ordered sub-list
-4. And another item.
+1. Primer item de la lista
+2. Otro item
+3. Los números no importan, solo que sea un número
+   1. Sub lista ordenada
+4. Otro item más.
+   - Es posible tener párrafos indentados con las listas
 
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+- Las listas no ordenadas pueden hacerse con guiones
 
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+* O arteriscos
 
-- Unordered list can use asterisks
-
-* Or minuses
-
-- Or pluses
-
-1. Make my changes
-   1. Fix bug
-   2. Improve formatting
-      - Make the headings bigger
-2. Push my commits to GitHub
-3. Open a pull request
-   - Describe my changes
-   - Mention all the members of my team
-     - Ask for feedback
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
+- O con el símbolo más (+)
 
 ---
 
-# Task lists
+# Lista de tareas
 
-```
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+```md
+- [x] Terminar cambios
+- [ ] Subir cambios a GitHub
+- [ ] Abrir una pull request
+
+Personalmente prefiero utilizar emojis y crear una lista de tareas personalizada:
+
+- ⬜ Pendiente
+- 🟦 En proceso
+- ✅ Completada
+- ❌ Rechazada
 ```
 
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [ ] this is a complete item
-- [ ] this is an incomplete item
+- [x] Terminar cambios
+- [ ] Subir cambios a GitHub
+- [ ] Abrir una pull request
+
+Personalmente prefiero utilizar emojis y crear una lista de tareas personalizada:
+
+- ⬜ Pendiente
+- 🟦 En proceso
+- ✅ Completada
+- ❌ Rechazada
 
 ---
 
-# Ignoring Markdown formatting
+# Ignorar formato Markdown
 
-You can tell GitHub to ignore (or escape) Markdown formatting by using \ before the Markdown character.
+Podemos ignorar el formato del Markdown utilizando \ antes del símbolo de algún elemento Markdown.
 
-```
+```md
 Let's rename \*our-new-project\* to \*our-old-project\*.
 ```
 
 Let's rename \*our-new-project\* to \*our-old-project\*.
+
+En este ejemplo debería haberse aplicado una letra _itálica_
 
 ---
 
 # Links
 
-```
-[I'm an inline-style link](https://www.google.com)
+```md
+[Link inline](https://www.google.com)
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+[Link inline con título](https://www.google.com "Google's Homepage")
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+[Referencia a un link][Texto específico de la referencia]
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+[Link de refencia relativa a un archivo del proyecto](../todo)
 
-[You can use numbers for reference-style link definitions][1]
+[Podemos usar números para hacer referencia a un link][1]
 
-Or leave it empty and use the [link text itself].
+O también podemos hacer una referencia simplemente con corchetes: [reddit].
 
-URLs and URLs in angle brackets will automatically get turned into links.
-http://www.example.com or <http://www.example.com> and sometimes
-example.com (but not on Github, for example).
+Las URLs o las que estpen entre mayor y menor (< >) se transforman automáticamente en links:
+http://www.example.com o <http://www.example.com>.
 
-Some text to show that the reference links can follow later.
+Las referencias no serán renderizadas:
 
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[Texto específico de la referencia]: https://www.mozilla.org
 [1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
+[reddit]: http://www.reddit.com
 ```
 
-[I'm an inline-style link](https://www.google.com)
+[Link inline](https://www.google.com)
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+[Link inline con título](https://www.google.com "Google's Homepage")
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+[Referencia a un link][Texto específico de la referencia]
 
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+[Link de refencia relativa a un archivo del proyecto](../todo)
 
-[You can use numbers for reference-style link definitions][1]
+[Podemos usar números para hacer referencia a un link][1]
 
-Or leave it empty and use the [link text itself].
+O también podemos hacer una referencia simplemente con corchetes: [reddit].
 
-URLs and URLs in angle brackets will automatically get turned into links.
-http://www.example.com or <http://www.example.com> and sometimes
-example.com (but not on Github, for example).
+Las URLs o las que estpen entre mayor y menor (< >) se transforman automáticamente en links:
+http://www.example.com o <http://www.example.com>.
 
-Some text to show that the reference links can follow later.
+Las referencias no serán renderizadas:
 
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[Texto específico de la referencia]: https://www.mozilla.org
 [1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
+[reddit]: http://www.reddit.com
 
 ---
 
 # Images
 
-```
-Here's our logo (hover to see the title text):
-
-Inline-style:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
-Reference-style:
-![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+```md
+Imagen de ejemplo:
+![alt text](https://picsum.photos/id/237/300/200 "Título de la imágen")
 ```
 
-Here's our logo (hover to see the title text):
-
-Inline-style:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
-Reference-style:
-![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
+Imagen de ejemplo:
+![alt text](https://picsum.photos/id/237/300/200 "Título de la imágen")
 
 ---
 
 # [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
 
-```
+```md
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+Footnote duplicada[^second].
 
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
+[^first]: Footnote **pueden tener markdown**
+[^second]: Footnote texto.
 ```
 
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+Footnote duplicada[^second].
 
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
+[^first]: Footnote **pueden tener markdown**
+[^second]: Footnote texto.
 
 ---
 
 # Code and Syntax Highlighting
 
+````md
+Los códigos inline se hacen con comillas invertidas simples y los bloques de código con comillas invertidas triples.
+
+Esto `es un código inline`
+
+```md
+Esto un blóque de código
 ```
-Inline `code` has `back-ticks around` it.
-```
+````
 
-Inline `code` has `back-ticks around` it.
+Los códigos inline se hacen con comillas invertidas simples y los bloques de código con comillas invertidas triples.
 
-```c#
-using System.IO.Compression;
+Esto `es un código inline`
 
-#pragma warning disable 414, 3021
-
-namespace MyApplication
-{
-    [Obsolete("...")]
-    class Program : IInterface
-    {
-        public static List<int> JustDoIt(int count)
-        {
-            Console.WriteLine($"Hello {Name}!");
-            return new List<int>(new int[] { 1, 2, 3 })
-        }
-    }
-}
-```
-
-```css
-@font-face {
-  font-family: Chunkfive;
-  src: url("Chunkfive.otf");
-}
-
-body,
-.usertext {
-  color: #f0f0f0;
-  background: #600;
-  font-family: Chunkfive, sans;
-}
-
-@import url(print.css);
-@media print {
-  a[href^="http"]::after {
-    content: attr(href);
-  }
-}
-```
-
-```javascript
-function $initHighlight(block, cls) {
-  try {
-    if (cls.search(/\bno\-highlight\b/) != -1)
-      return process(block, true, 0x0F) +
-             ` class="${cls}"`;
-  } catch (e) {
-    /* handle exception */
-  }
-  for (var i = 0 / 2; i < classes.length; i++) {
-    if (checkCondition(classes[i]) === undefined)
-      console.log('undefined');
-  }
-}
-
-export  $initHighlight;
-```
-
-```php
-require_once 'Zend/Uri/Http.php';
-
-namespace Location\Web;
-
-interface Factory
-{
-    static function _factory();
-}
-
-abstract class URI extends BaseURI implements Factory
-{
-    abstract function test();
-
-    public static $st1 = 1;
-    const ME = "Yo";
-    var $list = NULL;
-    private $var;
-
-    /**
-     * Returns a URI
-     *
-     * @return URI
-     */
-    static public function _factory($stats = array(), $uri = 'http')
-    {
-        echo __METHOD__;
-        $uri = explode(':', $uri, 0b10);
-        $schemeSpecific = isset($uri[1]) ? $uri[1] : '';
-        $desc = 'Multi
-line description';
-
-        // Security check
-        if (!ctype_alnum($scheme)) {
-            throw new Zend_Uri_Exception('Illegal scheme');
-        }
-
-        $this->var = 0 - self::$st;
-        $this->list = list(Array("1"=> 2, 2=>self::ME, 3 => \Location\Web\URI::class));
-
-        return [
-            'uri'   => $uri,
-            'value' => null,
-        ];
-    }
-}
-
-echo URI::ME . URI::$st1;
-
-__halt_compiler () ; datahere
-datahere
-datahere */
-datahere
+```md
+Esto un blóque de código
 ```
 
 ---
 
 # Tables
 
-```
-Colons can be used to align columns.
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the
-raw Markdown line up prettily. You can also use inline Markdown.
-
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
-
-| Command | Description |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
-
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
-
-| Name     | Character |
-| ---      | ---       |
-| Backtick | `         |
-| Pipe     | \|        |
-```
-
-Colons can be used to align columns.
+```md
+Los dos puntos (:) pueden ser utilizados para alinear columnas.
 
 | Tables        |      Are      |  Cool |
 | ------------- | :-----------: | ----: |
@@ -509,74 +274,55 @@ Colons can be used to align columns.
 | col 2 is      |   centered    |   $12 |
 | zebra stripes |   are neat    |    $1 |
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the
-raw Markdown line up prettily. You can also use inline Markdown.
+Debe haber al menos 3 guiones separando las celdas del encabezado.
 
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
+| First Header | Second Header |
+| ------------ | ------------- |
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
+```
+
+Los dos puntos (:) pueden ser utilizados para alinear columnas.
+
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+
+Debe haber al menos 3 guiones separando las celdas del encabezado.
 
 | First Header | Second Header |
 | ------------ | ------------- |
 | Content Cell | Content Cell  |
 | Content Cell | Content Cell  |
 
-| Command    | Description                                    |
-| ---------- | ---------------------------------------------- |
-| git status | List all new or modified files                 |
-| git diff   | Show file differences that haven't been staged |
-
-| Command      | Description                                        |
-| ------------ | -------------------------------------------------- |
-| `git status` | List all _new or modified_ files                   |
-| `git diff`   | Show file differences that **haven't been** staged |
-
-| Left-aligned | Center-aligned | Right-aligned |
-| :----------- | :------------: | ------------: |
-| git status   |   git status   |    git status |
-| git diff     |    git diff    |      git diff |
-
-| Name     | Character |
-| -------- | --------- |
-| Backtick | `         |
-| Pipe     | \|        |
-
 ---
 
-# Blockquotes
+# Blockquotes (Frases o bloques de cita)
 
-```
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
+```md
+> Los bloques de cita son muy útiles.
+> Esta linea es parte de la misma frase.
 
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-```
-
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
-> Blockquotes can also be nested...
+> Las citas también pueden anidarse.
 >
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
+> > Esta es una cita dentro de otra.
+```
+
+> Los bloques de cita son muy útiles.
+> Esta linea es parte de la misma frase.
+
+> Las citas también pueden anidarse.
+>
+> > Esta es una cita dentro de otra.
 
 ---
 
 # Inline HTML
 
+Es posible embeber html directamente en markdown.
+
 ```
 <dl>
   <dt>Definition list</dt>
@@ -597,36 +343,14 @@ Quote break.
 
 ---
 
-# Horizontal Rules
+# Separadores o lineas horizontales
 
-```
-Three or more...
+```md
+Tres o más guiones:
 
 ---
-
-Hyphens
-
-***
-
-Asterisks
-
-___
-
-Underscores
 ```
 
-Three or more...
-
----
-
-Hyphens
-
----
-
-Asterisks
-
----
-
-Underscores
+Tres o más guiones:
 
 ---
