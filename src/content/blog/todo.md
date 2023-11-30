@@ -13,7 +13,7 @@ published: false
 
 - ⬜ Soporte para i18n
 - 🟦 Mejorar la accesibilidad
-- ⬜ About page
+- ✅ About page
 
 ## Tareas cerradas
 
