@@ -17,7 +17,7 @@ published: false
 - 🟦 Mejorar la accesibilidad
 - ✅ Mover esilos y componentes que se repiten
 - ⬜ About page
-- ⬜ Achicar font en mobile (@typography)
+- ✅ Achicar font en mobile (@typography)
 
 ## Tareas cerradas
 
