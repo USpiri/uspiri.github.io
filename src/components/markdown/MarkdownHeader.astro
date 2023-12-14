@@ -32,7 +32,8 @@ const { title, description, tags, date, hideLinks = false } = Astro.props;
 }
 {
   !hideLinks && (
-    <aside class="flex gap-2 justify-end" data-pagefind-ignore>
+    <aside class="flex gap-2 justify-end items-center" data-pagefind-ignore>
+      <span class="text-neutral-400 font-semibold text-sm">Comparte:</span>
       <ShareLinks />
     </aside>
   )
