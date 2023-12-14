@@ -9,8 +9,9 @@ draft: false
 import Aside from "@components/Aside.astro";
 import Tabs from "@components/tabs/Tabs.astro";
 import TabItem from "@components/tabs/TabItem.astro";
+import NavigationCard from "@components/NavigationCard.astro";
 
-A partir de la versión 14 de Angular, se puso a disposición una función llamada "inject()". Esta toma un InjectionToken como parámetro y devuelve el valor de ese InjectionToken. Básicamente, es otra forma de obtener una dependencia que no sea usar la inyección del constructor. Aquí hay un ejemplo.
+A partir de la versión 14 de Angular, se puso a disposición una función llamada "inject()". Esta toma un InjectionToken como parámetro y devuelve el valor de ese InjectionToken. Básicamente, es otra forma de obtener una dependencia distinta del constructor. Aquí hay un ejemplo.
 
 ```typescript
 export class MyComponent {
@@ -38,7 +39,7 @@ export class MyComponent {
 }
 ```
 
-Este código podrá parecerles familiar a más de uno ya que es una función clásica, pues lo que hace es:
+Este código podrá parecerles familiar a más de uno, lo que hace es:
 
 1.  Obtiene el ID de usuario de los parámetros de la ruta.
 2.  Filtra el ID de usuario para asegurarse de que sea válido.
@@ -107,8 +108,12 @@ En este código el componente ignora cómo se obtienen esos datos, todo lo que s
 
 Para ejemplificar la reutilización de código supongamos que tenemos otro componente en donde queremos obtener los datos de User al presionar sobre un botón. Para este caso, la misma función `fetchUser()` nos será de utilidad.
 
+<Tabs>
+  
+<TabItem label="my-component.component.ts">
+
 ```typescript
-export class MyComponent2 {
+export class MyComponent {
 	protected user$: Obervable<User>;
 	private _fetchUserFn() = fetchUser();
 
@@ -122,6 +127,26 @@ export class MyComponent2 {
 }
 ```
 
-## Conclusión
+</TabItem>
 
-En mi opinión, `inject()` es una función útil que nos permite separar la lógica de obtención de datos de la interfaz, entre ortas cosas. Esto facilita la reutilización de código y mejora la legibilidad del mismo, al mismo tiempo que reduce la complejidad de los componentes.
+<TabItem label="my-component.component.html">
+
+```html
+<button (click)="refreshUser()">Actualizar datos</button>
+```
+
+</TabItem>
+
+</Tabs>
+
+## Más ejemplos
+
+- <NavigationCard
+    label="Herencia con inject()"
+    href="/snippet/blog/inject-inheritance"
+  />
+
+- <NavigationCard
+    label="Operador RxJs con inject()"
+    href="/snippet/blog/inject-custom-operator"
+  />
