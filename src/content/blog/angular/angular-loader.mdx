@@ -7,10 +7,7 @@ collection: Buenas Prácticas en Angular
 date: 2023-10-08
 ---
 
-import Tabs from "@components/tabs/Tabs.astro";
-import TabItem from "@components/tabs/TabItem.astro";
-
-Es común que nuestra aplicación tenga cargas de datos asíncronas, solicitudes HTTP, o procesos que requieren tiempo en completarse. En estos casos es fundamental proporcionar una retroalimentación visual al usuario para mantener la experiencia de usuario fluida. Para estos casos el uso de un loader se vuelve una práctica necesaria.
+Es común que nuestra aplicación tenga cargas de datos asíncronas, solicitudes HTTP, o procesos que requieren tiempo en completarse. En estos casos es fundamental proporcionar una retroalimentación visual al usuario para mantener una experiencia fluida. Para estos casos el uso de un loader se vuelve una práctica útil.
 
 ## Loader Service
 
@@ -37,7 +34,7 @@ export class LoaderService {
 
 ## Loader
 
-Implementaremos este servicio en el componente raíz (AppComponent) como ejemplo. Sin embargo, es posible usarlo de manera similar en otros componentes. Se asume que ya existe un componente personalizado `<app-spinner>` creado.
+Implementaremos este servicio en el componente raíz (AppComponent) como ejemplo. Sin embargo, es posible usarlo de manera similar en otros sitios. Se asume que ya existe un componente `<app-spinner>` creado.
 
 ```html
 <ng-container>

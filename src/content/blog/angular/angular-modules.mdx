@@ -9,8 +9,9 @@ date: 2023-10-04
 
 import Tabs from "@components/tabs/Tabs.astro";
 import TabItem from "@components/tabs/TabItem.astro";
+import Aside from "@components/Aside.astro";
 
-Los módulos en Angular son una parte fundamental de la arquitectura de una aplicación. Ayudan a organizar y estructurar el código de manera efectiva, promoviendo la reutilización y el mantenimiento. Esta idea viene del "Principio de responsabilidad única".
+Los módulos en Angular son una parte fundamental de la arquitectura de una aplicación. Ayudan a organizar el código de manera efectiva, promoviendo la reutilización y el mantenimiento. Esta idea viene del "Principio de responsabilidad única".
 
 En el contexto de Angular, esto significa que un módulo debe tener un propósito claro y bien definido, y debe agrupar componentes, servicios y otros recursos relacionados con esa funcionalidad específica.
 
@@ -58,3 +59,11 @@ export class AppRoutingModule { }
 </TabItem>
 
 </Tabs>
+
+<Aside type="caution" title="Atención!">
+
+Desde Angular **v16**, es posible crear aplicaciones `standalone` que no requieren de módulos. En la **v17** las aplicaciones se crean **por defecto** como standalone.
+
+- El concepto de **Lazy loading**, en las versiones más recientes puede apliarse a standalone components, es decir que en lugar de cargar un módulo cargaremos un standalone component
+
+</Aside>

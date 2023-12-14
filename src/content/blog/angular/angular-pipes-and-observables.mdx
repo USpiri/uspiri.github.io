@@ -10,7 +10,7 @@ date: 2023-10-06
 import Tabs from "@components/tabs/Tabs.astro";
 import TabItem from "@components/tabs/TabItem.astro";
 
-Los pipes y los observables son características fundamentales en Angular que ayudan a transformar y gestionar datos de manera efectiva.
+Las pipes y los observables son características fundamentales en Angular que ayudan a transformar y gestionar datos de manera efectiva.
 
 ## Pipes
 
@@ -49,7 +49,7 @@ this.text = observable.pipe(map((value) => value.item));
 
 ## Observables
 
-Una buena recomendación es que (Por más que Angular por defecto se desuscriba de las peticiones HTTP automáticamente), si se sabe que el observable va a traer información una única vez, usar `.pipe(first())` despues de suscribirnos al componente. De esta forma una vez obtenidos los datos el sistema se desuscribe solo.
+Una buena recomendación es que (por más que Angular por defecto se desuscriba de las peticiones HTTP automáticamente), si se sabe que el observable va a traer información una única vez, usar `.pipe(first())` despues de suscribirnos al componente. De esta forma una vez obtenidos los datos el sistema se desuscribe solo.
 
 En caso de necesitar una constante actualización de los datos utilizaremos el ngOnDestroy para desuscribirse del observable.
 

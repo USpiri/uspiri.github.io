@@ -10,21 +10,21 @@ date: 2023-11-09
 import Tabs from "@components/tabs/Tabs.astro";
 import TabItem from "@components/tabs/TabItem.astro";
 
-La versión 17 de Angular ya está acá y nos trae la nueva sintaxis llamada @-syntax que busca redefinir cómo los desarrolladores interactuamos con el framework. Esta nueva forma de redactar las templates viene a reemplazar los tradicionales `*ngIf, *ngFor, *ngSwitch` y olvidarnos de los elementos `<ng-template>` y `<ng-container>` en nuestras aplicaciones.
+La versión 17 de Angular ya está con nosotros y nos trae una nueva sintaxis llamada @-syntax que mejorar la experiencia de los desarrolladores con el framework. Esta nueva forma de redactar las templates viene a reemplazar los tradicionales `*ngIf, *ngFor, *ngSwitch` y olvidarnos de los elementos `<ng-template>` y `<ng-container>` en nuestras aplicaciones.
 
-Esta nueva sintaxis promete simplificar y modernizar la forma en la que trabajamos con Angular e incluso mejorar el rendimiento de nuestra aplicación. Aún así tengamos en cuenta que se encuentra en "Developer Preview".
+Promete simplificar y modernizar la forma en la que trabajamos con Angular e incluso mejorar el rendimiento de nuestra aplicación. Aún así tengamos en cuenta que se encuentra en "Developer Preview".
 
 ## Ventajas
 
 La nueva @-syntax propone importantes beneficios a tener en cuenta:
 
-- Mejoras en la Legibilidad: La sintaxis es más declarativa haciendo más facil de leer la lógica del template para los desarrolladores.
-- Mejora en la eficiencia: Disminuye la cantidad de boilerplate y aprovecha el nuevo sistema de detección de cambios sin zone.js.
+- Mejoras en la Legibilidad: La sintaxis es más declarativa haciendo más facil de entender la lógica del template para los desarrolladores.
+- Mejora en la eficiencia: Disminuye la cantidad de boilerplate y aprovecha el nuevo sistema de detección de cambios.
 - Soporte para lazy components (`@defer`): Esta nueva adición permite renderizar componentes bajo condiciones especificas.
 
 ## Estrucutra condicional @if
 
-Anteriormente, para renderizar condicionalmente un componente u otro en el DOM, utilizaríamos la directiva `*ngIf`. El nuevo `@if` aprovecha el nuevo sistema de detección de cambios basado en signals.
+Comúnmente para renderizar condicionalmente un componente u otro en el DOM utilizaríamos la directiva `*ngIf`. El nuevo `@if` aprovecha el nuevo sistema de detección de cambios basado en signals para lograr el mismo propósito.
 
 <Tabs>
 
@@ -66,11 +66,11 @@ Anteriormente, para renderizar condicionalmente un componente u otro en el DOM, 
 
 ```ts
 @Component({
-  selector: 'some-component',
+  selector: "some-component",
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './some.component.html',
-  styleUrls: ['./some.component.scss'],
+  templateUrl: "./some.component.html",
+  styleUrls: ["./some.component.scss"],
 })
 export class SomeComponent {
   show = true;
@@ -82,7 +82,7 @@ export class SomeComponent {
 
 </Tabs>
 
-Esta nueva sintaxis acepta una condición que al ser vedadera muestra el contenido entre llaves, de lo contrario podemos mostrar lo que se encuentra dentro de las llaves de `@else` o distintos `@else if ()`.
+Esta nueva sintaxis ,al clumplitse la condición, muestra el contenido entre llaves, de lo contrario muestra lo que se encuentra dentro del `@else` o distintos `@else if ()`.
 
 La nueva sintaxis es más concisa, legible e igual o más flexible que antes. Por otro lado evitamos el uso de `<ng-template>` y `<ng-container>` que, muchas veces, no son tan utilizados por los desarrolladores.
 
@@ -125,14 +125,18 @@ La estructura `@for` reemplaza a la directiva `*ngFor`, permitiendonos renderiza
 
 ```ts
 @Component({
-  selector: 'some-component',
+  selector: "some-component",
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './some.component.html',
-  styleUrls: ['./some.component.scss'],
+  templateUrl: "./some.component.html",
+  styleUrls: ["./some.component.scss"],
 })
 export class SomeComponent {
-  userList = [{ name: 'Jhon', id:1 }, { name: 'Steve', id:2 }, { name: 'Alex', id:3 }];
+  userList = [
+    { name: "Jhon", id: 1 },
+    { name: "Steve", id: 2 },
+    { name: "Alex", id: 3 },
+  ];
 }
 ```
 
@@ -146,7 +150,7 @@ Un punto destacado a mencionar es que ahora `track` es requerido, en este debemo
 
 ## Estrucutra de control @switch
 
-El bloque `@switch` toma el lugar de `*ngSwitch`, esta nueva forma de escribir esta estrucura brinda una clara mejora en la legibilidad y elimina la necesidad de contenedores extra para mantener las expresiones de cada condición.
+El bloque `@switch` toma el lugar de `*ngSwitch`, la forma de escribir esta estrucura brinda una clara mejora en la legibilidad y elimina la necesidad de contenedores extra para mantener las expresiones de cada condición.
 
 <Tabs>
 
@@ -196,11 +200,11 @@ El bloque `@switch` toma el lugar de `*ngSwitch`, esta nueva forma de escribir e
 
 ```ts
 @Component({
-  selector: 'some-component',
+  selector: "some-component",
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './some.component.html',
-  styleUrls: ['./some.component.scss'],
+  templateUrl: "./some.component.html",
+  styleUrls: ["./some.component.scss"],
 })
 export class SomeComponent {
   page = 2;
@@ -218,10 +222,14 @@ Por último hay unos puntos importantes a saber con el lanzamiento de Angular 17
 - Las directivas `*ngIf`, `*ngFor`, `*ngSwitch` y los elementos `<ng-template>` y `<ng-container>` no están deprecados, siguen siendo soportados por la nueva actualización.
 - Ambas sintaxis son compatibles entre ellas, es decir, se pueden usar ambas simultaneamente.
 - No es solo una nueva sintaxis, sino que trae mejoras en rendimiento, entre un 30% y 90%.
-- Hay otro bloque nuevo introducido del que hablaremos luego (`@defer`)
-- Existe un comando de Angular CLI que ejecuta la migración automáticamente 
-> ```
-> ng g @angular/core:control-flow
-> ```
+- Hay otro bloque nuevo introducido del que no hice mención llamado `@defer`.
+- Existe un comando de Angular CLI que ejecuta la migración automáticamente
+  > ```
+  > ng g @angular/core:control-flow
+  > ```
 
-Las últimas actualizaciones de Angular están cambiando las reglas de juego tradicionales de este framework brindando mejoras significativas y mejorarndo la calidad de desarrollo. Es hora de `ng update`.
+Las últimas actualizaciones de Angular están cambiando las reglas de juego tradicionales de este framework brindando mejoras significativas y mejorarndo la calidad de desarrollo. 
+
+En lo personal, comenzar un proyecto desde cero en las nuevas versiones de Angular con standalone y @-syntax, se siente distinto 🚀. El nuevo control flow sencillamente me encanta y le da un toque fresco al framework.
+
+Ahora solo queda por hacer un `ng update`.

@@ -7,11 +7,13 @@ published: false
 date: 2023-10-03
 ---
 
-La configuración adecuada de un proyecto Angular es esencial para garantizar un entorno de desarrollo eficiente y una aplicación bien optimizada. En esta sección, exploraremos las recomendaciones clave para configurar los archivos `tsconfig.json` y `angular.json`, que son fundamentales para la configuración de un proyecto Angular.
+import Aside from "@components/Aside.astro";
+
+La configuración adecuada de un proyecto Angular es vital para garantizar un entorno de desarrollo eficiente y una aplicación bien optimizada. En esta sección, exploraremos las recomendaciones clave para configurar los archivos `tsconfig.json` y `angular.json`, que son fundamentales para la configuración de un proyecto Angular.
 
 ## Path alias (tsconfig.json)
 
-El archivo tsconfig.json es la configuración de TypeScript para tu proyecto Angular. Agregar path aliases en el archivo tsconfig.json nos va a facilitar la importación de módulos y mejorar la organización de nuestro proyecto.
+El archivo tsconfig.json es la configuración de TypeScript para tu proyecto Angular. Agregar path aliases en el archivo tsconfig.json nos va a facilitar la organización de nuestro proyecto.
 
 ```json
 "paths": {
@@ -45,6 +47,12 @@ import { environment } from "../../../environments/environment";
 import { environment } from "@environments/environment";
 ```
 
+<Aside title="Nota:" >
+
+Los path alias pueden utilizarse en cualquier proyecto Typescript, no necesariamente en Angular.
+
+</Aside>
+
 ## Angular.json
 
 El archivo `angular.json` es la configuración principal de Angular CLI del proyecto.
@@ -54,17 +62,19 @@ El archivo `angular.json` es la configuración principal de Angular CLI del proy
 Definir configuraciones distintas para diferentes entornos (como desarrollo, producción, pruebas, etc.) facilita la gestión de variables de entorno y configuraciones específicas para cada caso.
 
 ```json
-"configurations": {
-  "development": {
-    // Configuraciónes para el entorno de desarrollo
-  },
-  "production": {
-    "fileReplacements": [
-      {
-        "replace": "src/environments/environment.ts",
-        "with": "src/environments/environment.prod.ts"
-      }
-    ],
+{
+  "configurations": {
+    "development": {
+      // Configuraciónes para el entorno de desarrollo
+    },
+    "production": {
+      "fileReplacements": [
+        {
+          "replace": "src/environments/environment.ts",
+          "with": "src/environments/environment.prod.ts"
+        }
+      ]
+    }
   }
 }
 ```

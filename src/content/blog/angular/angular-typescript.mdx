@@ -12,7 +12,7 @@ import Tabs from "@components/tabs/Tabs.astro";
 import TabItem from "@components/tabs/TabItem.astro";
 import FileTree from "@components/FileTree.astro";
 
-El uso de TypeScript en Angular aporta la seguridad del tipo estático y muchas otras características que pueden mejorar la calidad y la mantenibilidad del código. Asi que, por último, agregaré buenas prácticas generales relacionadas con TypeScript en el contexto de Angular.
+El uso de TypeScript en Angular aporta la seguridad del tipo estático. Asi que, por último, agregaré buenas prácticas generales relacionadas con TypeScript en el contexto de Angular.
 
 ## Evitar el uso de "any"
 
@@ -80,7 +80,7 @@ export namespace SomeNamespace {
 
 ## Barrels
 
-Los "barrels" son archivos que reexportan múltiples módulos o clases desde un solo archivo. Esto puede simplificar la importación de múltiples elementos desde un mismo directorio y mejorar la organización y legibilidad. Podemos crear archivos `index.ts` en las carpetas para exportar todo lo que se necesite de esta.
+Los "barrels" son archivos que reexportan múltiples módulos o clases desde un solo lugar. Esto puede simplificar la importación de múltiples elementos desde un mismo directorio mejorando la organización y legibilidad. Podemos crear archivos `index.ts` en las carpetas para exportar todo lo que se necesite de esta.
 
 ### Ejemplo:
 
@@ -95,13 +95,13 @@ Supongamos que tenemos la siguiente estructura de carpetas:
 
 </FileTree>
 
-En dònde cada componete se ve de esta forma:
+En dónde cada componete se ve de esta forma:
 
 ```ts
 export class FirstComponent {}
 ```
 
-Sin Barrels necesitaríamos 3 imports ditintos para cada componente importadp:
+Sin Barrels necesitaríamos 3 imports ditintos para cada componente importado:
 
 ```ts
 import { FirstComponent } from "../../first-component.component.ts";
