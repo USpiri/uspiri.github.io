@@ -51,7 +51,7 @@ Anteriormente, para renderizar condicionalmente un componente u otro en el DOM, 
 
 <ng-template #elseTemplate>
   <ng-container *ngIf="show; else anotherElseTemplate">
-    <span>Inside if</span>
+    <span>Inside else if</span>
   </ng-container>
 
   <ng-template #anotherElseTemplate>
@@ -88,10 +88,6 @@ La nueva sintaxis es más concisa, legible e igual o más flexible que antes. Po
 
 ## Estrucutra repetitiva @for
 
-The days of *ngFor are numbered as Angular 17 introduces @for. This syntax allows for elegant iteration over lists, bringing along a new block called @empty to handle empty arrays gracefully.
-The *ngFor directive can be replaced by @for, which allows us to render content of a list (iterable) for each item in it. Additionally, the new syntax provides a new block defined as @empty that will be rendered in case the items array is empty.
-The @for structure replaces the *ngFor directive, enabling the rendering of list content for each item in an iterable. It also introduces an @empty block, rendering specific content when the items array is empty.
-
 La estructura `@for` reemplaza a la directiva `*ngFor`, permitiendonos renderizar contenido de un arrelgo o iterable. También provee de un nuevo bloque, definido como `@empty`, que será renderizado en caso de que la lista esté vacía.
 
 <Tabs>
@@ -101,7 +97,7 @@ La estructura `@for` reemplaza a la directiva `*ngFor`, permitiendonos renderiza
 ```html
 <ul>
   @for (user of userList; track user.id; let i = $index){
-    <li>{{i}}. {{ user.name }}</li>
+    <li>{{ i }}. {{ user.name }}</li>
   } @empty {
     <li>Empty array</li>
   }
