@@ -5,7 +5,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 
 import mdx from "@astrojs/mdx";
 
-import minimalTheme from './src/assets/minimal-dark-theme.json';
+// import minimalTheme from './src/assets/minimal-dark-theme.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +17,7 @@ export default defineConfig({
     rehypePlugins: [
       [rehypePrettyCode,
         {
-          theme: minimalTheme,
+          theme: 'dark-plus',
           keepBackground: false,
         }
       ],
