@@ -14,10 +14,10 @@ published: false
 - ⬜ Soporte para i18n.
 - ✅ Bug: cuadro negro en About en modo claro.
 - ✅ Bug: enlace de compartir.
-- ⬜ Actualizar Astro 4.0.
+- ✅ Actualizar Astro 4.0.
 - ✅ Bug tamaño del navbar en mobile.
 - ✅ Cambiar iconos AboutHeader on hover.
-- 🟦 Mejorar la accesibilidad
+- ✅ Mejorar la accesibilidad
 - ✅ About page
 
 ## Tareas cerradas
