@@ -50,19 +50,32 @@ const {
     }
   </header>
   <article
-    class="markdown-article min-w-full relative rounded-lg bg-neutral-50 border dark:border-transparent dark:bg-neutral-800 p-5 pt-5 prose prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-headings:font-semibold prose-img:rounded-lg prose-img:my-0 prose-code:after:contents prose-code:before:contents prose-neutral dark:prose-invert prose-li:my-0"
+    class="markdown-code markdown-article markdown-fonts markdown-image min-w-full relative rounded-lg bg-white border dark:border-transparent dark:bg-neutral-800 p-5 pt-5"
   >
     <slot />
   </article>
 </section>
 <style is:global lang="scss">
   .markdown-article {
-    @apply prose-headings:mt-6 prose-hr:mb-8 first:prose-headings:mt-0 prose-sm sm:prose-base;
+    @apply prose-hr:mb-8 prose prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-li:my-0;
+  }
+
+  .markdown-fonts {
+    @apply prose-headings:font-semibold prose-neutral dark:prose-invert prose-headings:mt-6 first:prose-headings:mt-0 prose-sm sm:prose-base;
+  }
+
+  .markdown-code {
+    @apply prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-code:after:contents prose-code:before:contents;
+  }
+
+  .markdown-image {
+    @apply prose-img:rounded-lg prose-img:my-0;
   }
 
   code {
     &:not(pre code) {
-      @apply dark:bg-neutral-900 bg-neutral-200/75 rounded-md px-1;
+      @apply dark:bg-neutral-700/75 bg-gray-200/50 rounded-md px-1 dark:text-neutral-200;
+      font-weight: initial !important;
     }
   }
   p:has(img) {
