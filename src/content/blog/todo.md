@@ -12,6 +12,11 @@ published: false
 ## Tareas activas recientemente
 
 - ⬜ Soporte para i18n.
+
+## Tareas cerradas
+
+### Completadas
+
 - ✅ Bug: cuadro negro en About en modo claro.
 - ✅ Bug: enlace de compartir.
 - ✅ Actualizar Astro 4.0.
@@ -19,11 +24,6 @@ published: false
 - ✅ Cambiar iconos AboutHeader on hover.
 - ✅ Mejorar la accesibilidad
 - ✅ About page
-
-## Tareas cerradas
-
-### Completadas
-
 - ✅ Mejorar el uso de ViewTransitions
 - ✅ Mover esilos y componentes que se repiten
 - ✅ Achicar font en mobile (@typography)
