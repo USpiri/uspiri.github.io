@@ -30,6 +30,8 @@
     "hast-util-to-html": "^9.0.0",
     "hast-util-to-string": "^3.0.0",
     "hastscript": "^8.0.0",
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0",
     "rehype": "^13.0.1",
     "rehype-pretty-code": "^0.12.1",
     "sass": "^1.69.5",
