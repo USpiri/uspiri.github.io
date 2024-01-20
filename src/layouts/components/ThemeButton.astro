@@ -5,8 +5,8 @@ import SunIcon from "@components/icons/SunIcon.astro";
 ---
 
 <Button id="toggle-dark-mode" aria-label="Dark mode button">
-  <SunIcon />
-  <MoonIcon class="hide-icon" />
+  <SunIcon class="h-5" />
+  <MoonIcon class="hide-icon h-5" />
 </Button>
 
 <script>
@@ -29,7 +29,7 @@ import SunIcon from "@components/icons/SunIcon.astro";
         svgSun?.classList.toggle("hide-icon");
         localStorage.setItem(
           "theme",
-          elementHtml?.classList.contains("dark") ? "true" : "false"
+          elementHtml?.classList.contains("dark") ? "true" : "false",
         );
       });
   };
