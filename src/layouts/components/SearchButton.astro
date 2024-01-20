@@ -6,13 +6,13 @@ import Search from "./Search.astro";
 ---
 
 <Button open-dialog dialog-id="search" aria-label="Search articles">
-  <SearchIcon class="fill-neutral-400 h-7" />
+  <SearchIcon class="h-5 fill-neutral-400" />
 </Button>
-<Dialog id="search" class="md:max-w-lg md:w-full">
+<Dialog id="search" class="md:w-full md:max-w-lg">
   <div class="px-2 pt-3 text-neutral-500 dark:text-neutral-200">
     <Search />
   </div>
-  <footer class="p-1 flex gap-2 flex-row-reverse">
+  <footer class="flex flex-row-reverse gap-2 p-1">
     <Button dialog-close class="p-2" custom-id="1234">Cancel</Button>
   </footer>
 </Dialog>
