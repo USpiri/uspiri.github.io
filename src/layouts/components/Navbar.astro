@@ -9,10 +9,9 @@ import MenuIcon from "@components/icons/MenuIcon.astro";
 import type { Link } from "@utils/models/links.interface";
 
 const currentPath = Astro.url.pathname.split("/")[1];
-const navItems: Link[] = [
+
+const nav: Link[] = [
   { label: "Blog", path: "/blog" },
-  { label: "Explorar", path: "/explore" },
-  { label: "Sobre mi", path: "/about" },
   { label: "Collections", path: "/collections" },
   { label: "Snippets", path: "/snippet" },
   { label: "Daily", path: "/daily" },
@@ -20,56 +19,54 @@ const navItems: Link[] = [
 ---
 
 <nav
-  class="sticky top-0 md:h-16 py-3 dm:py-0 shadow-md dark:shadow-sm dark:shadow-neutral-700 w-full px-2 md:px-8 text-neutral-700 dark:text-neutral-400 flex items-center z-10 bg-neutral-50 dark:bg-neutral-900"
-  transition:animate="none"
+  class="sticky top-0 z-10 flex justify-center bg-neutral-100/50 text-neutral-600 backdrop-blur-md dark:bg-neutral-950/50 dark:text-neutral-400"
 >
-  <div class="md:flex items-center justify-between w-full">
-    <div class="flex flex-1 md:flex-none items-center">
-      <Button class="block md:hidden" id="menu" aria-label="Menu button">
-        <MenuIcon class="h-7" />
-      </Button>
-      <a
-        href="/"
-        class="flex flex-1 md:flex-none gap-2 items-center justify-center"
-        ><DevlyIcon class="h-5" />
-        <span class="font-semibold text-xl"> Uriel Spiridione</span>
+  <div
+    class="min-h-[3.5rem] w-full max-w-4xl items-center justify-between px-5 md:flex"
+  >
+    <section class="flex h-14 flex-1 items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <DevlyIcon class="h-4" />
+        <span class="font-semibold">Uriel Spiridione</span>
       </a>
-    </div>
-    <div
-      class="flex flex-col md:flex-row md:flex-1 gap-5 md:gap-1 lg:gap-3 overflow-hidden md:h-full max-h-0 md:max-h-none navmenu-toggle"
+      <Button id="menu" aria-label="Menu button" class="block md:hidden">
+        <MenuIcon class="h-5" />
+      </Button>
+    </section>
+    <section
+      class="navmenu-toggle max-h-0 items-center overflow-hidden md:flex md:h-full md:max-h-none"
       id="navmenu-toggle"
     >
       <div
-        class="flex flex-col md:flex-row gap-1 lg:gap-3 px-5 md:px-0 mt-5 md:mt-0 md:flex-1 lg:justify-center sm:justify-end"
+        class="md:items flex flex-col gap-5 pb-5 pt-3 md:flex-row md:gap-2 md:pb-0 md:pt-0"
       >
-        {
-          navItems.map((item) => (
-            <LinkButton href={item.path} class="h-9 flex items-center px-2">
-              <span
-                class={`${
-                  currentPath.includes(item.path.slice(1))
-                    ? "text-cyan-600 dark:text-neutral-200 transition-all"
-                    : ""
-                } text-sm md:text-base`}
-              >
-                {item.label}
-              </span>
-            </LinkButton>
-          ))
-        }
+        <ul class="flex flex-col gap-2 px-5 md:flex-row md:px-0">
+          {
+            nav.map((item) => (
+              <li>
+                <LinkButton href={item.path} class="flex px-2 py-1.5">
+                  <span
+                    class={`${
+                      currentPath.includes(item.path.slice(1)) &&
+                      "text-cyan-600 transition-all dark:text-neutral-200"
+                    } text-sm md:text-base`}
+                  >
+                    {item.label}
+                  </span>
+                </LinkButton>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex items-center justify-around gap-2">
+          <LinkButton href="/" class="p-1 md:hidden">
+            <HomeIcon class="h-6 md:h-5" />
+          </LinkButton>
+          <SearchButton />
+          <ThemeButton />
+        </div>
       </div>
-      <div class="flex justify-around items-start md:gap-1 lg:gap-3">
-        <LinkButton
-          href="/"
-          class="h-9 px-1 flex items-center md:hidden"
-          aria-label="Go to home"
-        >
-          <HomeIcon class="w-7" />
-        </LinkButton>
-        <SearchButton />
-        <ThemeButton />
-      </div>
-    </div>
+    </section>
   </div>
 </nav>
 
